@@ -22,7 +22,7 @@ function App() {
 
 return (
     <BrowserRouter>
-        <p>안녕하세요, Monstera,  Hello, 12345</p>
+        <p>안녕하세요, Monstera,  Hello, 12345 글씨 추가</p>    
         <Route exact path="/">
             <Main />
         </Route>
