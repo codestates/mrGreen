@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
+import Footer from "./Components/Footer";
+import Nav from "./Components/Nav";
+import NavChange from "./Components/NavChange";
 import Begginer from "./Pages/Begginer";
 import Interior from "./Pages/Interior";
 import Lucky from "./Pages/Lucky";
@@ -20,7 +23,9 @@ function App() {
 
   return (
     <BrowserRouter>
-      <p>안녕하세요, Monstera, Hello, 12345</p>
+      {isLogin ? <NavChange /> : <Nav />}
+      <Begginer />
+
       <Route exact path="/">
         <Main />
       </Route>
