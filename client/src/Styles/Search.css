@@ -1,0 +1,30 @@
+* {
+    background-color: var(--lightGray--color);
+}
+
+.searchBar input {
+    width: 880px;
+    margin-right: 20px;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #090909;
+    font-size: 13px; color: #090909;
+    outline: none;
+}
+
+.searchBtn button {
+    margin-top: 25px;
+    width: 90px;
+    height: 25px;
+    border-radius: 20px;
+    border-width: 3px;
+}
+
+.searchBarBtn {
+    font-family: "Noto Sans";
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

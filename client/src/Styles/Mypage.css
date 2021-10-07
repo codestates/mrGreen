@@ -1,0 +1,85 @@
+* {
+    background-color: var(--lightGray--color);
+}
+
+.userpage {
+    background-color: white;
+    width: 970px;
+    height: 155px;
+    text-align: center;
+    margin-top: 62px;
+}
+
+.userplant {
+    margin-top: 40px;
+    
+}
+
+.userplant_title {
+    width: 970px;
+    text-align: left;
+    font-size: 13px;
+    border-bottom: 1px solid #090909;
+}
+
+.userplant_plant {
+    display: flex;
+}
+
+.user_PagePlant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userpage_photo {
+    background-color: white;
+}
+
+.userpage_photo img {
+    background-color: white;
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    margin-left: 50px;
+    border-radius: 100px;
+}
+
+.userpage_userinfo{
+    display: flex;
+    background-color: white;
+}
+
+.userpage_nickname {
+    margin-left: 200px;
+}
+
+.plantList {
+    background-color: white;
+    margin-top: 20px;
+    width: 150px;
+    height: 230px;
+}
+
+.plantList img {
+  background-color: white;
+  width: 150px;
+  padding: 7px;
+  object-fit: cover;
+}
+
+.plantList_text {
+    background-color: white;
+    font-size: 10px;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+.plantList_subText {
+    background-color: white;
+    color: var(--deepGray--color);
+    font-size: 2px;
+    margin-top: 0;
+    margin-left: 8px;
+}
