@@ -8,7 +8,6 @@ function SearchBar() {
             type="text"
             placeholder="어떤 식물을 찾으시나요?"
             ></input>
-            
         </div>
     );
 }
