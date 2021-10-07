@@ -14,7 +14,7 @@ import Search from "./Pages/Search";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  const [loginModal, setLoginModal] = useState(true);
+  const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [selectedPlant, setSelectedPlant] = useState({});
