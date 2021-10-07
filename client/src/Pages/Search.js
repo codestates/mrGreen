@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import SearchBar from '../Components/Search/SearchBar';
 import SearchBtn from '../Components/Search/SearchBtn';
-import '../styles/Search.css';
+import '../Styles/Search.css';
 
 function Search() {
     return (

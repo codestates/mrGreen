@@ -1,6 +1,6 @@
 import React from 'react';
 import profile from '../../Image/Mypage/Mypage_leon.jpg'
-import '../../styles/Mypage.css';
+import '../../Styles/Mypage.css';
 
 function UserPage() {
     return (

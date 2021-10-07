@@ -2,7 +2,7 @@ import React from 'react';
 import img1 from '../../Image/PlantList/001_Monstera.jpg'
 import img2 from '../../Image/PlantList/001_Monstera.jpg'
 import img3 from '../../Image/PlantList/001_Monstera.jpg'
-import '../../styles/Mypage.css';
+import '../../Styles/Mypage.css';
 
 function PlantList() {
     return (
