@@ -21,12 +21,11 @@ function App() {
   const [selectedPlant, setSelectedPlant] = useState({});
   const [plantList, setPlantList] = useState([]);
 
+
   return (
     <BrowserRouter>
       nav/navchange/footer
       {isLogin ? <NavChange /> : <Nav />}
-      <Begginer />
-
       <Route exact path="/">
         <Main />
       </Route>
@@ -48,29 +47,6 @@ function App() {
       <Route exact path="/plantInfo">
         <PlantInfo />
       </Route>
-        <p>안녕하세요, Monstera,  Hello, 12345 글씨 추가</p>    
-        <Route exact path="/">
-            <Main />
-        </Route>
-        <Route exact path="/mypage">
-            <Mypage />
-        </Route>
-        <Route exact path="/search">
-            <Search />
-        </Route>
-        <Route exact path="/interior">
-            <Interior />
-        </Route>
-        <Route exact path="/begginer">
-            <Begginer />
-        </Route>
-        <Route exact path="/lucky">
-            <Lucky />
-        </Route>
-        <Route exact path="/plantInfo">
-            <PlantInfo />
-        </Route>
-        dev
     </BrowserRouter>
   );
 }
