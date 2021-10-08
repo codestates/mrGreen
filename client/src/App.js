@@ -24,7 +24,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      nav/navchange/footer
+      {/* nav/navchange/footer */}
       {isLogin ? <NavChange /> : <Nav />}
       <Route exact path="/">
         <Main />
