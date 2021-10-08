@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Footer from '../Components/Footer';
 import PlantCard from '../Components/Mypage/PlantCard';
 import '../Styles/Search.css';
+import '../Styles/PlantCard.css';
 
 function Search() {
 
@@ -50,7 +51,6 @@ function Search() {
                 })}        
           </div>
         </div>
-        <Footer />
       </div>
     );
 }

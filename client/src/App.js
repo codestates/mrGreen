@@ -20,7 +20,7 @@ function App() {
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
-  const [editPwModal, setEditPwModal] = useState(true);
+  const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [selectedPlant, setSelectedPlant] = useState({});
   const [plantList, setPlantList] = useState([]);
