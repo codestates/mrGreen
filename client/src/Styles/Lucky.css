@@ -1,0 +1,183 @@
+* {
+  list-style: none;
+}
+
+.lucky {
+  width: 100vw;
+  top: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/* ----메인 이미지---- */
+.lucky_title_background {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: url("../Image/Theme/Lucky/Lucky_clover.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lucky_title_area {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff4d;
+  text-align: center;
+  margin-bottom: 150px;
+  color: var(--white--color);
+  font-size: var(--font--10--size);
+}
+
+.lucky_title {
+  width: 600px;
+  text-align: center;
+  color: #f8f6f1;
+  text-shadow: 1px 1px 1px #5a4e3f;
+  font-size: 38px;
+  border-bottom: solid 2px var(--white--color);
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+}
+
+.lucky_subtitle {
+  color: #ebd08b;
+  font-weight: bold;
+  font-size: var(--font--12--size);
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+
+/* ----중간 멘트---- */
+
+.lucky_intro {
+  width: 100%;
+  height: 460px;
+  background-color: #e2ca7c56;
+  color: #5a4e3f;
+  font-weight: bold;
+  text-align: center;
+  font-size: var(--font--30--size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 160%;
+}
+
+.lucky_quote {
+  width: 100px;
+  height: 100px;
+  font-size: 100px;
+  color: #f4bb00;
+}
+
+/* ----5가지 식물 리스트---- */
+
+.lucky_theme_main {
+  width: 100%;
+  height: 840px;
+  background-image: url("../Image/Theme/Lucky/lucky_theme_bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.lucky_main_box {
+  width: 75%;
+  height: 560px;
+  position: relative;
+  top: 160px;
+  background-color: rgba(248, 244, 244, 0.3);
+  border: solid 20px #ebd08b;
+  border-radius: 5px;
+  padding: 100px 80px 20px 80px;
+  margin: auto;
+  overflow-y: scroll;
+}
+
+.lucky_main_box::-webkit-scrollbar {
+  display: none;
+}
+
+.lucky_list_set {
+  width: 100%;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: left;
+  scroll-behavior: smooth;
+  overscroll-behavior: auto;
+}
+
+.lucky_list_set:nth-child(2n) .lucky_list_title {
+  align-items: right;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.lucky_list_set:nth-child(2n) .lucky_list_desc {
+  align-items: right;
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.lucky_list_title {
+  width: 100%;
+  font-size: 32px;
+  align-items: baseline;
+  display: flex;
+}
+
+.lucky_list_title:nth-child(2n) {
+  justify-content: flex-end;
+  background-color: violet;
+}
+
+.lucky_number {
+  color: #f4bb00;
+  font-size: 80px;
+}
+
+.lucky_plant_name {
+  margin-left: 20px;
+}
+
+.lucky_list_desc {
+  width: 100%;
+  text-align: left;
+  letter-spacing: 2px;
+  white-space: pre-wrap;
+  line-height: 24px;
+}
+/* ----식물 카드 리스트---- */
+.lucky_cardList {
+  background-color: var(--lightGray--color);
+  width: 100%;
+  height: 840px;
+  display: flex;
+  flex-direction: column;
+}
+.lucky_card_title_area {
+  height: 300px;
+  color: var(--deepGray--color);
+  text-align: center;
+  font-size: var(--font--12--size);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lucky_card_title {
+  font-size: 24px;
+  color: var(--black--color);
+  margin-top: 10px;
+  font-weight: bold;
+}

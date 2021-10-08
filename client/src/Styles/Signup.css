@@ -27,47 +27,58 @@ input:checked[type="radio"] {
   color: var(--red--color);
 }
 
-button {
-  height: 26px;
+.signup button {
+  height: 30px;
   border: none;
   color: var(--white--color);
   background-color: var(--deepGray--color);
-  font-size: var(--font--10--size);
-  border-radius: 10px;
+  font-size: var(--font--12--size);
+  border-radius: 50px;
   padding: 6px;
 }
 
-button:hover {
-  color: var(--red--color);
-  background-color: transparent;
-  border: solid 1px var(--red--color);
+.signup button:hover {
+  color: var(--white--color);
+  background-color: var(--red--color);
+  cursor: pointer;
+}
+
+.signup button:active {
+  transform: scale(0.98);
 }
 
 .signup {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  position: fixed;
+  z-index: 300;
 }
 .signup_background {
-  width: 100vw;
-  height: 100vh;
   background-color: rgba(31, 29, 29, 0.7);
-  content: "";
   top: 0;
   left: 0;
-  position: absolute;
-  z-index: 1;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 400;
 }
 
 .signup_modal {
   width: 660px;
   height: 440px;
   background-color: var(--white--color);
+  border-radius: 5px;
   display: flex;
-  position: relative;
-  top: 150px;
-  z-index: 3;
-  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 500;
 }
 
 .signup_modal_leftside {
@@ -77,12 +88,13 @@ button:hover {
   justify-content: flex-end;
   align-items: left;
   font-size: var(--font--10--size);
-  padding: 20px 30px;
+  padding: 20px 40px;
 }
 
 .signup_title {
-  font-size: var(--font--16--size);
+  font-size: var(--font--20--size);
   font-weight: bold;
+  letter-spacing: 2px;
   margin-bottom: 20px;
 }
 
@@ -99,7 +111,7 @@ button:hover {
 }
 
 .signup_input_area {
-  height: 130px;
+  height: 150px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -123,6 +135,7 @@ button:hover {
 .signup_img {
   width: 54%;
   height: 100%;
+  border-radius: 0 5px 5px 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url("../Image/Login/Login Signup_img.jpg");
@@ -133,21 +146,25 @@ button:hover {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  padding: 0 7px;
   margin-bottom: 4px;
 }
 
-.signup_forLogin.btn {
+button.signup_forLogin.btn {
   color: var(--black--color);
   background-color: transparent;
   font-size: var(--font--12--size);
   font-weight: bold;
+  letter-spacing: 2px;
 }
 
-.signup_forLogin.btn:hover {
+button.signup_forLogin:hover {
   color: var(--red--color);
   border: none;
 }
 
 .signupBtn {
   margin-bottom: 10px;
+  letter-spacing: 1px;
+  line-height: 14px;
 }
