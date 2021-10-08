@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import { BrowserRouter, Route } from 'react-router-dom'
+import Footer from '../Components/Footer';
 import UserPage from '../Components/Mypage/UserPage';
 import UserPlant from '../Components/Mypage/UserPlant';
 import '../Styles/Mypage.css';
@@ -7,12 +7,12 @@ import '../Styles/Mypage.css';
 function Mypage() {
 
     return (
-        <BrowserRouter>
+        <div>
             <div className="user_PagePlant">
                 <UserPage />
                 <UserPlant />
             </div>
-        </BrowserRouter>
+        </div>
     );
 }
 

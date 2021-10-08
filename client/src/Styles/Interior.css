@@ -1,0 +1,135 @@
+
+
+.interior_Containor {
+    width: 100%;
+}
+
+.interior_In {
+    background-color: var(--white--color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px 150px;
+}
+
+.interior_Title {
+    background-color: var(--white--color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.interior_MainTitle {
+    background-color: var(--white--color);
+    text-align: center;
+    font-size: var(--font--30--size);
+    color: var(--black--color);
+    border-bottom: 1px solid var(--black--color);
+}
+
+.interior_SubTitle {
+    background-color: var(--white--color);
+    text-align: center;
+    color: var(--deepGray--color);
+}
+
+.interior_Main {
+    background-color: var(--white--color);
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 120px;
+}
+
+.interior_Text {
+    background-color: var(--white--color);
+}
+
+.interior_MainText {
+    background-color: var(--white--color);
+    font-size: var(--font--12--size);
+    line-height: 20px;
+}
+
+.interior_SubText {
+    background-color: var(--white--color);
+    margin-top: 150px;
+    font-size: var(--font--12--size);
+    line-height: 20px;
+}
+
+.interior_MainImage {
+    background-color: var(--white--color);
+    width: 200px;
+    margin-left: 100px;
+}
+
+.intreior_HowTo {
+    background-color: var(--white--color);
+    margin-top: 300px;
+    text-align: center;
+    font-size: var(--font--30--size);
+    color: var(--black--color);
+    border-bottom: 1px solid var(--black--color);
+}
+
+.interior_Wood {
+    background-color: var(--white--color);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
+.interior_WoodText {
+    background-color: var(--white--color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.interior_WoodMainText {
+    background-color: var(--white--color);
+}
+
+.interior_WoodSubText {
+    background-color: var(--white--color);
+}
+
+.interior_WoodImage {
+    width: 320px;
+}
+
+.interior_Plant {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 300px;
+    padding: 0px;
+}
+
+.interior_PlantListTitle {
+
+}
+
+.interior_PlantListMainTitle {
+    
+}
+
+.interior_PlantListMainTitle {
+    
+}
+
+.interior_PlantList {
+    margin-top: 0px;
+    margin-left: 15px;
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: repeat(6, 164px);
+    gap: 0px 50px
+}

@@ -1,5 +1,5 @@
 import React, { useState }from 'react';
-import MyPlantList from './MyPlantList';
+import PlantCard from './PlantCard';
 
 function UserPlant() {
 
@@ -13,19 +13,23 @@ function UserPlant() {
     ]);
 
     return (
-        <div className="userplant">
-            <div className="userplant_title">
-                My Plant
-            </div>
-            <div className="userplant_plant">
-                {myPlantList.map((item, index) => {
-                    return (
-                        <MyPlantList 
-                        key={index}
-                        item={item}
-                        />
-                    )
-                })}                
+        <div className="userplant_Containor">
+            <div className="userplant_In">
+                <div className="userplant">
+                    <div className="userplant_title">
+                    My Plant
+                    </div>
+                    <div className="userplant_plant">
+                    {myPlantList.map((item, index) => {
+                        return (
+                            <PlantCard
+                                key={index}
+                                item={item}
+                            />
+                        )
+                    })}
+                    </div>
+                </div>
             </div>
         </div>
     );

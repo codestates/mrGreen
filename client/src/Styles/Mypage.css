@@ -2,28 +2,53 @@
     background-color: var(--lightGray--color);
 }
 
+.userplant_Containor {
+    width: 100%;
+}
+
+.userplant_In {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.userpage_Containor {
+    width: 84%;
+}
+
 .userpage {
+    display: flex;
+    flex-direction: row;
     background-color: white;
-    width: 970px;
-    height: 155px;
-    text-align: center;
-    margin-top: 62px;
+    width: 100%;
+    height: 160px;
+    text-align: left;
+    margin-top: 22px;
 }
 
 .userplant {
-    margin-top: 40px;
-    
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .userplant_title {
-    width: 970px;
+    margin-left: 17px;
+    width: 100%;
     text-align: left;
     font-size: 13px;
     border-bottom: 1px solid #090909;
 }
 
 .userplant_plant {
-    display: flex;
+    margin-top: 0px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-columns: repeat(6, 164px);
+    gap: 0px 65px
 }
 
 .user_PagePlant {
@@ -47,39 +72,39 @@
 }
 
 .userpage_userinfo{
-    display: flex;
+    display: grid;
+    justify-content: center;
     background-color: white;
 }
 
 .userpage_nickname {
-    margin-left: 200px;
-}
-
-.plantList {
     background-color: white;
     margin-top: 20px;
-    width: 150px;
-    height: 230px;
+    margin-left: 80px;
+    font-size: var(--font--12--size);
 }
 
-.plantList img {
-  background-color: white;
-  width: 150px;
-  padding: 7px;
-  object-fit: cover;
-}
-
-.plantList_text {
+.userpage_email {
     background-color: white;
-    font-size: 10px;
-    margin-top: 5px;
-    margin-left: 8px;
+    margin-left: 80px;
+    font-size: var(--font--12--size);
 }
 
-.plantList_subText {
+.userpage_userinfo button {
     background-color: white;
-    color: var(--deepGray--color);
-    font-size: 2px;
-    margin-top: 0;
-    margin-left: 8px;
+    margin-left: 80px;
+    width: 70px;
+    height: 20px;
+    border-radius: 10px;
+    font-size: var(--font--10--size); 
+    border: solid 1px var(--black--color);
+    border-width: 2px;
 }
+
+.userpage_userinfo button:hover {
+    color: var(--red--color);
+    background-color: transparent;
+    border: solid 1px var(--red--color);
+    border-width: 2px;
+}
+
