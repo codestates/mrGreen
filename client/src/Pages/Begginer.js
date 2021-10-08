@@ -1,5 +1,6 @@
 import React from "react";
 import Begginer_Crteria from "../Components/Begginer_Crteria";
+import Footer from "../Components/Footer";
 import "../Styles/Begginer.css";
 
 function Begginer() {
@@ -31,6 +32,7 @@ function Begginer() {
           <Begginer_Crteria />
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

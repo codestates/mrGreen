@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
-import Footer from "./Components/Footer";
 import Nav from "./Components/Nav";
 import NavChange from "./Components/NavChange";
+import Top from "./Components/Top";
 import Begginer from "./Pages/Begginer";
 import Interior from "./Pages/Interior";
 import Lucky from "./Pages/Lucky";
@@ -20,10 +20,44 @@ function App() {
   const [accessToken, setAccessToken] = useState("");
   const [selectedPlant, setSelectedPlant] = useState({});
   const [plantList, setPlantList] = useState([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  useEffect(() => {
+    window.addEventListener("scroll", scrollPositionHandler);
+  });
+
+  //! scroll 위치 알려주는 함수
+  const scrollPositionHandler = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+
+  //! 스크롤 이벤트
+  const isElementUnderBottom = (elem, triggerDiff) => {
+    const { top } = elem.getBoundingClientRect();
+    const { innerHeight } = window;
+    return top > innerHeight + (triggerDiff || 0);
+  };
+
+  const handleScroll = () => {
+    const elems = document.querySelectorAll(".scroll");
+    elems.forEach((elem) => {
+      if (isElementUnderBottom(elem, -20)) {
+        elem.style.opacity = "0";
+        elem.style.transform = "translateY(70px)";
+      } else {
+        elem.style.opacity = "1";
+        elem.style.transform = "translateY(0px)";
+      }
+    });
+  };
+
+  window.addEventListener("scroll", handleScroll);
 
   return (
     <BrowserRouter>
       {isLogin ? <NavChange /> : <Nav />}
+      {scrollPosition > 60 ? <Top /> : null}
+
       <Route exact path="/">
         <Main />
       </Route>
