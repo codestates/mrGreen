@@ -21,10 +21,8 @@ function App() {
   const [selectedPlant, setSelectedPlant] = useState({});
   const [plantList, setPlantList] = useState([]);
 
-
   return (
     <BrowserRouter>
-      {/* nav/navchange/footer */}
       {isLogin ? <NavChange /> : <Nav />}
       <Route exact path="/">
         <Main />
