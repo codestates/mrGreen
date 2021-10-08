@@ -1,13 +1,14 @@
 import React from "react";
 import "../Styles/Begginer.css";
-import Footer from "../Components/Footer";
+import desc from "../Image/Theme/Begginer/Begginer_desc.png";
+import level from "../Image/Theme/Begginer/Begginer_iconLevel.png";
+import light from "../Image/Theme/Begginer/Begginer_iconLight.png";
+import water from "../Image/Theme/Begginer/Begginer_iconWater.png";
 
 function Begginer_Crteria() {
   return (
     <div className="begginer_Criteria">
-      <div className="begginer_Criteria_img">
-        <img src="begginer/Begginer_desc.png" alt="" />
-      </div>
+      <img src={desc} alt="" />
 
       <div className="begginer_Criteria_explain">
         <div className="begginer_Criteria_explain_title">
@@ -18,7 +19,7 @@ function Begginer_Crteria() {
 
         <div className="begginer_Criteria_explain_text">
           <div className="begginer_Criteria_explain_text_in">
-            <img src="begginer/Begginer_iconLevel.png" alt="" />
+            <img src={level} alt="" />
             <div className="begginer_Criteria_explain_box">
               난이도 가장 최하
             </div>
@@ -30,7 +31,7 @@ function Begginer_Crteria() {
           </div>
 
           <div className="begginer_Criteria_explain_text_in">
-            <img src="begginer/Begginer_iconWater.png" alt="" />
+            <img src={water} alt="" />
             <div className="begginer_Criteria_explain_box">
               물주는 횟수 최소화
             </div>
@@ -42,7 +43,7 @@ function Begginer_Crteria() {
           </div>
 
           <div className="begginer_Criteria_explain_text_in">
-            <img src="begginer/Begginer_iconLight.png" alt="" />
+            <img src={light} alt="" />
             <div className="begginer_Criteria_explain_box">
               빛을 안봐도 무방
             </div>
