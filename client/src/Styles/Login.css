@@ -11,36 +11,42 @@ input::placeholder {
   font-size: (var(--font--16--size) / 2);
 }
 
-button {
-  height: 26px;
+.login button {
+  height: 30px;
   border: none;
   color: var(--white--color);
   background-color: var(--deepGray--color);
-  font-size: var(--font--10--size);
-  border-radius: 10px;
+  font-weight: bold;
+  font-size: var(--font--14--size);
+  border-radius: 50px;
   padding: 6px;
 }
 
-button:hover {
-  color: var(--red--color);
-  background-color: transparent;
-  border: solid 1px var(--red--color);
+.login button:hover {
+  color: var(--white--color);
+  background-color: var(--red--color);
+  cursor: pointer;
+}
+
+.login button:active {
+  transform: scale(0.98);
 }
 
 .login {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  z-index: 300;
+  position: fixed;
 }
-.login_background {
-  width: 100vw;
-  height: 100vh;
+.modal_background {
   background-color: rgba(31, 29, 29, 0.7);
-  content: "";
   top: 0;
   left: 0;
-  position: absolute;
-  z-index: 1;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 400;
 }
 
 .login_modal {
@@ -49,25 +55,31 @@ button:hover {
   background-color: var(--white--color);
   border-radius: 5px;
   display: flex;
-  position: relative;
-  top: 150px;
-  z-index: 3;
-  margin: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 500;
 }
 
 .login_modal_leftside {
-  width: 46%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: left;
   font-size: var(--font--10--size);
-  padding: 20px 30px;
+  padding: 20px 40px;
 }
 
 .login_title {
-  font-size: var(--font--16--size);
+  font-size: var(--font--20--size);
   font-weight: bold;
+  letter-spacing: 4px;
   padding-top: 30px;
   margin-bottom: 10px;
   margin-bottom: 20px;
@@ -98,6 +110,7 @@ button:hover {
 .login_img {
   width: 54%;
   height: 100%;
+  border-radius: 0 5px 5px 0;
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url("../Image/Login/Login Signup_img.jpg");
@@ -109,20 +122,24 @@ button:hover {
   justify-content: space-between;
   align-items: baseline;
   margin-bottom: 10px;
+  padding: 0 4px;
 }
 
-.login_forSignup_link {
+button.login_forSignup {
   color: var(--black--color);
   background-color: transparent;
   font-size: var(--font--12--size);
   font-weight: bold;
 }
 
-.login_forSignup_link:hover {
+button.login_forSignup:hover {
   color: var(--red--color);
+  background-color: transparent;
   border: none;
 }
 
 .loginBtn {
   margin-bottom: 20px;
+  letter-spacing: 2px;
+  line-height: 14px;
 }

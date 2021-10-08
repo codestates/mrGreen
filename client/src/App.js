@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import Footer from "./Components/Footer";
+import EditUserInfo from "./Components/Modal/EditUserInfo";
+import Login from "./Components/Modal/Login";
+import Signup from "./Components/Modal/Signup";
 import Nav from "./Components/Nav";
 import NavChange from "./Components/NavChange";
 import Begginer from "./Pages/Begginer";
@@ -17,15 +20,25 @@ function App() {
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
+  const [editPwModal, setEditPwModal] = useState(true);
   const [accessToken, setAccessToken] = useState("");
   const [selectedPlant, setSelectedPlant] = useState({});
   const [plantList, setPlantList] = useState([]);
 
-
   return (
     <BrowserRouter>
-      nav/navchange/footer
-      {isLogin ? <NavChange /> : <Nav />}
+      {isLogin ? (
+        <NavChange />
+      ) : (
+        <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
+      )}
+      {loginModal ? (
+        <Login loginModal={loginModal} setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
+      ) : null}
+      {signupModal ? (
+        <Signup signupModal={signupModal} setSignupModal={setSignupModal} setLoginModal={setLoginModal} />
+      ) : null}
+      {editPwModal ? <EditUserInfo /> : null}
       <Route exact path="/">
         <Main />
       </Route>
