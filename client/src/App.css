@@ -16,9 +16,12 @@
 }
 
 * {
-    font-family: "Noto Sans";
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: "Noto Sans";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+.scroll {
+  transition: transform 1s, opacity 1s;
+}

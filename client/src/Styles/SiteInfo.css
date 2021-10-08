@@ -26,6 +26,7 @@
 .siteinfo01_text > h1 {
   margin-top: 40px;
   font-size: var(--font--40--size);
+  letter-spacing: 2px;
 }
 
 .siteinfo01_text > button {
@@ -105,6 +106,7 @@
 
 .siteinfo02_03_text > h1 {
   font-size: var(--font--40--size);
+  letter-spacing: 2px;
 }
 
 .siteinfo02_03_text_in {
@@ -116,8 +118,52 @@
   margin-top: 3px;
 }
 
-/*! siteinfo */
-/* .slick-dots {
-  position: absolute;
-  bottom: 0;
-} */
+/*! 반응형 */
+
+@media screen and (max-width: 1600px) {
+  .siteinfo01_in {
+    width: 100%;
+    background-image: url(../Image/Main/SiteInfo/SiteInfo_1_1550.jpg);
+    background-size: cover;
+    padding: 100px;
+  }
+
+  .siteinfo02_in {
+    width: 100%;
+    background-image: url(../Image/Main/SiteInfo/SiteInfo_2_1550.jpg);
+    background-size: cover;
+    padding: 100px;
+  }
+
+  .siteinfo03_in {
+    width: 100%;
+    background-color: azure;
+    background-image: url(../Image/Main/SiteInfo/SiteInfo_3_1550.jpg);
+    background-size: cover;
+    padding: 100px;
+  }
+}
+
+@media screen and (max-width: 1450px) {
+  .siteinfo01_in {
+    width: 100%;
+    background-image: url(../Image/Main/SiteInfo/SiteInfo_1_1400.jpg);
+    background-size: cover;
+    padding: 100px;
+  }
+
+  .siteinfo02_in {
+    width: 100%;
+    background-image: url(../Image/Main/SiteInfo/SiteInfo_2_1400.jpg);
+    background-size: cover;
+    padding: 100px;
+  }
+
+  .siteinfo03_in {
+    width: 100%;
+    background-color: azure;
+    background-image: url(../Image/Main/SiteInfo/SiteInfo_3_1400.jpg);
+    background-size: cover;
+    padding: 100px;
+  }
+}
