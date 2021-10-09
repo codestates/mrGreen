@@ -1,6 +1,6 @@
 import React, { useState }from 'react';
 import profile from '../Image/Mypage/Mypage_leon.jpg'
-import PlantCard from '../Components/Mypage/PlantCard';
+import PlantCard from '../Components/PlantCard';
 import '../Styles/Mypage.css';
 
 function Mypage() {

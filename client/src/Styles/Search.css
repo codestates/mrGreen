@@ -30,7 +30,8 @@
 }
 
 .searchBar::placeholder {
-    font-size: var(--font--16--size);
+    font-size: var(--font--20--size);
+    padding-left: 10px;
 }
 
 .searchBtn {
@@ -58,8 +59,8 @@
 .searchPlant {
     display: grid;
     margin-top: 20px;
-    grid-template-columns: repeat(6, 205px);
-    gap: 0px 1px
+    grid-template-columns: repeat(6, auto);
+    gap: 0px 30px
 }
 
 
@@ -79,8 +80,8 @@
     .searchPlant {
         display: grid;
         margin-top: 20px;
-        grid-template-columns: repeat(6, 180px);
-        gap: 0px 1px
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 30px
     }
     .plantCard_text {
         background-color: white;
@@ -102,20 +103,20 @@
     .plantCard {
         background-color: white;
         margin-top: 20px;
-        width: 140px;
-        height: 230px;
+        width: 130px;
+        height: 210px;
     }
     .plantCard img {
         background-color: white;
-        width: 140px;
+        width: 130px;
         padding: 7px;
         object-fit: cover;
       }
     .searchPlant {
         display: grid;
         margin-top: 20px;
-        grid-template-columns: repeat(6, 153px);
-        gap: 0px 1px
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 10px
     }
     .plantCard_text {
         background-color: white;
@@ -142,8 +143,8 @@
     .searchPlant {
         display: grid;
         margin-top: 20px;
-        grid-template-columns: repeat(6, 127px);
-        gap: 0px 1px
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 30px
     }
     .plantCard_text {
         background-color: white;
@@ -170,8 +171,8 @@
     .searchPlant {
         display: grid;
         margin-top: 20px;
-        grid-template-columns: repeat(5, 120px);
-        gap: 0px 1px
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 30px
     }
 }
 

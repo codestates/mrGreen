@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Footer from '../Components/Footer';
-import PlantCard from '../Components/Mypage/PlantCard';
+import PlantCard from '../Components/PlantCard';
 import img1 from '../Image/Theme/Interior/interior_1.jpeg';
 import img2 from '../Image/Theme/Interior/interior_2.jpeg';
 import img3 from '../Image/Theme/Interior/interior_3.jpeg';
@@ -49,8 +49,8 @@ function Interior() {
                     </div>
                     <img className="interior_MainImage" src={img1}></img>
                 </div>
-                <div className="intreior_HowTo">How to design?</div>
-                <div className="interior_Wood">
+                <div className="intreior_HowTo scroll">How to design?</div>
+                <div className="interior_Wood scroll">
                     <img className="interior_WoodImage" src={img2}></img>
                     <div className="interior_WoodText">
                         <div className="interior_WoodMainText">
@@ -71,7 +71,7 @@ function Interior() {
                         </div>
                     </div>
                 </div>
-                <div className="interior_Modern">
+                <div className="interior_Modern scroll">
                     <div className="interior_ModernText">
                         <div className="interior_ModernMainText">
                             Modern + Plant
@@ -90,7 +90,7 @@ function Interior() {
                     <img className="interior_ModernImage" src={img3}></img>
                 </div>
 
-                <div className="interior_Wood">
+                <div className="interior_Wood scroll">
                     <img className="interior_WoodImage" src={img4}></img>
                     <div className="interior_WoodText">
                         <div className="interior_WoodMainText">

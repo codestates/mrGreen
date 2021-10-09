@@ -3,48 +3,74 @@
 }
 
 .mypage_In {
+    width: 100%;
     background-color: var(--lightGray--color);
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .mypage {
     width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 0px 110px;
+    margin-top: 20px;
 }
 
 .userpage {
     background-color: var(--white--color);
     display: flex;
-    width: 85%;
-    height: 220px;
     flex-direction: row;
-    justify-content: left;
+    width: 100%;
+    height: 200px;
+    flex-direction: row;
     align-items: center;
-    margin-top: 20px;
-    margin-left: 110px;
 }
 
 .userpage_Photo {
     width: 120px;
     border-radius: 100%;
-    margin-left: 70px;
+    margin-left: 100px;
 }
 
 .userpage_UserInfo {
     margin-left: 90px;
 }
 
+.userpage_NickName {
+    font-size: var(--font--20--size);
+}
+
 .userpage_Email {
-    margin-top: 1px;
+    margin-top: 3px;
     font-size: var(--font--10--size);
     color: var(--lightGray--color);
 }
 
+.userpage_Email a {
+    text-decoration: none;
+}
+
+.userpage_Email a:hover {
+    color: var(--deepGray--color);
+}
+
+.userpage_Email a:visited {
+    color: var(--deepGray--color);
+}
+
+.userpage_Email a:active {
+    color: var(--black--color);
+}
+
+
+
+
 .userpage_UserInfo button {
     background-color: white;
-    width: 70px;
+    width: 90px;
     height: 20px;
     border-radius: 10px;
     font-size: var(--font--10--size); 
@@ -63,26 +89,28 @@
 
 .userplant {
     display: flex;
+    justify-content: center;
     flex-direction: column;
 }
 
 .userplant_Title {
-    width: 85%;
+    display: flex;
+    width: 100%;
     height: 30px;
     text-align: left;
     font-size: var(--font--16--size);
     border-bottom: 1px solid #090909;
-    margin-left: 110px;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .userplant_Plant {
     display: grid;
+    justify-content: center;
     margin-top: 20px;
-    margin-left: 110px;
+    margin-left: 0px;
     margin-bottom: 30px;
-    grid-template-columns: repeat(6, 158px);
-    gap: 0px 65px
+    grid-template-columns: repeat(6, auto);
+    gap: 0px 30px
 }
 
 @media screen and (max-width: 1400px) {
@@ -101,8 +129,8 @@
     .userplant_Plant {
         display: grid;
         margin-top: 20px;
-        grid-template-columns: repeat(6, 202px);
-        gap: 0px 1px
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 30px
     }
     .plantCard_text {
         background-color: white;
@@ -134,10 +162,10 @@
         object-fit: cover;
       }
     .userplant_Plant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, 177px);
-        gap: 0px 1px
+        justify-content: center;
+        margin-top: 10px;
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 27px
     }
     .plantCard_text {
         background-color: white;
@@ -164,8 +192,8 @@
     .userplant_Plant {
         display: grid;
         margin-top: 20px;
-        grid-template-columns: repeat(6, 157px);
-        gap: 0px 1px
+        grid-template-columns: repeat(6, auto);
+        gap: 0px 30px
     }
     .plantCard_text {
         background-color: white;

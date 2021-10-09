@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Footer from '../Components/Footer';
-import PlantCard from '../Components/Mypage/PlantCard';
+import PlantCard from '../Components/PlantCard';
 import '../Styles/Search.css';
 import '../Styles/PlantCard.css';
 
