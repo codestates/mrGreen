@@ -28,6 +28,9 @@ function App() {
 
   useEffect(() => {
     window.addEventListener("scroll", scrollPositionHandler);
+    return () => {
+      window.removeEventListener("scroll", scrollPositionHandler);
+    };
   });
 
   // useEffect(() => {

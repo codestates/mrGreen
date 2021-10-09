@@ -42,7 +42,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     return () => {
       window.removeEventListener("click", handleCloseModal);
     };
-  }, []);
+  });
 
   //! 회원가입 구현
   const signupHandler = () => {
@@ -163,11 +163,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
                   className="signup_input_password"
                   placeholder="Password"
                 ></input>
-                {examineSignup.password ? null : (
-                  <label for="signup_input_password">
-                    비밀번호는 8글자 이상, <br /> 영문 대문자를 포함해야 합니다
-                  </label>
-                )}
+                <label for="signup_input_password">
+                  비밀번호는 8글자 이상, 영문 대문자를 포함해야 합니다
+                </label>
               </div>
               <div className="signup_input_nickname_set">
                 <input

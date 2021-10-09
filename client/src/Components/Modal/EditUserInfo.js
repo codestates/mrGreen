@@ -15,12 +15,12 @@ function EditUserInfo() {
                 className="edit_input_prevPw"
                 placeholder="기존 비밀번호"
               ></input>
-              <label for="edit_input_prevPw" id="noMatchPw">
+              <label className="edit_label" for="edit_input_prevPw" id="noMatchPw">
                 기존 비밀번호와 일치하지 않습니다
               </label>
-              <label for="edit_input_prevPw" id="invalidPrevPW">
-                비밀번호는 8글자 이상, <br /> 영문 대문자를 포함해야 합니다
-              </label>
+              {/* <label for="edit_input_prevPw" id="invalidPrevPW">
+                비밀번호는 8글자 이상, 영문 대문자를 포함해야 합니다
+              </label> */}
             </div>
             <div className="edit_input_newPw_set">
               <input
@@ -28,8 +28,8 @@ function EditUserInfo() {
                 className="edit_input_newPw"
                 placeholder="새로운 비밀번호"
               ></input>
-              <label for="edit_input_newPw" id="invalidNewPW">
-                비밀번호는 8글자 이상, <br /> 영문 대문자를 포함해야 합니다
+              <label className="edit_label" for="edit_input_newPw" id="invalidNewPW">
+                비밀번호는 8글자 이상, 영문 대문자를 포함해야 합니다
               </label>
             </div>
             <div className="edit_input_checkNewPw_set">
@@ -38,7 +38,7 @@ function EditUserInfo() {
                 className="edit_input_checkNewPw"
                 placeholder="새로운 비밀번호 확인"
               ></input>
-              <label for="edit_input_checkNewPw" id="noMatchNewPw">
+              <label className="edit_label" for="edit_input_checkNewPw" id="noMatchNewPw">
                 새로운 비밀번호와 일치하지 않습니다
               </label>
             </div>
