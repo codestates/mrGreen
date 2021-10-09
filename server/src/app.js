@@ -12,13 +12,6 @@ const app = express();
 
 
 
-app.use(
-  cors({
-    origin: ['https://localhost:3000'],
-    credentials: true,
-    methods: ['GET', 'POST', 'OPTIONS']
-  })
-);
 app.use(logger("dev"));
 // app.use("/plantlist", plantListRouter);
 
