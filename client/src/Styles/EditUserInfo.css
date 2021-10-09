@@ -1,36 +1,26 @@
-.edit {
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
-
-input {
+.edit input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  height: 20px;
+  font-size: var(--font--12--size);
 }
-
-input:focus {
+.edit input:focus {
   outline: none;
 }
 
-input::placeholder {
+.edit input::placeholder {
   color: var(--deepGray--color);
-  font-size: calc(var(--font--16--size) / 2);
+  font-size: var(--font--12--size);
 }
 
-input[type="radio"] {
-  appearance: radio;
-  width: 10px;
-  height: 10px;
-  border: solid 1px var(--deepGray--color);
-  background-color: transparent;
-  border-radius: 10px;
-  margin-right: 10px;
-}
 
-input:checked[type="radio"] {
-  color: var(--red--color);
+.edit {
+  width: 100vw;
+  /* height: 100vh; */
+  overflow: hidden;
+  position: fixed;
+  z-index: 300;
 }
 
 .edit button {
@@ -56,18 +46,17 @@ input:checked[type="radio"] {
 
 .modal_background {
   width: 100vw;
-  height: 100vh;
   background-color: rgba(31, 29, 29, 0.7);
   content: "";
   top: 0;
   left: 0;
   position: absolute;
-  z-index: 50;
+  z-index: 400;
 }
 
 .edit_modal {
   width: 660px;
-  height: 440px;
+  /* height: 440px; */
   background-color: var(--white--color);
   display: flex;
   position: fixed;
@@ -78,7 +67,7 @@ input:checked[type="radio"] {
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 500;
   border-radius: 5px;
 }
 
@@ -86,24 +75,24 @@ input:checked[type="radio"] {
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: left;
-  font-size: var(--font--10--size);
-  padding: 20px 40px;
+  padding: 40px 40px;
 }
 
 .edit_title {
-  font-size: var(--font--16--size);
+  font-size: var(--font--20--size);
   font-weight: bold;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .edit_input_area {
-  height: 180px;
+  height: 200px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   margin: 20px 0 60px 0;
 }
 
@@ -113,16 +102,26 @@ input:checked[type="radio"] {
   background-color: transparent;
   border: none;
   border-bottom: solid 1px var(--deepGray--color);
+  font-size: var(--font--12--size);
+}
+
+.edit_input_area input::placeholder {
+  font-size: 12px;
 }
 
 .edit_input_area label {
   color: var(--red--color);
-  font-size: calc(var(--font--16--size) / 2);
+  font-size: var(--font--10--size);
+}
+
+.edit_label {
+  position: relative;
+  top: -4px;
 }
 
 .edit_img {
   width: 54%;
-  height: 100%;
+  /* height: 100%; */
   border-radius: 0 5px 5px 0;
   background-size: cover;
   background-repeat: no-repeat;
@@ -130,5 +129,4 @@ input:checked[type="radio"] {
 }
 
 .editPwBtn {
-  margin-bottom: 10px;
 }

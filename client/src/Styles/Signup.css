@@ -1,30 +1,36 @@
-ㅛinput {
+.signup input {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  height: 20px;
+  font-size: var(--font--12--size);
 }
-
-input:focus {
+.signup input:focus {
   outline: none;
 }
 
-input::placeholder {
+.signup input::placeholder {
   color: var(--deepGray--color);
-  font-size: calc(var(--font--16--size) / 2);
+  font-size: var(--font--12--size);
 }
 
-input[type="radio"] {
-  appearance: radio;
+.signup input[type="radio"] {
+  /* appearance: radio; */
+  appearance: none;
   width: 10px;
   height: 10px;
   border: solid 1px var(--deepGray--color);
   background-color: transparent;
   border-radius: 10px;
   margin-right: 10px;
+  font-size: var(--font--12--size);
 }
 
-input:checked[type="radio"] {
+.signup input:checked[type="radio"] {
+  appearance: none;
   color: var(--red--color);
+  box-shadow: inset 0.1px 0.1px 0px 0.8px #f3f3f3, inset -0.1px -0.1px 0px 0.8px #f3f3f3;
+  background-color: var(--red--color);
 }
 
 .signup button {
@@ -32,7 +38,8 @@ input:checked[type="radio"] {
   border: none;
   color: var(--white--color);
   background-color: var(--deepGray--color);
-  font-size: var(--font--12--size);
+  font-weight: bold;
+  font-size: var(--font--14--size);
   border-radius: 50px;
   padding: 6px;
 }
@@ -85,17 +92,19 @@ input:checked[type="radio"] {
   width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: left;
-  font-size: var(--font--10--size);
-  padding: 20px 40px;
+  font-size: var(--font--12--size);
+  padding: 40px;
 }
 
 .signup_title {
   font-size: var(--font--20--size);
   font-weight: bold;
+  color: var(--black--color);
   letter-spacing: 2px;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .signup_input_gender_set {
@@ -107,11 +116,11 @@ input:checked[type="radio"] {
 }
 
 .signup_input_gender_title {
-  color: var(--ligthGray--color);
+  color: var(--deepGray--color);
 }
 
 .signup_input_area {
-  height: 150px;
+  height: 140px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
@@ -121,7 +130,6 @@ input:checked[type="radio"] {
 
 .signup_input_area input {
   width: 100%;
-  color: var(--black--color);
   background-color: transparent;
   border: none;
   border-bottom: solid 1px var(--deepGray--color);
@@ -129,7 +137,7 @@ input:checked[type="radio"] {
 
 .signup_input_area label {
   color: var(--red--color);
-  font-size: calc(var(--font--16--size) / 2);
+  font-size: var(--font--10--size);
 }
 
 .signup_img {
@@ -146,8 +154,7 @@ input:checked[type="radio"] {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 0 7px;
-  margin-bottom: 4px;
+  margin: 0 6px;
 }
 
 button.signup_forLogin.btn {
@@ -164,7 +171,6 @@ button.signup_forLogin:hover {
 }
 
 .signupBtn {
-  margin-bottom: 10px;
   letter-spacing: 1px;
   line-height: 14px;
 }

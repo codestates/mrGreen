@@ -22,7 +22,7 @@ function Login({ loginModal, setLoginModal, setSignupModal }) {
     return () => {
       window.removeEventListener("click", handleCloseModal);
     };
-  }, []);
+  });
 
   return (
     <div className="login">
@@ -48,7 +48,7 @@ function Login({ loginModal, setLoginModal, setSignupModal }) {
                   placeholder="Password"
                 ></input>
                 <label for="login_input_password">
-                  비밀번호는 8글자 이상, <br /> 영문 대문자를 포함해야 합니다
+                  비밀번호는 8글자 이상, 영문 대문자를 포함해야 합니다
                 </label>
               </div>
             </div>
