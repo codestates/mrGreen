@@ -29,6 +29,7 @@ function Main() {
         <div className="main_team_link scroll">
           <div className="main_team_profile">
             <a href="https://github.com/seola25">
+              <div className="main_team_profile_img_border">Click</div>
               <img
                 src={seola}
                 className="main_team_profile_img"
@@ -42,6 +43,7 @@ function Main() {
 
           <div className="main_team_profile">
             <a href="https://github.com/kimdlzp">
+              <div className="main_team_profile_img_border">Click</div>
               <img
                 src={suyoung}
                 className="main_team_profile_img"
@@ -54,6 +56,7 @@ function Main() {
 
           <div className="main_team_profile">
             <a href="https://github.com/shinseungmin-kor">
+              <div className="main_team_profile_img_border">Click</div>
               <img
                 src={seungmin}
                 className="main_team_profile_img"
@@ -66,6 +69,7 @@ function Main() {
 
           <div className="main_team_profile">
             <a href="https://github.com/Jin-suyeon">
+              <div className="main_team_profile_img_border">Click</div>
               <img
                 src={suyeon}
                 className="main_team_profile_img"

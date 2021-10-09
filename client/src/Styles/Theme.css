@@ -89,7 +89,7 @@
 .theme_box_explain {
   width: 250px;
   height: 250px;
-  background-color: var(--deepGray--color);
+  background-color: rgb(130, 130, 130);
   color: var(--white--color);
   font-size: var(--font--20--size);
   font-weight: bold;
