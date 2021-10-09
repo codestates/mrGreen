@@ -71,18 +71,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.slick-prev {
-  left: -25px;
+/* .slick-prev {
+  right: 25px;
 }
 [dir="rtl"] .slick-prev {
   right: -25px;
   left: auto;
 }
 .slick-prev:before {
-  content: "←";
+  content: ">";
 }
 [dir="rtl"] .slick-prev:before {
-  content: "→";
+  content: ">";
 }
 
 .slick-next {
@@ -93,11 +93,11 @@
   left: -25px;
 }
 .slick-next:before {
-  content: "→";
+  content: ">";
 }
 [dir="rtl"] .slick-next:before {
-  content: "←";
-}
+  content: "<";
+} */
 
 /* Dots */
 .slick-dotted.slick-slider {
@@ -180,4 +180,32 @@
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
   color: black;
+}
+/* 여기부터  */
+.slick-arrow {
+  font-size: var(--font--30--size);
+}
+
+.slick-prev {
+  color: var(--black--color);
+  background-color: transparent;
+  z-index: 10;
+  left: 50px;
+}
+
+.slick-next {
+  color: var(--black--color);
+  background-color: transparent;
+  z-index: 10;
+  right: 50px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  color: var(--red--color);
+}
+
+.slick-prev:active,
+.slick-next:active {
+  /* transform: scale(0.99); */
 }

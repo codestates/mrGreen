@@ -22,7 +22,7 @@ function Lucky(props) {
     {
       id: "04",
       title: "몬스테라",
-      desc: `몬스테라는 북유럽에서 행운의 상징으로 유명합니다\n멋스럽게 갈라진 잎 모양으로 인테리어용으로도 많은 인기를 받고 있어요쉽게 잘 성장하고,\n공기정화에도 탁월하다고 하니, 행운과 멋을 동시에 잡고 싶은 분들은 몬스테라를 반려식물로 들여보세요 `,
+      desc: `몬스테라는 북유럽에서 행운의 상징으로 유명합니다\n멋스럽게 갈라진 잎 모양으로 인테리어용으로도 많은 인기를 받고 있어요쉽게 잘 성장하고\n공기정화에도 탁월하다고 하니, 행운과 멋을 동시에 잡고 싶은 분들은 몬스테라를 반려식물로 들여보세요`,
     },
     {
       id: "05",
@@ -43,13 +43,14 @@ function Lucky(props) {
         </div>
       </div>
       <div className="lucky_intro">
-        <div className="lucky_quote">"</div>
+        <div className="lucky_quote" id="quote_left"></div>
         <div className="lucky_mid_text">
-          나의 반려식물은 ‘꿩먹고 돈먹고?!’ <br />
-          믿거나 말거나 함께 하면 기분좋은 에너지가 넘칠 것 같은, <br />
+          나의 반려식물은 행운도 가져다 준다?! <br />
+          믿거나 말거나, 함께 하면 기분좋은 에너지가 넘칠 것 같은
+          <br />
           행운의 반려식물을 소개합니다!!
         </div>
-        <div className="lucky_quote">"</div>
+        <div className="lucky_quote" id="quote_right"></div>
       </div>
       <div className="lucky_theme_main">
         <ul className="lucky_main_box">
