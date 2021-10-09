@@ -1,8 +1,9 @@
-import express from "express";
+// import express from "express";
 
-const plantListRouter = express.Router();
+// const plantListRouter = express.Router();
 
-plantListRouter.get("/")
-plantListRouter.get("/plantlist", handleHome);
+// const handleHome = (req, res) => res.send("Home");
 
-export default plantListRouter;
+// plantListRouter.get("/plantlist", handleHome);
+
+// export default plantListRouter;
