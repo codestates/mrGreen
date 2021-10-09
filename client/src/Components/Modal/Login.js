@@ -10,6 +10,7 @@ function Login({ loginModal, setLoginModal, setSignupModal }) {
       (!modalEl.current || !modalEl.current.contains(e.target))
     ) {
       setLoginModal(false);
+      document.body.style.overflow = "unset";
     }
   };
 
@@ -17,6 +18,7 @@ function Login({ loginModal, setLoginModal, setSignupModal }) {
     setLoginModal(false);
     setSignupModal(true);
   };
+
   useEffect(() => {
     window.addEventListener("click", handleCloseModal);
     return () => {

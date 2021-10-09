@@ -20,7 +20,7 @@ function App() {
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
-  const [editPwModal, setEditPwModal] = useState(true);
+  const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
   const [selectedPlant, setSelectedPlant] = useState({});
   const [plantList, setPlantList] = useState([]);
@@ -29,6 +29,10 @@ function App() {
   useEffect(() => {
     window.addEventListener("scroll", scrollPositionHandler);
   });
+
+  // useEffect(() => {
+  //   scrollStop();
+  // }, [loginModal, signupModal, editPwModal]);
 
   //! scroll 위치 알려주는 함수
   const scrollPositionHandler = () => {

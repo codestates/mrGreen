@@ -8,7 +8,7 @@ function Theme() {
       <div className="theme_in">
         <div className="theme_title">
           <span className="theme_title_comma">"</span>
-          <span>다양한 식물 추천 테마를 둘러보세요</span>
+          <span>다양한 식물 추천 테마를 클릭해보세요</span>
           <span className="theme_title_comma">"</span>
         </div>
 
@@ -23,7 +23,7 @@ function Theme() {
 
           <div className="theme_box_explain">
             <div>원하시는 테마를</div>
-            <div>클릭해 보세요</div>
+            <div>둘러 보세요</div>
           </div>
 
           <Link
