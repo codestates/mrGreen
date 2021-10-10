@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/PlantInfo.css";
 import testImg from "../Image/PlantList/001_Monstera.jpg";
 
 function PlantInfo(props) {
+  // const [isExistedPlant, setIsExistedPlant] = useState(false);
+
   return (
     <div className="plant">
       <div className="plant_area">
-        <div className="toast plant_notification">
-          이미 식물이 추가되었습니다
-        </div>
+        {/* {isExistedPlant ? (
+          <div className="toast plant_notification">
+            이미 식물이 추가되었습니다
+          </div>
+        ) : null} */}
+
         <div className="plant_top_area">
           <div className="plant_title_area">
             <div className="plant_name">{"Monstera"}</div>

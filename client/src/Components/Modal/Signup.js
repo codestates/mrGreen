@@ -54,7 +54,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     ) {
       axios({
         method: "POST",
-        url: "https://localhost:8080/signup",
+        url: "https://http://ec2-13-125-105-31.ap-northeast-2.compute.amazonaws.com:8080/signup",
         withCredentials: true,
         data: {
           email: signupValue.email,

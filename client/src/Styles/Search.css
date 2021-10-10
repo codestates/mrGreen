@@ -1,6 +1,6 @@
 .search_Containor {
-    background-color: var(--lightGray--color);
-    width: 100%;
+  background-color: var(--lightGray--color);
+  width: 100%;
 }
 
 .search_In {
@@ -19,28 +19,28 @@
 }
 
 .searchBar {
-    width: 90%;
-    margin-right: 25px;
-    height: 40px;
-    border: none;
-    font-size: var(--font--20--size);
-    outline: none;
-    background-color: transparent;
-    border-bottom: 1px solid var(--black--color);
+  width: 90%;
+  margin-right: 25px;
+  height: 40px;
+  border: none;
+  font-size: var(--font--20--size);
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--black--color);
 }
 
 .searchBar::placeholder {
-    font-size: var(--font--20--size);
-    padding-left: 10px;
+  font-size: var(--font--20--size);
+  padding-left: 10px;
 }
 
 .searchBtn {
-    margin-top: 25px;
-    width: 120px;
-    height: 30px;
-    border: solid 1px var(--black--color);
-    border-radius: 20px;
-    border-width: 2px;
+  margin-top: 25px;
+  width: 120px;
+  height: 30px;
+  border: solid 1px var(--black--color);
+  border-radius: 20px;
+  border-width: 2px;
 }
 
 .searchBtn:hover {
@@ -56,142 +56,139 @@
 }
 
 .searchPlant {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: repeat(6, auto);
+  gap: 0px 30px;
+}
+
+@media screen and (max-width: 1400px) {
+  .plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 160px;
+    height: 250px;
+  }
+  .plantCard img {
+    background-color: white;
+    width: 160px;
+    padding: 7px;
+    object-fit: cover;
+  }
+  .searchPlant {
     display: grid;
     margin-top: 20px;
     grid-template-columns: repeat(6, auto);
-    gap: 0px 30px
-}
+    gap: 0px 30px;
+  }
+  .plantCard_text {
+    background-color: white;
+    font-size: var(--font--12--size);
+    margin-top: 5px;
+    margin-left: 8px;
+  }
 
-
-@media screen and (max-width: 1400px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 160px;
-        height: 250px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 160px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .searchPlant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
-    .plantCard_text {
-        background-color: white;
-        font-size: var(--font--12--size);
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-    
-    .plantCard_subText {
-        background-color: white;
-        color: var(--deepGray--color);
-        font-size: 5px;
-        margin-top: 5px;
-        margin-left: 8px;
-    }
+  .plantCard_subText {
+    background-color: white;
+    color: var(--deepGray--color);
+    font-size: 5px;
+    margin-top: 5px;
+    margin-left: 8px;
+  }
 }
 
 @media screen and (max-width: 1230px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 130px;
-        height: 210px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 130px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .searchPlant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 10px
-    }
-    .plantCard_text {
-        background-color: white;
-        font-size: var(--font--12--size);
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-    
+  .plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 130px;
+    height: 210px;
+  }
+  .plantCard img {
+    background-color: white;
+    width: 130px;
+    padding: 7px;
+    object-fit: cover;
+  }
+  .searchPlant {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(6, auto);
+    gap: 0px 10px;
+  }
+  .plantCard_text {
+    background-color: white;
+    font-size: var(--font--12--size);
+    margin-top: 5px;
+    margin-left: 8px;
+  }
 }
 
 @media screen and (max-width: 1080px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 118px;
-        height: 200px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 118px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .searchPlant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
-    .plantCard_text {
-        background-color: white;
-        font-size: var(--font--10--size);
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-    
+  .plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 118px;
+    height: 200px;
+  }
+  .plantCard img {
+    background-color: white;
+    width: 118px;
+    padding: 7px;
+    object-fit: cover;
+  }
+  .searchPlant {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(6, auto);
+    gap: 0px 30px;
+  }
+  .plantCard_text {
+    background-color: white;
+    font-size: var(--font--10--size);
+    margin-top: 5px;
+    margin-left: 8px;
+  }
 }
 
 @media screen and (max-width: 920px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 115px;
-        height: 195px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 115px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .searchPlant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
+  .plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 115px;
+    height: 195px;
+  }
+  .plantCard img {
+    background-color: white;
+    width: 115px;
+    padding: 7px;
+    object-fit: cover;
+  }
+  .searchPlant {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(6, auto);
+    gap: 0px 30px;
+  }
 }
 
 @media screen and (max-width: 770px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 110px;
-        height: 190px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 110px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .searchPlant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(4, 113px);
-        gap: 0px 1px
-    }
+  .plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 110px;
+    height: 190px;
+  }
+  .plantCard img {
+    background-color: white;
+    width: 110px;
+    padding: 7px;
+    object-fit: cover;
+  }
+  .searchPlant {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(4, 113px);
+    gap: 0px 1px;
+  }
 }
