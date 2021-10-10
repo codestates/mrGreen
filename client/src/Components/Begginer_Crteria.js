@@ -10,7 +10,7 @@ function Begginer_Crteria() {
     <div className="begginer_Criteria">
       <img src={desc} alt="" />
 
-      <div className="begginer_Criteria_explain">
+      <div className="begginer_Criteria_explain scroll">
         <div className="begginer_Criteria_explain_title">
           <span className="begginer_comma">"</span>
           <span>mr.Green이 식린이들을 위해 정한 기준</span>

@@ -1,9 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Begginer_Crteria from "../Components/Begginer_Crteria";
 import Footer from "../Components/Footer";
 import "../Styles/Begginer.css";
+import { mainplants } from "../assets/mainplant";
+import PlantCard from "../Components/PlantCard";
 
-function Begginer() {
+function Begginer({ setSelectedPlant }) {
   return (
     <div className="begginer_container">
       <div className="beggier_in">
@@ -30,6 +33,25 @@ function Begginer() {
 
         <div>
           <Begginer_Crteria />
+        </div>
+
+        <div className="begginer_plants">
+          <div className="main_plants_maintext scroll">
+            <div className="main_plants_maintext_in">
+              <span>"</span>
+              <span>mr.Green이 추천하는 초보자를 위한 식물입니다!</span>
+              <span>"</span>
+            </div>
+          </div>
+          <div className="main_plants_in scroll">
+            {mainplants.map((plant, idx) => (
+              <PlantCard
+                setSelectedPlant={setSelectedPlant}
+                plant={plant}
+                key={idx}
+              />
+            ))}
+          </div>
         </div>
       </div>
       <Footer />

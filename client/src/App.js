@@ -1,5 +1,6 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import EditUserInfo from "./Components/Modal/EditUserInfo";
 import Login from "./Components/Modal/Login";
@@ -22,7 +23,18 @@ function App() {
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
-  const [selectedPlant, setSelectedPlant] = useState({});
+  const [selectedPlant, setSelectedPlant] = useState({
+    id: 1,
+    kor_name: "몬스테라",
+    eng_name: "Monstera",
+    means: "웅장한 계획",
+    description:
+      "식물이 크기 때문에 큰 화분에 심어야 하며, 받침대를 세워 고정시켜야 합니다. 그리고 반그늘을 좋아하므로 실내에 두는 것이 좋습니다.",
+    difficulty: "낮음",
+    light: "반음지",
+    water: "겉흙이 마르면 물을 듬뿍 주면 됩니다",
+    image: "001_Monstera.jpg",
+  });
   const [plantList, setPlantList] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -32,10 +44,6 @@ function App() {
       window.removeEventListener("scroll", scrollPositionHandler);
     };
   });
-
-  // useEffect(() => {
-  //   scrollStop();
-  // }, [loginModal, signupModal, editPwModal]);
 
   //! scroll 위치 알려주는 함수
   const scrollPositionHandler = () => {
@@ -87,27 +95,29 @@ function App() {
         />
       ) : null}
       {editPwModal ? <EditUserInfo /> : null}
-      <Route exact path="/">
-        <Main />
-      </Route>
-      <Route exact path="/mypage">
-        <Mypage />
-      </Route>
-      <Route exact path="/search">
-        <Search />
-      </Route>
-      <Route exact path="/interior">
-        <Interior />
-      </Route>
-      <Route exact path="/begginer">
-        <Begginer />
-      </Route>
-      <Route exact path="/lucky">
-        <Lucky />
-      </Route>
-      <Route exact path="/plantInfo">
-        <PlantInfo />
-      </Route>
+      <Switch>
+        <Route exact path="/">
+          <Main setSelectedPlant={setSelectedPlant} />
+        </Route>
+        <Route exact path="/mypage">
+          <Mypage setSelectedPlant={setSelectedPlant} />
+        </Route>
+        <Route exact path="/search">
+          <Search setSelectedPlant={setSelectedPlant} />
+        </Route>
+        <Route exact path="/interior">
+          <Interior setSelectedPlant={setSelectedPlant} />
+        </Route>
+        <Route exact path="/begginer">
+          <Begginer setSelectedPlant={setSelectedPlant} />
+        </Route>
+        <Route exact path="/lucky">
+          <Lucky setSelectedPlant={setSelectedPlant} />
+        </Route>
+        <Route exact path="/plantInfo">
+          <PlantInfo plant={selectedPlant} />
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }
