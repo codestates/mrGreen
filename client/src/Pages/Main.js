@@ -7,12 +7,43 @@ import suyeon from "../Image/Main/Team/suyeon.jpeg";
 import seungmin from "../Image/Main/Team/seungmin.jpg";
 import suyoung from "../Image/Main/Team/suyoung.jpg";
 import Footer from "../Components/Footer";
+import { mainplants } from "../assets/mainplant";
+import PlantCard from "../Components/PlantCard";
+import { Link } from "react-router-dom";
 
-function Main() {
+function Main({ setSelectedPlant }) {
   return (
     <div className="main_container">
       <SiteInfo />
       <Theme />
+
+      <div className="main_plants">
+        <div className="main_plants_maintext scroll">
+          <div className="main_plants_maintext_in">
+            <span>"</span>
+            <span>더 많은 반려식물을 살펴 볼까요?</span>
+            <span>"</span>
+          </div>
+          <Link to="/search">
+            <button
+              onClick={() => window.scrollTo({ top: 0 })}
+              className="main_search"
+            >
+              Search
+            </button>
+          </Link>
+        </div>
+        <div className="main_plants_in scroll">
+          {mainplants.map((plant, idx) => (
+            <PlantCard
+              setSelectedPlant={setSelectedPlant}
+              plant={plant}
+              key={idx}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="main_team">
         <div className="main_team_title scroll">
           <div className="main_team_title_bold">mr.Green을 만든 사람들</div>

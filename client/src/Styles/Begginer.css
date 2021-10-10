@@ -200,6 +200,16 @@
   }
 }
 
+.begginer_plants {
+  width: 100%;
+  background-color: var(--lightGray--color);
+  padding: 140px 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 1230px) {
   /*! begginer_Criteria */
   .begginer_Criteria > img {

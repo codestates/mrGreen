@@ -2,7 +2,7 @@ import React from "react";
 import "../Styles/Lucky.css";
 import Footer from "../Components/Footer";
 
-function Lucky(props) {
+function Lucky({ setSelectedPlant }) {
   const desclist = [
     {
       id: "01",

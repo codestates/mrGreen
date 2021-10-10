@@ -46,28 +46,38 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
 
   //! 회원가입 구현
   const signupHandler = () => {
-    if (
-      examineSignup.email &&
-      examineSignup.password &&
-      examineSignup.gender &&
-      examineSignup.nickname
-    ) {
-      axios({
-        method: "POST",
-        url: "https://localhost:8080/signup",
-        withCredentials: true,
-        data: {
-          email: signupValue.email,
-          nickname: signupValue.nickname,
-          password: signupValue.password,
-          gender: signupValue.gender,
-        },
-        headers: { "Content-Type": "application/json" },
-      }).then((res) => {
+    // if (
+    //   examineSignup.email &&
+    //   examineSignup.password &&
+    //   examineSignup.gender &&
+    //   examineSignup.nickname
+    // ) {
+    axios({
+      method: "POST'",
+      url: `${process.env.REACT_APP_API_URL}/signup`,
+      headers: {
+        // "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*", // 오리진 지정
+        // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS", // 메소드 지정
+        "Access-Control-Allow-Headers": "Content-Type, Accept", // 헤더지정
+        "Access-Control-Max-Age": 10, // 얼마나 자주 프리플라이트 리퀘스트를 보낼껀지
+      },
+      withCredentials: true,
+      data: {
+        email: signupValue.email,
+        nickname: signupValue.nickname,
+        password: signupValue.password,
+        gender: signupValue.gender,
+      },
+    })
+      .then((res) => {
         setSignupModal(false);
+        setLoginModal(true);
+        document.body.style.overflow = "hidden";
         alert("회원가입 완료");
-      });
-    }
+      })
+      .catch((err) => console.log(alert(err)));
+    // }
   };
 
   //! 유효성 검사
@@ -94,15 +104,6 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
       console.log("스테이트 false");
       setExamineSignup({ ...examineSignup, [e.target.name]: false });
     }
-
-    // if (
-    //   signupValue.gender.length === 0 ||
-    //   signupValue.nickname.length === 0 ||
-    //   !reg_pw3.test(signupValue.password) ||
-    //   !reg_email.test(signupValue.email)
-    // ) {
-    //   setExamineSignup({ ...examineSignup, [e.target.name]: false });
-    // }
   };
 
   //! input value 함수
@@ -131,7 +132,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
               </div>
               <div>
                 <input
-                  onClick={(e) => signupInputValueHandler(e)}
+                  onChange={(e) => signupInputValueHandler(e)}
                   name="gender"
                   type="radio"
                   name="gender"
@@ -143,7 +144,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
             <div className="signup_input_area">
               <div className="signup_input_email_set">
                 <input
-                  onClick={(e) => signupInputValueHandler(e)}
+                  onChange={(e) => signupInputValueHandler(e)}
                   name="email"
                   type="email"
                   className="signup_input_email"

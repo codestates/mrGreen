@@ -51,6 +51,7 @@
 
 .top {
   position: fixed;
+  z-index: 900;
   bottom: 40px;
   right: 40px;
 }
