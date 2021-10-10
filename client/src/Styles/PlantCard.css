@@ -1,0 +1,32 @@
+.plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 240px;
+    height: 370px;
+}
+
+.plantCard:hover {
+    cursor: pointer;
+}
+
+.plantCard img {
+  background-color: white;
+  width: 240px;
+  padding: 7px;
+  object-fit: cover;
+}
+
+.plantCard_text {
+    background-color: white;
+    font-size: var(--font--16--size);
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+.plantCard_subText {
+    background-color: white;
+    color: var(--deepGray--color);
+    font-size: var(--font--12--size);
+    margin-top: 5px;
+    margin-left: 15px;
+}
