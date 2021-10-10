@@ -1,9 +1,14 @@
-import express from "express";
+const express = require("express");
+const router = express.Router();
+const userController = require("../controllers/user");
+const checkToken = require("../token");
 
-const userRouter = express.Router();
+router.use(token);
 
-const handleUser = (req,res) => res.send("User info");
+// * GET /user/userinfo
+router.get("/userinfo", userController.userInfo);
 
-userRouter.get("/user/", handleUser);
+// * PATCH /user/userEdit
+router.patch("/useredit", userController.userEdit);
 
-export default userRouter;
+module.exports = router;
