@@ -14,19 +14,23 @@ function PlantCard({ plant, setSelectedPlant }) {
       </div> */}
 
       {/* 기능 추가 시 사용할 코드 */}
-      <Link
-        to="/plantInfo"
-        onClick={() => setSelectedPlant(plant)}
-        key={plant.id}
-        className="plantCard"
-      >
-        <img
-          src={require(`../Image/PlantList/${plant.image}`).default}
-          alt={plant.eng_name}
-        ></img>
-        <div className="plantCard_text">{plant.kor_name}</div>
-        <div className="plantCard_subText">{plant.eng_name}</div>
-      </Link>
+      <div className="plantCard_container">
+        <Link
+          to="/plantInfo"
+          onClick={() => setSelectedPlant(plant)}
+          key={plant.id}
+          className="plantCard"
+        >
+          <img
+            src={require(`../Image/PlantList/${plant.image}`).default}
+            alt={plant.eng_name}
+          ></img>
+          <div className="plantCard_text">
+            <div className="plantCard_main_text">{plant.kor_name}</div>
+            <div className="plantCard_subText">{plant.eng_name}</div>
+          </div>
+        </Link>
+      </div>
     </>
   );
 }

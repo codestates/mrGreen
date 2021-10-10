@@ -1,6 +1,6 @@
 .search_Containor {
-    background-color: var(--lightGray--color);
-    width: 100%;
+  background-color: var(--lightGray--color);
+  width: 100%;
 }
 
 .search_In {
@@ -30,8 +30,8 @@
 }
 
 .searchBar::placeholder {
-    font-size: var(--font--20--size);
-    padding-left: 10px;
+  font-size: var(--font--20--size);
+  padding-left: 10px;
 }
 
 .searchBtn {
@@ -58,13 +58,33 @@
 }
 
 .searchPlant {
+  display: grid;
+  margin-top: 20px;
+  grid-template-columns: repeat(6, auto);
+  gap: 0px 30px;
+}
+
+@media screen and (max-width: 1400px) {
+  .plantCard {
+    background-color: white;
+    margin-top: 20px;
+    width: 160px;
+    height: 250px;
+  }
+  .plantCard img {
+    background-color: white;
+    width: 160px;
+    padding: 7px;
+    object-fit: cover;
+  }
+  .searchPlant {
     display: grid;
     margin-top: 20px;
     grid-template-columns: repeat(6, auto);
     gap: 0px 25px
 }
 
-
+}
 /* @media screen and (max-width: 900px) {
     .searchPlant {
         display: grid;

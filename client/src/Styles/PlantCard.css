@@ -1,32 +1,45 @@
+.plantCard_container {
+  background-color: var(--white--color);
+
+}
 .plantCard {
-    background-color: white;
-    margin-top: 20px;
-    width: 240px;
-    height: 370px;
+  background-color: var(--white--color);
+  margin-top: 20px;
+  width: 190px;
+  height: 300px;
+  text-decoration: none;
+  color: var(--black--color);
 }
 
 .plantCard:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .plantCard img {
-  background-color: white;
+  background-color: var(--white--color);
   width: 240px;
   padding: 7px;
   object-fit: cover;
 }
 
 .plantCard_text {
-    background-color: white;
-    font-size: var(--font--16--size);
-    margin-top: 5px;
-    margin-left: 15px;
+  width: 100%;
+  background-color: var(--white--color);
+  padding-bottom: 15px;
+  padding-left: 4px;
+}
+
+.plantCard_main_text {
+  background-color: var(--white--color);
+  font-size: var(--font--14--size);
+  margin-top: 5px;
+  margin-left: 8px;
 }
 
 .plantCard_subText {
-    background-color: white;
-    color: var(--deepGray--color);
-    font-size: var(--font--12--size);
-    margin-top: 5px;
-    margin-left: 15px;
+  background-color: var(--white--color);
+  color: var(--deepGray--color);
+  font-size: 5px;
+  margin-top: 5px;
+  margin-left: 8px;
 }
