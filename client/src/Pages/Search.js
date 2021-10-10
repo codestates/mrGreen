@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 import React, { useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import Footer from '../Components/Footer';
@@ -6,13 +5,6 @@ import PlantCard from '../Components/PlantCard';
 import '../Styles/Search.css';
 import '../Styles/PlantCard.css';
 
-function Search() {
-=======
-import React, { useState } from "react";
-import PlantCard from "../Components/PlantCard";
-import "../Styles/Search.css";
-import "../Styles/PlantCard.css";
->>>>>>> Stashed changes
 
 function Search({ setSelectedPlant }) {
   const [searchPlantList, setSearchPlantList] = useState([

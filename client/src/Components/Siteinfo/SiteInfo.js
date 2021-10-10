@@ -6,10 +6,11 @@ import "../../Styles/slick.css";
 import SiteInfo_01 from "./SiteInfo_01";
 import SiteInfo_03 from "./SiteInfo_03";
 import SiteInfo_02 from "./SiteInfo_02";
-import Interior from "../../Pages/Interior";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-
+import {
+  faChevronLeft,
+  faChevronRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 function SiteInfo() {
   const setting = {
@@ -20,8 +21,8 @@ function SiteInfo() {
     slidesToScroll: 1,
     arrows: true,
     dots: true,
-    nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     // autoplay: true,
     // autoplaySpeen: 2000,
   };
@@ -44,19 +45,22 @@ function SiteInfo() {
 
 export default SiteInfo;
 
-function SampleNextArrow(props) {
+function NextArrow(props) {
   const { className, onClick } = props;
   return (
-    <div className={className} onClick={onClick}><FontAwesomeIcon icon={faChevronRight} />
+    <div className={className} onClick={onClick}>
+      <FontAwesomeIcon icon={faChevronRight} />
     </div>
   );
 }
 
-function SamplePrevArrow(props) {
-  const { className, style, onClick } = props;
-  return (<>
-    <div className={className}
-      onClick={onClick}><FontAwesomeIcon icon={faChevronLeft} />
-</div> </>
+function PrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <>
+      <div className={className} onClick={onClick}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </div>{" "}
+    </>
   );
 }

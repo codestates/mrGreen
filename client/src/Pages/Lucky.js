@@ -1,6 +1,7 @@
 import React from "react";
 import "../Styles/Lucky.css";
 import Footer from "../Components/Footer";
+import PlantCard from "../Components/PlantCard";
 
 function Lucky({ setSelectedPlant }) {
   const desclist = [
@@ -53,7 +54,7 @@ function Lucky({ setSelectedPlant }) {
         <div className="lucky_quote" id="quote_right"></div>
       </div>
       <div className="lucky_theme_main">
-        <ul className="lucky_main_box">
+        <ul className="lucky_main_box scroll">
           {desclist.map((li, idx) => (
             <li className="lucky_list_set" key={idx}>
               <div className="lucky_list_title">
@@ -70,7 +71,20 @@ function Lucky({ setSelectedPlant }) {
           <div className="lucky_card_subtitle">mr.Green 이 추천하는</div>
           <div className="lucky_card_title">행운을 부르는 반려 식물 </div>
         </div>
-        카드 리스트 들어갈 자리
+        <div className="cardList_container">
+          {/* {luckyList.map((p) => {
+            return (
+              <div className="aCard">
+                <PlantCard
+                  id={p.id}
+                  name_kr={p.kor_name}
+                  name_en={p.eng_name}
+                  image={p.image}
+                />
+              </div>
+            );
+          })} */}
+        </div>
       </div>
       <Footer />
     </div>

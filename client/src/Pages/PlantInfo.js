@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Styles/PlantInfo.css";
 import testImg from "../Image/PlantList/001_Monstera.jpg";
 
