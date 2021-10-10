@@ -17,7 +17,8 @@ function PlantCard() {
             </div>
 
             {/* 기능 추가 시 사용할 코드 */}
-            {/* <div key={item.id} className="plantCard">
+            {/* 
+            <div key={item.id} className="plantCard">
             <img src={item.image} alt={item.name}></img>
             <div className="plantCard_text">
                 {item.kor_name}
@@ -25,7 +26,8 @@ function PlantCard() {
             <div className="plantCard_subText">
                 {item.eng_name}
             </div>
-        </div> */}
+        </div> 
+        */}
         </>
     );
 }

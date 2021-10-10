@@ -47,7 +47,7 @@
     display: flex;
     justify-content: center;
     flex-direction: row;
-    margin-top: 70px;
+    margin-top: 100px;
 }
 
 .interior_Text {
@@ -70,7 +70,7 @@
 
 .interior_MainImage {
     background-color: var(--white--color);
-    width: 250px;
+    width: 300px;
     margin-left: 100px;
 }
 
@@ -78,7 +78,7 @@
     background-color: var(--white--color);
     margin-top: 300px;
     text-align: center;
-    font-size: var(--font--20--size);
+    font-size: var(--font--30--size);
     color: var(--black--color);
 }
 
@@ -92,7 +92,7 @@
 }
 
 .interior_WoodImage {
-    width: 320px;
+    width: 400px;
 }
 
 .interior_WoodText {
@@ -108,7 +108,7 @@
 .interior_WoodMainText {
     background-color: var(--white--color);
     text-align: center;
-    font-size: var(--font--20--size);
+    font-size: var(--font--30--size);
 }
 
 .interior_WoodSubText {
@@ -116,7 +116,7 @@
     color: var(--black--color);
     text-align: center;
     margin-top: 30px;
-    font-size: var(--font--12--size);
+    font-size: var(--font--14--size);
 }
 
 .interior_Modern {
@@ -129,7 +129,7 @@
 }
 
 .interior_ModernImage {
-    width: 320px;
+    width: 400px;
 }
 
 .interior_ModernText {
@@ -145,7 +145,7 @@
 .interior_ModernMainText {
     background-color: var(--white--color);
     text-align: center;
-    font-size: var(--font--20--size);
+    font-size: var(--font--30--size);
 }
 
 .interior_ModernSubText {
@@ -153,7 +153,7 @@
     color: var(--black--color);
     text-align: center;
     margin-top: 30px;
-    font-size: var(--font--12--size);
+    font-size: var(--font--14--size);
 }
 
 
@@ -179,14 +179,14 @@
 }
 
 .interior_PlantListSubTitle {
-    font-size: var(--font--14--size);
+    font-size: var(--font--16--size);
     color: var(--deepGray--color);
     margin-bottom: 5px;
     
 }
 
 .interior_PlantListMainTitle {
-    font-size: var(--font--20--size);
+    font-size: var(--font--30--size);
     margin-bottom: 10px;
 }
 
@@ -197,118 +197,4 @@
     display: grid;
     grid-template-columns: repeat(6, auto);
     gap: 0px 20px
-}
-
-@media screen and (max-width: 1400px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 160px;
-        height: 250px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 160px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .interior_PlantList {
-        display: grid;
-        margin-top: 20px;
-        margin-left: 0px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 1px
-    }
-    .plantCard_text {
-        background-color: white;
-        font-size: var(--font--12--size);
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-    
-    .plantCard_subText {
-        background-color: white;
-        color: var(--deepGray--color);
-        font-size: 5px;
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-}
-
-@media screen and (max-width: 1230px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 140px;
-        height: 230px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 140px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .interior_PlantList {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
-    .plantCard_text {
-        background-color: white;
-        font-size: var(--font--12--size);
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-    
-}
-
-@media screen and (max-width: 1080px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 118px;
-        height: 200px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 118px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .interior_PlantList {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
-    .plantCard_text {
-        background-color: white;
-        font-size: var(--font--10--size);
-        margin-top: 5px;
-        margin-left: 8px;
-    }
-    
-}
-
-@media screen and (max-width: 920px) {
-    .plantCard {
-        background-color: white;
-        margin-top: 20px;
-        width: 115px;
-        height: 195px;
-    }
-    .plantCard img {
-        background-color: white;
-        width: 115px;
-        padding: 7px;
-        object-fit: cover;
-      }
-    .interior_PlantList {
-        display: grid;
-        margin-top: 20px;
-        margin-right: 30px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
 }
