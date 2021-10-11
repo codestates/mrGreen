@@ -69,7 +69,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
     // 응답 성공 시, 로그인상태 변경, 로그인 모달 끄기, 메인으로 리더렉션 + 액세스 토큰 관리, 리프레시 토큰은?
     // 응답 에러 코드에 따라 - 메세지 띄우기, (인풋 밸류 초기화? )
     const { email, password } = inputValues;
-    if (!email || !password || msglIdx === 1 || !checkEmail) { 
+    if (!email || !password || msglIdx === 1) { 
       setMsgIdx(2);
     } else {
       setMsgIdx(0);

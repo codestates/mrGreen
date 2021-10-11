@@ -18,6 +18,7 @@
   height: 60px;
   line-height: 58px;
   color: var(--red--color);
+  background-color: var(--lightGray--color);
   font-size: var(--font--16--size);
   font-weight: bold;
   letter-spacing: 2px;
@@ -37,6 +38,7 @@
   height: 60px;
   line-height: 58px;
   color: var(--red--color);
+  background-color: var(--lightGray--color);
   font-size: var(--font--16--size);
   font-weight: bold;
   letter-spacing: 2px;

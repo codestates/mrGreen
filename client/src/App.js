@@ -56,6 +56,7 @@ function App() {
     };
   });
 
+  // 로딩 인디케이터 잠시 꺼둠
   // useEffect(() => {
   //   setIsLoading(true);
   //   setTimeout(() => {
