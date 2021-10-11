@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         difficulty: DataTypes.STRING,
         light: DataTypes.STRING,
         water: DataTypes.STRING,
-        image: DataTypes.TEXT,
+        image: DataTypes.STRING,
     }, {
         sequelize,
         modelName: 'Plant',
