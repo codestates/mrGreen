@@ -1,49 +1,32 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-require("../models");
-
-const fs =require("fs");
-const logger = require("morgan");
-
-const PORT = 8080;
-
+const express = require('express');
 const app = express();
+const port = 80;
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const cors = require('cors');
+
+const userRouter = require('./routers/user.js');
+const favoriteRouter = require('./routers/favorite.js');
 
 
-
-app.use(logger("dev"));
-// app.use("/plantlist", plantListRouter);
-
-
-// const plantListRouter = require("./routers/plantListRouter");
-// const userRouter = require("./routers/userRouter");
-// const authRouter = require("./routers/auth");
-
-
-app.get("/", (req, res) => {
-  return res.send("GET request to the homepage");
-});
-
-app.post("/signup", (req,res) => {
-    if (req.body.email) {
-     return res.send("success")
-    }
-    else {
-        return res.send("fail")
-    }
-});
-
-// app.use("/user", userRouter);
-// app.use("/auth", authRouter);
+app.use(logger('dev'));
+app.use(express.json())
+app.use(express.urlencoded({ extended: false })); 
+app.use(cookieParser())
+app.use(cors({
+  origin: "",
+  methods: ["GET", "POST", "OPTIONS"],
+  credentials: true,
+  preflightContinue: true
+  })
+);
 
 
-const server = app.listen(PORT, () => {
-  console.log(`server listening on ${PORT}`);
-});
+app.use('/nod/user', userRouter); 
+app.use('/nod', myListRouter);
 
-
-
-
+app.listen(port, () => {
+  console.log(`Server listening ${port}`)
+})
 
 

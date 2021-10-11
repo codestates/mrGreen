@@ -5,7 +5,9 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
+
 const config = require(__dirname + '/../config/config.json')[env];
+
 const db = {};
 
 let sequelize;
@@ -33,5 +35,18 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.user = require('./user')(sequelize, Sequelize);
+db.plant = require('./plant')(sequelize, Sequelize);
+db.favorite = require('./favorite')(sequelize, Sequelize);
+db.theme = require('./theme')(sequelize, Sequelize);
+
+/* user : favorite = 1 : N */
+db.user.hasMany(db.favorite, {foreignKey: 'userId'});
+db.favorite.belongsTo(db.user, {foreignKey: 'userId', onDelete: 'CASCADE'});
+
+/*plant : favorite = 1 : N */
+db.plant.hasMany(db.favorite, {foreignKey: 'plantId'});
+db.favorite.belongsTo(db.plant, {foreignKey: 'plantId', onDelete: 'CASCADE'});
 
 module.exports = db;
