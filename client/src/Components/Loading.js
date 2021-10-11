@@ -11,12 +11,6 @@ function Loading() {
           </div>
         </div>
       </div>
-
-      <div class="loadingio-spinner-ball-2l8q45yj21x">
-        <div class="ldio-vwi01ouw5is">
-          <div></div>
-        </div>
-      </div>
     </>
   );
 }
