@@ -94,11 +94,13 @@ function App() {
     <BrowserRouter>
       {isLoading ? <Loading /> : null}
       {scrollPosition > 60 ? <Top /> : null}
+      {/* 로그인상태에 따른 Nav, NavChange 변환 */}
       {isLogin ? (
         <NavChange />
       ) : (
         <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
       )}
+      {/* loginModal의 상태에 따른 컴포넌트 실행여부 */}
       {loginModal ? (
         <Login
           loginModal={loginModal}
@@ -106,6 +108,7 @@ function App() {
           setSignupModal={setSignupModal}
         />
       ) : null}
+      {/* signupModal의 상태에 따른 컴포넌트 실행여부 */}
       {signupModal ? (
         <Signup
           signupModal={signupModal}
@@ -113,13 +116,20 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-      {editPwModal ? <EditUserInfo /> : null}
+      {editPwModal ? <EditUserInfo
+      editPwModal={editPwModal}
+      setEditPwModal={setEditPwModal}  
+      /> : null}
+
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
-          <Mypage setSelectedPlant={setSelectedPlant} />
+          <Mypage 
+          setSelectedPlant={setSelectedPlant}
+          setEditPwModal={setEditPwModal}    
+          />
         </Route>
         <Route exact path="/search">
           <Search

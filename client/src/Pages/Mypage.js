@@ -4,7 +4,12 @@ import "../Styles/Mypage.css";
 import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
 
-function Mypage({ setSelectedPlant }) {
+function Mypage({ setSelectedPlant, setEditPwModal }) {
+
+  const handleEditPsWord = () => {
+    setEditPwModal(true)
+  }
+
   return (
     <div className="mypage_Containor">
       <div className="mypage_In">
@@ -16,7 +21,8 @@ function Mypage({ setSelectedPlant }) {
               <div className="userpage_Email">
                 <a href="https://google.com">Kimcoding@gmail.com</a>
               </div>
-              <button>비밀번호 변경</button>
+              {/* {editPwModal ? <EditUserInfo /> : null} */}
+              <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>
           <div className="userplant">

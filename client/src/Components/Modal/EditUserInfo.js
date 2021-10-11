@@ -1,17 +1,41 @@
-import React from "react";
+// 비밀번호를 변경하는 컴포넌트 입니다.
+
+import React, { useEffect, useRef } from "react";
 import "../../Styles/EditUserInfo.css";
 
-function EditUserInfo() {
+function EditUserInfo({ setEditPwModal, editPwModal }) {
+
+  const modalEl = useRef();
+
+  const handleCloseModal = (e) => {
+    if (
+      editPwModal &&  
+      (!modalEl.current || !modalEl.current.contains(e.target)) 
+    ) {
+      setEditPwModal(false); 
+      document.body.style.overflow = "unset";
+    }
+  };
+
+  useEffect(() => {  
+    window.addEventListener("click", handleCloseModal); 
+    return () => {
+      window.removeEventListener("click", handleCloseModal); 
+    };
+  });
+
   return (
     <div className="edit">
       <div className="modal_background"></div>
       <div className="edit_modal">
         <div className="edit_modal_leftside">
+          {/* 비밀번호 변경 타이틀 */}
           <div className="edit_title">비밀번호 변경</div>
           <div className="edit_input_area">
             <div className="edit_input_prevPw_set">
+              {/* 비밀번호타입으로 텍스트를 입력한다, 이렇게 하면 텍스트가 *로 적힌다. */}
               <input
-                type="password"
+              type="password" 
                 className="edit_input_prevPw"
                 placeholder="기존 비밀번호"
               ></input>
