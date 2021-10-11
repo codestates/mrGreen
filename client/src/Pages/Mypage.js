@@ -3,7 +3,7 @@ import profile from "../Image/Mypage/Mypage_leon.jpg";
 import PlantCard from "../Components/PlantCard";
 import "../Styles/Mypage.css";
 
-function Mypage({ setSelectedPlant }) {
+function Mypage({ setSelectedPlant, setEditPwModal }) {
   const [myPlantList, setMyPlantList] = useState([
     { id: 1 },
     { id: 2 },
@@ -12,6 +12,10 @@ function Mypage({ setSelectedPlant }) {
     { id: 5 },
     { id: 6 },
   ]);
+
+  const handleEditPsWord = () => {
+    setEditPwModal(true)
+  }
 
   return (
     <div className="mypage_Containor">
@@ -24,7 +28,8 @@ function Mypage({ setSelectedPlant }) {
               <div className="userpage_Email">
                 <a href="https://google.com">Kimcoding@gmail.com</a>
               </div>
-              <button>비밀번호 변경</button>
+              {/* {editPwModal ? <EditUserInfo /> : null} */}
+              <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>
           <div className="userplant">

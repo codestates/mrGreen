@@ -3,14 +3,14 @@ import "../../Styles/Signup.css";
 import axios from "axios";
 
 function Signup({ signupModal, setSignupModal, setLoginModal }) {
-  const [signupValue, setSignupValue] = useState({
+  const [signupValue, setSignupValue] = useState({ 
     email: "",
     nickname: "",
     password: "",
     gender: "",
   });
 
-  const [examineSignup, setExamineSignup] = useState({
+  const [examineSignup, setExamineSignup] = useState({  
     gender: false,
     email: false,
     password: false,
@@ -20,9 +20,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
   console.log(signupValue);
   console.log(examineSignup);
 
-  const modalEl = useRef();
+  const modalEl = useRef(); 
 
-  const handleCloseModal = (e) => {
+  const handleCloseModal = (e) => { 
     if (
       signupModal &&
       (!modalEl.current || !modalEl.current.contains(e.target))
@@ -32,8 +32,8 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     }
   };
 
-  const handleLoginBtn = () => {
-    setSignupModal(false);
+  const handleLoginBtn = () => { 
+    setSignupModal(false); 
     setLoginModal(true);
   };
 
@@ -63,7 +63,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
         "Access-Control-Max-Age": 10, // 얼마나 자주 프리플라이트 리퀘스트를 보낼껀지
       },
       withCredentials: true,
-      data: {
+      data: {  
         email: signupValue.email,
         nickname: signupValue.nickname,
         password: signupValue.password,
@@ -71,7 +71,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
       },
     })
       .then((res) => {
-        setSignupModal(false);
+        setSignupModal(false); 
         setLoginModal(true);
         document.body.style.overflow = "hidden";
         alert("회원가입 완료");
@@ -94,7 +94,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
       reg_email.test(signupValue.email)
     ) {
       console.log("스테이트 true");
-      setExamineSignup({ ...examineSignup, [e.target.name]: true });
+      setExamineSignup({ ...examineSignup, [e.target.name]: true }); 
     } else if (
       signupValue.gender.length === 0 ||
       signupValue.nickname.length === 0 ||
@@ -102,7 +102,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
       reg_email.test(signupValue.email)
     ) {
       console.log("스테이트 false");
-      setExamineSignup({ ...examineSignup, [e.target.name]: false });
+      setExamineSignup({ ...examineSignup, [e.target.name]: false });  
     }
   };
 
