@@ -5,18 +5,12 @@ import img1 from "../Image/Theme/Interior/interior_1.jpeg";
 import img2 from "../Image/Theme/Interior/interior_2.jpeg";
 import img3 from "../Image/Theme/Interior/interior_3.jpeg";
 import img4 from "../Image/Theme/Interior/interior_4.jpeg";
+import { mainplants } from "../assets/mainplant";
 
 import "../Styles/Interior.css";
 
 function Interior({ setSelectedPlant }) {
-  const [interiorPlant, setInteriorPlant] = useState([
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-  ]);
+  const [interiorPlant, setInteriorPlant] = useState([]);
 
   return (
     <div className="interior_Containor">
@@ -50,11 +44,11 @@ function Interior({ setSelectedPlant }) {
               <br />
             </div>
           </div>
-          <img className="interior_MainImage" src={img1}></img>
+          <img className="interior_MainImage" src={img1} alt=""></img>
         </div>
         <div className="intreior_HowTo scroll">How to design?</div>
         <div className="interior_Wood scroll">
-          <img className="interior_WoodImage" src={img2}></img>
+          <img className="interior_WoodImage" src={img2} alt=""></img>
           <div className="interior_WoodText">
             <div className="interior_WoodMainText">Wood + Plant</div>
             <div className="interior_WoodSubText">
@@ -102,11 +96,11 @@ function Interior({ setSelectedPlant }) {
               <br />
             </div>
           </div>
-          <img className="interior_ModernImage" src={img3}></img>
+          <img className="interior_ModernImage" src={img3} alt=""></img>
         </div>
 
         <div className="interior_Wood scroll">
-          <img className="interior_WoodImage" src={img4}></img>
+          <img className="interior_WoodImage" src={img4} alt=""></img>
           <div className="interior_WoodText">
             <div className="interior_WoodMainText">Everywhere + Plant</div>
             <div className="interior_WoodSubText">
@@ -134,11 +128,15 @@ function Interior({ setSelectedPlant }) {
             인테리어디자인에 어울리는 식물
           </div>
         </div>
-        {/* <div className="interior_PlantList">
-          {interiorPlant.map((item, index) => {
-            return <PlantCard key={index} item={item} />;
-          })}
-        </div> */}
+        <div className="main_plants_in scroll">
+          {mainplants.map((plant, idx) => (
+            <PlantCard
+              setSelectedPlant={setSelectedPlant}
+              plant={plant}
+              key={idx}
+            />
+          ))}
+        </div>
       </div>
       <Footer />
     </div>

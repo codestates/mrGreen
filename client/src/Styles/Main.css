@@ -60,6 +60,7 @@
   align-items: center;
   padding: 260px 200px;
   color: var(--black--color);
+  background-color: var(--white--color);
 }
 
 .main_team_title {
@@ -149,12 +150,51 @@
     text-align: center;
     margin-bottom: 60px;
   }
+
+  .plantCard {
+    width: 160px;
+    height: 250px;
+  }
+
+  .plantCard img {
+    width: 160px;
+    padding: 7px;
+    object-fit: cover;
+  }
+
+  .plantCard_text {
+    width: 160px;
+    background-color: var(--white--color);
+    padding-bottom: 15px;
+    padding-left: 10px;
+  }
+
+  .plantCard_maintext {
+    font-size: var(--font--14--size);
+  }
 }
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1230px) {
   .main_plants_in {
     grid-template-columns: repeat(3, auto);
+    gap: 30px 30px;
   }
+
+  /* .plantCard {
+    margin-top: 20px;
+    width: 190px;
+    height: 300px;
+  }
+
+  .plantCard img {
+    width: 240px;
+    padding: 7px;
+    object-fit: cover;
+  }
+
+  .plantCard_maintext {
+    font-size: var(--font--16--size);
+  } */
 }
 
 @media screen and (max-width: 1280px) {

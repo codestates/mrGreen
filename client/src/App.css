@@ -23,6 +23,10 @@
   list-style: none;
 }
 
+body {
+  background-color: var(--lightGray--color);
+}
+
 a {
   text-decoration: none;
 }

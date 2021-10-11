@@ -1,18 +1,10 @@
 import React, { useState } from "react";
 import profile from "../Image/Mypage/Mypage_leon.jpg";
-import PlantCard from "../Components/PlantCard";
 import "../Styles/Mypage.css";
+import { mainplants } from "../assets/mainplant";
+import PlantCard from "../Components/PlantCard";
 
 function Mypage({ setSelectedPlant }) {
-  const [myPlantList, setMyPlantList] = useState([
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-  ]);
-
   return (
     <div className="mypage_Containor">
       <div className="mypage_In">
@@ -30,15 +22,13 @@ function Mypage({ setSelectedPlant }) {
           <div className="userplant">
             <div className="userplant_Title">My Plant</div>
             <div className="userplant_Plant">
-              {/* {myPlantList.map((item, index) => {
-                return (
-                  <PlantCard
-                    setSelectedPlant={setSelectedPlant}
-                    key={index}
-                    item={item}
-                  />
-                );
-              })} */}
+              {mainplants.map((plant, idx) => (
+                <PlantCard
+                  setSelectedPlant={setSelectedPlant}
+                  plant={plant}
+                  key={idx}
+                />
+              ))}
             </div>
           </div>
         </div>

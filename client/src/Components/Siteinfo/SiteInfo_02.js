@@ -5,7 +5,9 @@ function SiteInfo_02() {
     <div className="siteinfo02_03_container">
       <div className="siteinfo02_in">
         <div className="siteinfo02_03_explain">
-          <div className="siteinfo02_03_gif"></div>
+          <div className="siteinfo02_03_gif">
+            <img src="./siteinfo/SiteInfo_vedio3.gif" alt="" />
+          </div>
           <div className="siteinfo02_03_text">
             <h1>식물 스크랩 기능</h1>
             <div className="siteinfo02_03_text_in">

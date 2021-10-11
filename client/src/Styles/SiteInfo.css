@@ -93,15 +93,22 @@
 .siteinfo02_03_gif {
   width: 50%;
   height: 100%;
-  background-color: blueviolet;
+  margin-left: 20px;
+  /* background-color: blueviolet; */
+}
+
+.siteinfo02_03_gif > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .siteinfo02_03_text {
-  width: 50%;
+  width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 100px;
+  margin-left: 70px;
 }
 
 .siteinfo02_03_text > h1 {
@@ -122,48 +129,32 @@
 
 @media screen and (max-width: 1600px) {
   .siteinfo01_in {
-    width: 100%;
     background-image: url(../Image/Main/SiteInfo/SiteInfo_1_1550.jpg);
-    background-size: cover;
-    padding: 100px;
   }
 
   .siteinfo02_in {
-    width: 100%;
     background-image: url(../Image/Main/SiteInfo/SiteInfo_2_1550.jpg);
-    background-size: cover;
-    padding: 100px;
   }
 
   .siteinfo03_in {
-    width: 100%;
-    background-color: azure;
     background-image: url(../Image/Main/SiteInfo/SiteInfo_3_1550.jpg);
-    background-size: cover;
-    padding: 100px;
+  }
+
+  .siteinfo02_03_text {
+    width: 50%;
   }
 }
 
 @media screen and (max-width: 1450px) {
   .siteinfo01_in {
-    width: 100%;
     background-image: url(../Image/Main/SiteInfo/SiteInfo_1_1400.jpg);
-    background-size: cover;
-    padding: 100px;
   }
 
   .siteinfo02_in {
-    width: 100%;
     background-image: url(../Image/Main/SiteInfo/SiteInfo_2_1400.jpg);
-    background-size: cover;
-    padding: 100px;
   }
 
   .siteinfo03_in {
-    width: 100%;
-    background-color: azure;
     background-image: url(../Image/Main/SiteInfo/SiteInfo_3_1400.jpg);
-    background-size: cover;
-    padding: 100px;
   }
 }
