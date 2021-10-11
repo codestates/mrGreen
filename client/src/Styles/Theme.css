@@ -1,6 +1,7 @@
 .theme_container {
   width: 100%;
   color: var(--black--color);
+  background-color: var(--white--color);
 }
 
 .theme_in {

@@ -31,9 +31,7 @@ function Begginer({ setSelectedPlant }) {
           </div>
         </div>
 
-        <div>
-          <Begginer_Crteria />
-        </div>
+        <Begginer_Crteria />
 
         <div className="begginer_plants">
           <div className="main_plants_maintext scroll">
