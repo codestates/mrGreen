@@ -23,8 +23,6 @@ function SiteInfo() {
     dots: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    // autoplay: true,
-    // autoplaySpeen: 2000,
   };
   return (
     <div className="siteinfo_container">
@@ -60,7 +58,7 @@ function PrevArrow(props) {
     <>
       <div className={className} onClick={onClick}>
         <FontAwesomeIcon icon={faChevronLeft} />
-      </div>{" "}
+      </div>
     </>
   );
 }

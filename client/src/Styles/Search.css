@@ -1,6 +1,7 @@
 .search_Containor {
   background-color: var(--lightGray--color);
   width: 100%;
+  color: var(--black--color);
 }
 
 .search_In {
@@ -19,30 +20,30 @@
 }
 
 .searchBar {
-    width: 89%;
-    margin-right: 25px;
-    height: 40px;
-    border: none;
-    font-size: var(--font--20--size);
-    outline: none;
-    background-color: transparent;
-    border-bottom: 1px solid var(--black--color);
+  width: 100%;
+  margin-right: 25px;
+  height: 40px;
+  border: none;
+  font-size: var(--font--20--size);
+  outline: none;
+  background-color: transparent;
+  border-bottom: 1px solid var(--black--color);
+  padding-left: 10px;
 }
 
 .searchBar::placeholder {
   font-size: var(--font--20--size);
-  padding-left: 10px;
 }
 
 .searchBtn {
-    margin-top: 25px;
-    width: 140px;
-    height: 35px;
-    border: solid 1px var(--black--color);
-    border-radius: 20px;
-    border-width: 2px;
-    margin-right: 12px;
-    font-size: var(--font--16--size);
+  margin-top: 25px;
+  width: 140px;
+  height: 35px;
+  border: solid 1px var(--black--color);
+  border-radius: 20px;
+  border-width: 2px;
+  margin-right: 12px;
+  font-size: var(--font--16--size);
 }
 
 .searchBtn:hover {
@@ -57,39 +58,81 @@
   transform: scale(0.98);
 }
 
+.search_have_none_plants {
+  display: flex;
+  height: calc(100vh - 270px);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font--30--size);
+  color: var(--deepGray--color);
+  font-weight: bold;
+  position: relative;
+  letter-spacing: 1px;
+}
+
+.search_have_none_plants_blank {
+  height: 100px;
+}
+
 .searchPlant {
+  width: 100%;
   display: grid;
-  margin-top: 20px;
+  justify-content: center;
+  margin-top: 50px;
   grid-template-columns: repeat(6, auto);
-  gap: 0px 30px;
+  gap: 30px 35px;
 }
 
-@media screen and (max-width: 1400px) {
-  .plantCard {
-    background-color: white;
-    margin-top: 20px;
-    width: 160px;
-    height: 250px;
-  }
-  .plantCard img {
-    background-color: white;
-    width: 160px;
-    padding: 7px;
-    object-fit: cover;
-  }
+.search_more_plant {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.search_more_plant > button {
+  margin-top: 25px;
+  width: 140px;
+  height: 35px;
+  border: solid 2px var(--black--color);
+  border-radius: 20px;
+  border-width: 2px;
+  margin-right: 12px;
+  font-size: var(--font--16--size);
+}
+
+.search_more_plant > button:hover {
+  border: solid 2px var(--red--color);
+  color: var(--red--color);
+  cursor: pointer;
+}
+
+.search_more_plant > button:active {
+  transform: scale(0.98);
+}
+
+@media screen and (max-width: 1430px) {
   .searchPlant {
-    display: grid;
-    margin-top: 20px;
-    grid-template-columns: repeat(6, auto);
-    gap: 0px 25px
+    grid-template-columns: repeat(5, auto);
+  }
 }
 
+@media screen and (max-width: 1220px) {
+  .searchPlant {
+    grid-template-columns: repeat(4, auto);
+  }
 }
-/* @media screen and (max-width: 900px) {
-    .searchPlant {
-        display: grid;
-        margin-top: 20px;
-        grid-template-columns: repeat(6, auto);
-        gap: 0px 30px
-    }
-} */
+
+@media screen and (max-width: 1040px) {
+  .searchPlant {
+    grid-template-columns: repeat(3, auto);
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .search_Containor {
+    min-width: 840px;
+  }
+}

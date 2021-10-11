@@ -83,6 +83,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+  background-color: var(--white--color);
 }
 
 .begginer_Criteria > img {
