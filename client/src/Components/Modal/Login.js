@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from 'react-router';
+import { useHistory } from "react-router";
 import "../../Styles/Login.css";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
 
@@ -11,71 +11,85 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
 
   const handleCloseModal = (e) => {
     if (
-      loginModal &&  
-      (!modalEl.current || !modalEl.current.contains(e.target)) 
+      loginModal &&
+      (!modalEl.current || !modalEl.current.contains(e.target))
     ) {
-      setLoginModal(false); 
+      setLoginModal(false);
       document.body.style.overflow = "unset";
     }
   };
 
-  const handleSignupBtn = () => {  
-    setLoginModal(false); 
-    setSignupModal(true);  
+  const handleSignupBtn = () => {
+    setLoginModal(false);
+    setSignupModal(true);
   };
 
-  useEffect(() => {  
-    window.addEventListener("click", handleCloseModal); 
+  useEffect(() => {
+    window.addEventListener("click", handleCloseModal);
     return () => {
-      window.removeEventListener("click", handleCloseModal); 
+      window.removeEventListener("click", handleCloseModal);
     };
   });
+
   //----로그인 기능 구현-----
-  const [inputValues, setInputValues] = useState({ email: "", password: "" }); 
-  const [checkEmail, setCheckEmail] = useState(false);  
-  const pwMessage = [  
+  const [inputValues, setInputValues] = useState({ email: "", password: "" });
+  const [checkEmail, setCheckEmail] = useState(false);
+  const pwMessage = [
     "",
-    "비밀번호는 8글자 이상, 특수 문자를 포함해야 합니다",  
-    "모든 요소는 필수 요소입니다,\n올바른 이메일, 비밀번호를 입력해 주세요",  
-    "이미 가입된 이메일 입니다",  
-    "이메일, 비밀번호 등에 오류가 있습니다, 다시 시도해 주세요", 
+    "비밀번호는 8글자 이상, 특수 문자를 포함해야 합니다",
+    "모든 요소는 필수 요소입니다,\n올바른 이메일, 비밀번호를 입력해 주세요",
+    "존재하지 않는 이메일입니다, 다시 확인해 주세요",
+    "올바르지 않은 비밀번호입니다, 다시 확인해 주세요",
+    "로그인에 실패 했습니다, 이메일과 비밀번호를 다시 확인해 주세요"
   ];
-  const [msglIdx, setMsgIdx] = useState(0);
+  const [msgIdx, setMsgIdx] = useState(0);
+  const cursorPassword = useRef(null);
 
   const handleInputEmail = (e) => {
     // todo: 이메일 유효성 검사에 따라 메세지 on,off
-    const { type, value } = e.target; 
-    if (isValidEmail(value)) {  
-      setCheckEmail(false); 
-      setInputValues({ ...inputValues, [type]: value }); 
-    } else { 
-      setCheckEmail(true); 
+    const { type, value } = e.target;
+    if (isValidEmail(value)) {
+      setCheckEmail(false);
+      setInputValues({ ...inputValues, [type]: value });
+    } else {
+      setCheckEmail(true);
     }
   };
+  
+  const emailPressEnter = (e) => {
+    if (!checkEmail && e.key === "Enter") {
+      cursorPassword.current.focus();
+    }
+  }
 
   const handleInputPassword = (e) => {
     // todo: 비번 유효성 검사에 따라 메세지 on,off
     const { type, value } = e.target;
-    if (isValidPassword(value)) {  
-      setInputValues({ ...inputValues, [type]: value });  
-      setMsgIdx(0); 
+    if (isValidPassword(value)) {
+      setInputValues({ ...inputValues, [type]: value });
+      setMsgIdx(0);
     } else {
-      setMsgIdx(1);  
+      setMsgIdx(1);
+    }
+  };
+  const passwordPressEnter = (e) => {
+    if (e.key === "Enter") {
+      handleLoginBtn();
     }
   };
 
   const handleLoginBtn = () => {
     // todo: 유효성검사 통과한 이메일과 비번이 모두 있을 때, 서버에 로그인 요청
     // 응답 성공 시, 로그인상태 변경, 로그인 모달 끄기, 메인으로 리더렉션 + 액세스 토큰 관리, 리프레시 토큰은?
-    // 응답 에러 코드에 따라 - 메세지 띄우기, (인풋 밸류 초기화? )
+    // 응답 에러 코드에 따라 - 메세지 띄우기
     const { email, password } = inputValues;
-    if (!email || !password || msglIdx === 1) { 
+    if (!email || !password || msgIdx === 1) {
       setMsgIdx(2);
     } else {
       setMsgIdx(0);
       axios
         .post(
-          `http://${process.env.REACT_APP_API_URL}/login`,
+          `${process.env.REACT_APP_API_URL}/login`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -85,14 +99,20 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
         .then((res) => {
           //console.log(res)
           if (res.status === 200) {
-            //로그인 상태 변경, 토큰처리- 리프레시랑 엑세스, 로그인 모달 끄고, 메인으로
-            loginHandler(res.data.Accesstoken);
+            //로그인 상태 변경, 쿠키에 있는 엑세스 토큰을 상태로 저장, 로그인 모달 끄고, 메인으로
+            loginHandler(res.headers.cookie.token);
             setLoginModal(false);
-            history.push('/')
+            history.push("/");
+          }
+          if (res.status === 401) {
+            setMsgIdx(3)
+          }
+          if (res.status === 404) {
+            
           }
         })
         .catch((err) => {
-          alert(err)
+          alert(err);
           //console.log(err);
         });
     }
@@ -110,7 +130,8 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
                   type="email"
                   className="login_input_email"
                   placeholder="Email"
-                  onChange={(e) => handleInputEmail(e)} 
+                  onChange={(e) => handleInputEmail(e)}
+                  onKeyPress={emailPressEnter}
                 ></input>
                 {checkEmail ? (
                   <label for="login_input_email">
@@ -126,9 +147,11 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
                   className="login_input_password"
                   placeholder="Password"
                   onChange={handleInputPassword}
+                  onKeyPress={passwordPressEnter}
+                  ref={cursorPassword}
                 ></input>
-                {msglIdx !== 0 ? (
-                  <label for="login_input_password">{pwMessage[msglIdx]}</label>
+                {msgIdx !== 0 ? (
+                  <label for="login_input_password">{pwMessage[msgIdx]}</label>
                 ) : (
                   <label for="login_input_password">&nbsp;</label>
                 )}
