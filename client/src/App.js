@@ -43,6 +43,51 @@ function App() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
+  // // app 실행시 전체 식물 조회 _ theme 페이지 별로 서버 요청할건지에 따라서 지워도 됨
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://${process.env.REACT_APP_API_URL}/plantlist`, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         const plants = res.data;
+  //         setPlantList(plants);
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // }, []);
+
+  // ---- login
+
+  useEffect(() => {
+    if (isLogin) {
+      // 토큰 넣어줘야함 로그인해서 받아온 토큰
+      axios
+        .get(`${process.env.REACT_APP_API_URL}/userinfo`, {
+          headers: { "Content-type": "application/json" },
+          withCredentials: true,
+        })
+        .then((res) => {
+          
+          const dataUserInfo = res.data;
+          setUserInfo(dataUserInfo);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [isLogin]);
+
+  const loginHandler = (token) => {
+    setIsLogin(true);
+    setAccessToken(token);
+  };
+
   //! local에 선택한 식물 저장
   useEffect(() => {
     const plant = selectedPlant;
@@ -90,18 +135,6 @@ function App() {
   };
 
   window.addEventListener("scroll", handleScroll);
-  // ---- login 
-  const loginHandler = (token) => {
-    setIsLogin(true);
-    setAccessToken(token);
-  }
-  // ---- token requests
-  const accessTokenRequest = () => {
-
-  }
-  const refreshTokenRequest = () => {
-    
-  }
 
   return (
     <BrowserRouter>
@@ -130,19 +163,21 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-      {editPwModal ? <EditUserInfo
-      editPwModal={editPwModal}
-      setEditPwModal={setEditPwModal}  
-      /> : null}
+      {editPwModal ? (
+        <EditUserInfo
+          editPwModal={editPwModal}
+          setEditPwModal={setEditPwModal}
+        />
+      ) : null}
 
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
-          <Mypage 
-          setSelectedPlant={setSelectedPlant}
-          setEditPwModal={setEditPwModal}    
+          <Mypage
+            setSelectedPlant={setSelectedPlant}
+            setEditPwModal={setEditPwModal}
           />
         </Route>
         <Route exact path="/search">
@@ -167,6 +202,9 @@ function App() {
             setIsLoading={setIsLoading}
             isLogin={isLogin}
             plant={selectedPlant}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+            accessToken={accessToken}
           />
         </Route>
       </Switch>
