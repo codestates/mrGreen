@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
+import { useHistory } from 'react-router';
 import "../../Styles/Login.css";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
 
-function Login({ loginModal, setLoginModal, setSignupModal }) {
-
+function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
+  const history = useHistory();
   const modalEl = useRef();
   //----모달 온오프 관련------
 
@@ -63,18 +64,37 @@ function Login({ loginModal, setLoginModal, setSignupModal }) {
     }
   };
 
-  const handleLoginBtn = async () => {
+  const handleLoginBtn = () => {
     // todo: 유효성검사 통과한 이메일과 비번이 모두 있을 때, 서버에 로그인 요청
-    // 응답 성공 시, 유저 정보 저장 및 로그인 모달 끄기, 메인으로 리더렉션 + 액세스 토큰 관리, 리프레시 토큰은?
+    // 응답 성공 시, 로그인상태 변경, 로그인 모달 끄기, 메인으로 리더렉션 + 액세스 토큰 관리, 리프레시 토큰은?
     // 응답 에러 코드에 따라 - 메세지 띄우기, (인풋 밸류 초기화? )
     const { email, password } = inputValues;
     if (!email || !password || msglIdx === 1 || !checkEmail) { 
       setMsgIdx(2);
     } else {
       setMsgIdx(0);
-      await axios().then(res => {
-        console.log(res)
-      }).catch(err => {console.log(err)});
+      axios
+        .post(
+          `http://${process.env.REACT_APP_API_URL}/login`,
+          { email, password },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        )
+        .then((res) => {
+          //console.log(res)
+          if (res.status === 200) {
+            //로그인 상태 변경, 토큰처리- 리프레시랑 엑세스, 로그인 모달 끄고, 메인으로
+            loginHandler(res.data.Accesstoken);
+            setLoginModal(false);
+            history.push('/')
+          }
+        })
+        .catch((err) => {
+          alert(err)
+          //console.log(err);
+        });
     }
   };
 
