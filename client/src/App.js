@@ -63,6 +63,18 @@ function App() {
   };
 
   window.addEventListener("scroll", handleScroll);
+  // ---- login 
+  const loginHandler = (token) => {
+    setIsLogin(true);
+    setAccessToken(token);
+  }
+  // ---- token requests
+  const accessTokenRequest = () => {
+
+  }
+  const refreshTokenRequest = () => {
+    
+  }
 
   return (
     <BrowserRouter>
@@ -77,6 +89,7 @@ function App() {
           loginModal={loginModal}
           setLoginModal={setLoginModal}
           setSignupModal={setSignupModal}
+          loginHandler={loginHandler}
         />
       ) : null}
       {signupModal ? (
