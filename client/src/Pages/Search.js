@@ -40,21 +40,6 @@ function Search({ setSelectedPlant, isLoading, setIsLoading }) {
     }
   };
 
-  //! 엔터키 눌렀을 때 필터링 되는 함수
-  const SearchPlantEnter = () => {
-    if (searchValue.length === 0) {
-      setsearchPlantList([]);
-      setMorePlantList(allPlantList.slice(0, 18));
-    } else {
-      let filterPlants = allPlantList.filter((plant) =>
-        plant.kor_name.replace(/ /g, "").match(searchValue)
-      );
-
-      setsearchPlantList(filterPlants);
-      setMorePlantList(filterPlants.slice(0, 18));
-    }
-  };
-
   //! 더보기 버튼 눌렀을 때 더 보여주는 함수
   const morePlantlistHandler = () => {
     if (searchPlantList.length > morePlantList.length) {
@@ -69,7 +54,7 @@ function Search({ setSelectedPlant, isLoading, setIsLoading }) {
       <div className="search_In">
         <div className="searchBarBtn">
           <input
-            onKeyPress={(e) => (e.key === "Enter" ? SearchPlantEnter() : null)}
+            onKeyPress={(e) => (e.key === "Enter" ? searchPlantClick() : null)}
             onChange={(e) => setSearchValue(e.target.value)}
             className="searchBar"
             type="text"
