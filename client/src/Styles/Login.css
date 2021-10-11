@@ -98,12 +98,12 @@
 }
 
 .login_input_area {
-  height: 170px;
+  height: 150px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin: 0px 0 62px 0;
+  margin: 0px 0 82px 0;
 }
 
 .login_input_area input {
