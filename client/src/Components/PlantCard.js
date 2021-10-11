@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import img1 from "../Image/PlantList/001_Monstera.jpg";
 import "../Styles/PlantCard.css";
 
 function PlantCard({ plant, setSelectedPlant }) {

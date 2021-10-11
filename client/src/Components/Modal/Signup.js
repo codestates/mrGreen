@@ -4,14 +4,14 @@ import axios from "axios";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
 
 function Signup({ signupModal, setSignupModal, setLoginModal }) {
-  const [signupValue, setSignupValue] = useState({ 
+  const [signupValue, setSignupValue] = useState({
     email: "",
     nickname: "",
     password: "",
     gender: "",
   });
 
-  const [examineSignup, setExamineSignup] = useState({  
+  const [examineSignup, setExamineSignup] = useState({
     gender: false,
     email: "0",
     password: "0",
@@ -43,9 +43,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     };
   });
 
-  const modalEl = useRef(); 
+  const modalEl = useRef();
 
-  const handleCloseModal = (e) => { 
+  const handleCloseModal = (e) => {
     if (
       signupModal &&
       (!modalEl.current || !modalEl.current.contains(e.target))
@@ -55,8 +55,8 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     }
   };
 
-  const handleLoginBtn = () => { 
-    setSignupModal(false); 
+  const handleLoginBtn = () => {
+    setSignupModal(false);
     setLoginModal(true);
   };
 
@@ -82,7 +82,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
         // "Access-Control-Max-Age": 10, // 얼마나 자주 프리플라이트 리퀘스트를 보낼껀지
       },
       withCredentials: true,
-      data: {  
+      data: {
         email: signupValue.email,
         nickname: signupValue.nickname,
         password: signupValue.password,
@@ -90,7 +90,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
       },
     })
       .then((res) => {
-        setSignupModal(false); 
+        setSignupModal(false);
         setLoginModal(true);
         document.body.style.overflow = "hidden";
         alert("회원가입 완료");
@@ -156,6 +156,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
                 <div className="signup_input_gender_title">Gender</div>
                 <div>
                   <input
+                    onKeyPress={(e) =>
+                      e.key === "Enter" ? signupHandler() : null
+                    }
                     onChange={(e) => signupInputValueHandler(e)}
                     name="gender"
                     type="radio"
@@ -166,6 +169,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
                 </div>
                 <div>
                   <input
+                    onKeyPress={(e) =>
+                      e.key === "Enter" ? signupHandler() : null
+                    }
                     onChange={(e) => signupInputValueHandler(e)}
                     name="gender"
                     type="radio"
@@ -180,6 +186,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
             <div className="signup_input_area">
               <div className="signup_input_email_set">
                 <input
+                  onKeyPress={(e) =>
+                    e.key === "Enter" ? signupHandler() : null
+                  }
                   onChange={(e) => signupInputValueHandler(e)}
                   name="email"
                   type="email"
@@ -196,6 +205,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
               </div>
               <div className="signup_input_password_set">
                 <input
+                  onKeyPress={(e) =>
+                    e.key === "Enter" ? signupHandler() : null
+                  }
                   onChange={(e) => signupInputValueHandler(e)}
                   name="password"
                   type="password"
@@ -212,6 +224,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
               </div>
               <div className="signup_input_nickname_set">
                 <input
+                  onKeyPress={(e) =>
+                    e.key === "Enter" ? signupHandler() : null
+                  }
                   onChange={(e) => signupInputValueHandler(e)}
                   name="nickname"
                   type="text"
