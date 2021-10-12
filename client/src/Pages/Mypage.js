@@ -1,27 +1,61 @@
-import React, { useState } from "react";
-import profile from "../Image/Mypage/Mypage_leon.jpg";
+import React, { useRef, useEffect, useState } from "react";
+import MenProfile from "../Image/Mypage/Mypage_leon.jpg";
+import GirlProfile from "../Image/Mypage/Mypage_matilda.jpg";
 import "../Styles/Mypage.css";
 import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
+import axios from "axios";
 
 function Mypage({ setSelectedPlant, setEditPwModal }) {
 
+  const [userInfo, setUserInfo] = useState({
+    nickname: "Kimcoding",
+    email: "kimcoding@gmail.com",
+    gender: "male",
+    password: "abcde123!" 
+  });
+
   const handleEditPsWord = () => {
-    setEditPwModal(true)
+    setEditPwModal(true);
+    document.body.style.overflow = "hidden";
   }
+
+  
+
+  /* userinfo 값을 가져오는 코드 */
+
+  // axios({
+  //   method: "POST",
+  //   url: `${process.env.REACT_APP_API_URL}/mypage`,
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   withCredentials: true,
+  //   data: {
+  //     nickname: userInfo.nickname,
+  //     email: userInfo.email,
+  //     gender: userInfo.gender
+  //   }
+  // }).then((res) => {
+  //   console.log(res);
+  //   // setUserInfo(res.value)
+  // })
 
   return (
     <div className="mypage_Containor">
       <div className="mypage_In">
         <div className="mypage">
           <div className="userpage">
-            <img className="userpage_Photo" src={profile}></img>
+            {userInfo.gender === "male" ? (
+              <img className="userpage_Photo" src={MenProfile}></img>
+            ) : (
+              <img className="userpage_Photo" src={GirlProfile}></img>
+            )}
             <div className="userpage_UserInfo">
-              <div className="userpage_NickName">Kimcoding</div>
+              <div className="userpage_NickName">{userInfo.nickname}</div>
               <div className="userpage_Email">
-                <a href="https://google.com">Kimcoding@gmail.com</a>
+               {userInfo.email}
               </div>
-              {/* {editPwModal ? <EditUserInfo /> : null} */}
               <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>

@@ -16,7 +16,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0px 150px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .userpage {
@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 270px;
+  height: 30vh;
   flex-direction: row;
   align-items: center;
 }
@@ -45,8 +45,9 @@
 
 .userpage_Email {
   margin-top: 3px;
-  font-size: var(--font--14--size);
-  color: var(--lightGray--color);
+  margin-left: 2px;
+  font-size: var(--font--16--size);
+  color: var(--deepGray--color);
 }
 
 .userpage_Email a {
@@ -67,8 +68,8 @@
 
 .userpage_UserInfo button {
   background-color: white;
-  width: 100px;
-  height: 25px;
+  width: 130px;
+  height: 35px;
   border-radius: 100px;
   font-size: var(--font--14--size);
   color: var(--deepGray--color);
@@ -94,17 +95,17 @@
 .userplant_Title {
   display: flex;
   width: 100%;
-  height: 30px;
+  height: 50px;
   text-align: left;
-  font-size: var(--font--16--size);
+  font-size: var(--font--30--size);
   border-bottom: 1px solid #090909;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .userplant_Plant {
   display: grid;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 0px;
   margin-bottom: 70px;
   grid-template-columns: repeat(6, auto);
