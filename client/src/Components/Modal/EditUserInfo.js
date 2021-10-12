@@ -3,14 +3,8 @@ import { isValidPassword } from "../../Utils/validCheckForLogin";
 import "../../Styles/EditUserInfo.css";
 import axios from "axios";
 
-function EditUserInfo({ editPwModal, setEditPwModal}) {
-
-  const [dbPassword, setdbPassword] = useState({
-    password: "abcde123!"
-  })
-  const [examineEditpsword, setExamineEditpsword] = useState({
-    password: "0"
-  });
+function EditUserInfo({ setEditPwModal, editPwModal }) {
+  const modalEl = useRef();
 
   // const [inputValues, setInputValues] = useState({ oldPw: "", newPw: "", rePw: "" });
   const [checkPsword, setCheckPsword] = useState(false);
@@ -18,89 +12,54 @@ function EditUserInfo({ editPwModal, setEditPwModal}) {
   const modalEl = useRef();
   const handleCloseModal = (e) => {
     if (
-      editPwModal &&  
-      (!modalEl.current || !modalEl.current.contains(e.target)) 
+      editPwModal &&
+      (!modalEl.current || !modalEl.current.contains(e.target))
     ) {
-      setEditPwModal(false); 
+      setEditPwModal(false);
       document.body.style.overflow = "unset";
     };
   };
 
-  useEffect(() => {  
-    window.addEventListener("click", handleCloseModal); 
+  useEffect(() => {
+    window.addEventListener("click", handleCloseModal);
     return () => {
-      window.removeEventListener("click", handleCloseModal); 
+      window.removeEventListener("click", handleCloseModal);
     };
   });
 
-  // useEffect(() => {
-  //   passwordValidation();
-  // }, [editUserPsword.password]);
+  // --- 비번 검사 기능 구현 ---
+  const [inputValues, setInputValues] = useState({
+    prevPw: "",
+    rePw: "",
+    newPw: "",
+  });
+  const [labelForPw, setLabelForPw] = useState(false);
+  const [labelForNewPw, setLabelForNewPw] = useState(false);
+  const [lableForRePw, setLabelForRePw] = useState(false);
+  const oldPwMsg = [
+    "비밀번호는 8글자 이상, 특수 문자를 포함해야 합니다",
+    "기존 비밀번호와 일치하지 않습니다",
+  ];
+  const [oldPwIdx, setOldPwIdx] = useState(0);
+  const rePwMsg = ["비밀번호는 8글자 이상, 특수 문자를 포함해야 합니다","새로운 비밀번호와 일치하지 않습니다", ]
+  const [rePwIdx, setRePwIdx] = useState(0);
+  const handleInputPw = () => {
+    //유효성 검사에 맞는지 확인후(메세지), 인풋밸류 업데이트 + 커서 이동
+  };
+  const handleInputNewPw = () => {
+    // 유효성 검사 맞는지 확인후(메세지), 인풋밸류 업데이트 + 커서이동
+  };
+  const handleInputRenewPw = () => {
+    // 앞의 비번과 맞는지 확인후(메세지), 인풋밸류 업데이트 + 엔터시 버튼 실행
+  };
+  const handleEditPwBtn = () => {
+    // 모든 인풋값이 올바른 상태인지 체크(메세지),
+    // 맞다면, 서버요청 patch /user/userinfo {prevPW, newPW}
+  };
 
-  // axios({
-  //     method: "Patch",
-  //     url: `${process.env.REACT_APP_API_URL}/user/userinfo`,
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     withCredentials: true,
-  //     data: {
-  //       prevPw: editUserPsword.password
-  //       newPw: inputValues.
-  //     }
-  //   }).then((res) => {
-  //
-  //   })
-
-  // const handleOldPsword = (e) => {
-  //   // todo: 기존의 비밀번호와 같게 입력했는지에 대한 유효성 검사
-  //   const { value } = e.target;
-  //   // console.log(value)
-  //   if(!isValidPassword(value)) { 
-  //     setCheckPsword(true);
-  //   } else {
-  //     setCheckPsword(false);
-  //   }
-  // };
-
-  // const handleNewPsword = (e) => {
-  //   // todo: 
-  //   const { value } = e.target;
-  //   console.log(value)
-  //   if (isValidPassword(value)) {
-  //     setCheckPsword(false);
-  //     // setInputValues({ ...inputValues, [type]: value });
-  //   } else {
-  //     setCheckPsword(true);
-  //   }
-  // };
-
-  // const handleRePsword = (e) => {
-  //   // todo: 변경된 비밀번호 확인 유효성 검사에 따라 메세지 on,off
-  //   const { value } = e.target;
-  //   console.log(value)
-  //   if (isValidPassword(value)) {
-  //     setCheckPsword(false);
-  //     // setInputValues({ ...inputValues, [type]: value });
-  //   } else {
-  //     setCheckPsword(true);
-  //   }
-  // };
-
-
-
-  // const passwordValidation = (e) => {
-
-  //   if (isValidPassword(editUserPsword.password)) {
-  //     setExamineEditpsword({ ...examineEditpsword, ["password"]: true });
-  //   } else {
-  //     setExamineEditpsword({ ...examineEditpsword, ["password"]: false });
-  //   }
-
-  //   if (editUserPsword.password.length === 0) {
-  //     setExamineEditpsword({ ...examineEditpsword, ["password"]: "0" });
-  //   }
-  // };
+  const oldPwEnter = (e) => {};
+  const newPwEnter = (e) => {};
+  const rePwEnter = (e) => {};
 
   return (
     <div className="edit">
@@ -113,31 +72,56 @@ function EditUserInfo({ editPwModal, setEditPwModal}) {
             <div className="edit_input_prevPw_set">
               {/* 비밀번호타입으로 텍스트를 입력한다, 이렇게 하면 텍스트가 *로 적힌다. */}
               <input
-              type="password" 
+                type="password"
                 className="edit_input_prevPw"
                 placeholder="기존 비밀번호"
-                // onChange={(e) => handleOldPsword(e)}
+                onClick={handleInputPw}
+                onKeyPress={oldPwEnter}
               ></input>
-              {checkPsword ? (
-                <label className="edit_label" for="edit_input_prevPw" id="noMatchPw">
-                  기존 비밀번호와 일치하지 않습니다
+              {labelForPw ? (
+                <label
+                  className="edit_label"
+                  for="edit_input_prevPw"
+                  id="noMatchPw"
+                >
+                  {oldPwMsg[oldPwIdx]}
                 </label>
-              ) : (<label for="eidt_input_password">&nbsp;
-              </label>
+              ) : (
+                <label
+                  className="edit_label"
+                  for="edit_input_prevPw"
+                  id="noMatchPw"
+                >
+                  &nbsp;
+                </label>
               )}
+              {/* <label for="edit_input_prevPw" id="invalidPrevPW">
+                비밀번호는 8글자 이상, 영문 대문자를 포함해야 합니다
+              </label> */}
             </div>
             <div className="edit_input_newPw_set">
               <input
                 type="password"
                 className="edit_input_newPw"
                 placeholder="새로운 비밀번호"
-                // onChange={(e) => handleNewPsword(e)}
+                onClick={handleInputNewPw}
+                onKeyPress={newPwEnter}
               ></input>
-              {examineEditpsword.password || examineEditpsword.password === "0" ? (
-                <label for="signup_input_password">&nbsp;</label>
+              {labelForNewPw ? (
+                <label
+                  className="edit_label"
+                  for="edit_input_newPw"
+                  id="invalidNewPW"
+                >
+                  비밀번호는 8글자 이상, 영문 대문자를 포함해야 합니다
+                </label>
               ) : (
-                <label for="signup_input_password">
-                  비밀번호는 8글자 이상, 영문, 특수문자를 포함해야 합니다
+                <label
+                  className="edit_label"
+                  for="edit_input_newPw"
+                  id="invalidNewPW"
+                >
+                  &nbsp;
                 </label>
               )}
             </div>
@@ -146,14 +130,27 @@ function EditUserInfo({ editPwModal, setEditPwModal}) {
                 type="password"
                 className="edit_input_checkNewPw"
                 placeholder="새로운 비밀번호 확인"
-                // onChange={(e) => handleRePsword(e)}
+                onClick={handleInputRenewPw}
+                onKeyPress={rePwEnter}
               ></input>
-              <label className="edit_label" for="edit_input_checkNewPw" id="noMatchNewPw">
-                새로운 비밀번호와 일치하지 않습니다
-              </label>
+              {lableForRePw ? <label
+                className="edit_label"
+                for="edit_input_checkNewPw"
+                id="noMatchNewPw"
+              >
+                {rePwMsg[rePwIdx]}
+              </label>: <label
+                className="edit_label"
+                for="edit_input_checkNewPw"
+                id="noMatchNewPw"
+              >
+                &nbsp;
+              </label>}
             </div>
           </div>
-          <button className="btn editPwBtn">비밀번호 변경</button>
+          <button className="btn editPwBtn" onClick={handleEditPwBtn}>
+            비밀번호 변경
+          </button>
         </div>
         <div className="edit_img"></div>
       </div>

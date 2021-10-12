@@ -18,12 +18,15 @@ import PlantInfo from "./Pages/PlantInfo";
 import Search from "./Pages/Search";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(
+    () => JSON.parse(window.sessionStorage.getItem("mr.green_isLogin")) || false
+  );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
+
   const [selectedPlant, setSelectedPlant] = useState(
     () =>
       JSON.parse(window.localStorage.getItem("mr.geen_plant")) || {
@@ -63,16 +66,21 @@ function App() {
   //     });
   // }, []);
 
-  // ---- logout
+  // ----- log out
+  const history = useHistory();
 
   const handleLogout = () => {
-    // axios.post(`${process.env.REACT_APP_API_URL}/logout`)
-    axios.post("http://localhost:80/logout")
-    .then((res) => {
-      setUserInfo(null);
-      setIsLogin(false);
-      history.push('/');
-    });
+    // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
+    axios
+      .post(`${process.env.REACT_APP_API_URL}/user/logout`)
+      .then((res) => {
+        if (res.status === 200) setUserInfo({});
+        setIsLogin(false);
+        window.sessionStorage.clear();
+        history.push("/");
+        document.body.style.overflow = "unset";
+      })
+      .catch((err) => console.log(err));
   };
 
   // ---- login
@@ -81,7 +89,7 @@ function App() {
     if (isLogin) {
       // 토큰 넣어줘야함 로그인해서 받아온 토큰
       axios
-        .get(`${process.env.REACT_APP_API_URL}/userinfo`, {
+        .get(`${process.env.REACT_APP_API_URL}/user/userinfo`, {
           headers: { "Content-type": "application/json" },
           withCredentials: true,
         })
@@ -105,6 +113,10 @@ function App() {
     const plant = selectedPlant;
     window.localStorage.setItem("mr.geen_plant", JSON.stringify(plant));
   }, [selectedPlant]);
+
+  useEffect(() => {
+    window.sessionStorage.setItem("mr.green_isLogin", JSON.stringify(isLogin));
+  }, [isLogin]);
 
   useEffect(() => {
     window.addEventListener("scroll", scrollPositionHandler);
