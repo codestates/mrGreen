@@ -18,7 +18,7 @@ import PlantInfo from "./Pages/PlantInfo";
 import Search from "./Pages/Search";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
@@ -74,7 +74,6 @@ function App() {
           withCredentials: true,
         })
         .then((res) => {
-          
           const dataUserInfo = res.data;
           setUserInfo(dataUserInfo);
         })
@@ -143,10 +142,7 @@ function App() {
       {scrollPosition > 60 ? <Top /> : null}
       {/* 로그인상태에 따른 Nav, NavChange 변환 */}
       {isLogin ? (
-        <NavChange 
-        setIsLogin={setIsLogin}
-        setLogoutModal={setLogoutModal}
-        />
+        <NavChange setIsLogin={setIsLogin} setLogoutModal={setLogoutModal} />
       ) : (
         <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
       )}

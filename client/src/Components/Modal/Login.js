@@ -40,7 +40,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
     "모든 요소는 필수 요소입니다,\n올바른 이메일, 비밀번호를 입력해 주세요",
     "존재하지 않는 이메일입니다, 다시 확인해 주세요",
     "올바르지 않은 비밀번호입니다, 다시 확인해 주세요",
-    "로그인에 실패 했습니다, 이메일과 비밀번호를 다시 확인해 주세요"
+    "로그인에 실패 했습니다, 이메일과 비밀번호를 다시 확인해 주세요",
   ];
   const [msgIdx, setMsgIdx] = useState(0);
   const cursorPassword = useRef(null);
@@ -55,12 +55,12 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
       setCheckEmail(true);
     }
   };
-  
+
   const emailPressEnter = (e) => {
     if (!checkEmail && e.key === "Enter") {
       cursorPassword.current.focus();
     }
-  }
+  };
 
   const handleInputPassword = (e) => {
     // todo: 비번 유효성 검사에 따라 메세지 on,off
@@ -105,10 +105,9 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
             history.push("/");
           }
           if (res.status === 401) {
-            setMsgIdx(3)
+            setMsgIdx(3);
           }
           if (res.status === 404) {
-            
           }
         })
         .catch((err) => {

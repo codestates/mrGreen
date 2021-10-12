@@ -1,22 +1,22 @@
-const express = require("express");
-const router = express.Router();
-const userController = require("../controllers/user");
-const edit = require("../controllers/edit");
+// const express = require("express");
+// const router = express.Router();
+// const userController = require("../controllers/user");
+// const edit = require("../controllers/edit");
+// const authController = require("../controllers/authController");
 
+// // * POST //logIn
+// router.post("/login", authController.signIn);
 
-// * POST //logIn
-router.post("/login", authController.signIn);
+// // * POST /signUp
+// router.post("/signup", authController.signUp);
 
-// * POST /signUp
-router.post("/signup", authController.signUp);
+// // * POST //logout
+// router.post("/logout", authController.logout);
 
-// * POST //logout
-router.post("/logout", authController.logout);
+// // * GET /user/userinfo
+// router.get("/userinfo", userController.userInfo);
 
-// * GET /user/userinfo
-router.get("/userinfo", userController.userInfo);
+// // * PATCH /user/userEdit
+// router.patch("/userinfo", edit.userEdit);
 
-// * PATCH /user/userEdit
-router.patch("/useredit", edit.userEdit);
-
-module.exports = router;
+// module.exports = router;

@@ -1,25 +1,25 @@
-'use strict';
+"use strict";
 
-const { Model } = require('sequelize');
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-    class Plant extends Model {
-
-        static associate(models) {
-
-        }
+  class Plant extends Model {
+    static associate(models) {}
+  }
+  Plant.init(
+    {
+      kor_name: DataTypes.STRING,
+      eng_name: DataTypes.STRING,
+      means: DataTypes.STRING,
+      description: DataTypes.STRING,
+      difficulty: DataTypes.STRING,
+      light: DataTypes.STRING,
+      water: DataTypes.STRING,
+      image: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: "Plant",
     }
-    Plant.init({
-        kor_name: DataTypes.STRING,
-        eng_name: DataTypes.STRING,
-        means: DataTypes.STRING,
-        description: DataTypes.STRING,
-        difficulty: DataTypes.STRING,
-        light: DataTypes.STRING,
-        water: DataTypes.STRING,
-        image: DataTypes.STRING,
-    }, {
-        sequelize,
-        modelName: 'Plant',
-    });
-    return Plant;
-} 
+  );
+  return Plant;
+};
