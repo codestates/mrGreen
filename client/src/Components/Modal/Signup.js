@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import "../../Styles/Signup.css";
 import axios from "axios";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
+require("dotenv").config();
 
 function Signup({ signupModal, setSignupModal, setLoginModal }) {
   const [signupValue, setSignupValue] = useState({
@@ -66,38 +67,46 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
   const signupHandler = () => {
     const { email, password, gender, nickname } = examineSignup;
 
+    console.log(email, password, gender, nickname);
+    console.log(
+      signupValue.email,
+      signupValue.password,
+      signupValue.gender,
+      signupValue.nickname
+    );
+
     if (!email || !password || !gender || !nickname) {
       setExamineSignup({ ...examineSignup, ["nickname"]: false });
-    }
-
-    // if (email && password && gender && nickname) {
-    axios({
-      method: "POST'",
-      // url: `${process.env.REACT_APP_API_URL}/signup`,
-      url: "http://localhost:80",
-      headers: {
-        "Content-Type": "application/json",
-        // "Access-Control-Allow-Origin": "*", // 오리진 지정
-        // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS", // 메소드 지정
-        // "Access-Control-Allow-Headers": "Content-Type, Accept", // 헤더지정
-        // "Access-Control-Max-Age": 10, // 얼마나 자주 프리플라이트 리퀘스트를 보낼껀지
-      },
-      withCredentials: true,
-      data: {
-        email: signupValue.email,
-        nickname: signupValue.nickname,
-        password: signupValue.password,
-        gender: signupValue.gender,
-      },
-    })
-      .then((res) => {
-        setSignupModal(false);
-        setLoginModal(true);
-        document.body.style.overflow = "hidden";
-        alert("회원가입 완료");
+    } else {
+      axios({
+        method: "POST'",
+        url: `http://localhost:80/user/signup`,
+        headers: {
+          "Content-Type": "application/json",
+          // "Access-Control-Allow-Origin": "http://localhost:80", // 오리진 지정
+          // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS", // 메소드 지정
+          // "Access-Control-Allow-Headers": "Content-Type, Accept", // 헤더지정
+          // "Access-Control-Max-Age": 10, // 얼마나 자주 프리플라이트 리퀘스트를 보낼껀지
+        },
+        withCredentials: true,
+        data: {
+          email: signupValue.email,
+          nickname: signupValue.nickname,
+          password: signupValue.password,
+          gender: signupValue.gender,
+        },
       })
-      .catch((err) => alert(err));
-    // }
+        .then((res) => {
+          if (res.status === 201) {
+            console.log("-----res-----", res);
+            setSignupModal(false);
+            setLoginModal(true);
+            document.body.style.overflow = "hidden";
+            alert("회원가입 완료");
+          }
+        })
+        .catch((err) => alert(err));
+    }
   };
 
   //! 유효성 검사
