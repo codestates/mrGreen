@@ -102,17 +102,18 @@ function EditUserInfo({ editPwModal, setEditPwModal}) {
   //   }
   // };
 
-
   return (
     <div className="edit">
       <div className="modal_background"></div>
       <div className="edit_modal" ref={modalEl}>
         <div className="edit_modal_leftside">
+          {/* 비밀번호 변경 타이틀 */}
           <div className="edit_title">비밀번호 변경</div>
           <div className="edit_input_area">
             <div className="edit_input_prevPw_set">
+              {/* 비밀번호타입으로 텍스트를 입력한다, 이렇게 하면 텍스트가 *로 적힌다. */}
               <input
-                type="password"
+              type="password" 
                 className="edit_input_prevPw"
                 placeholder="기존 비밀번호"
                 // onChange={(e) => handleOldPsword(e)}

@@ -177,21 +177,19 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-      {editPwModal ? (
-        <EditUserInfo
-          editPwModal={editPwModal}
-          setEditPwModal={setEditPwModal}
-        />
-      ) : null}
+      {editPwModal ? <EditUserInfo
+      editPwModal={editPwModal}
+      setEditPwModal={setEditPwModal}  
+      /> : null}
 
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
-          <Mypage
-            setSelectedPlant={setSelectedPlant}
-            setEditPwModal={setEditPwModal}
+          <Mypage 
+          setSelectedPlant={setSelectedPlant}
+          setEditPwModal={setEditPwModal}    
           />
         </Route>
         <Route exact path="/search">
