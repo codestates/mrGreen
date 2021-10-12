@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import "../../Styles/Login.css";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
 
@@ -89,7 +89,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
       setMsgIdx(0);
       axios
         .post(
-          `http://localhost:80/user/login`,
+          `${process.env.REACT_APP_API_URL}/user/login`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -105,6 +105,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
             loginHandler(res.data.accessToken);
             setLoginModal(false);
             history.push("/");
+            document.body.style.overflow = "unset";
           }
           if (res.status === 401) {
             setMsgIdx(3);

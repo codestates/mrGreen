@@ -1,65 +1,44 @@
 const { user } = require("../../../models");
-const jwt = require("jsonwebtoken");
+require("dotenv").config();
+const { sign, verify } = require("jsonwebtoken");
+const {
+  generateAccessToken,
+  generateRefreshToken,
+  sendRefreshToken,
+  sendAccessToken,
+} = require('./tokenFunctions');
 
-// 유효성 검사 추가
+module.exports = (req, res) => {
+  // 유효성 검사
+  //
+  // 401 { "message" : "Invalid password"}
+  // 404 {"message" : "Invalid user"}
+  // err
+  // 200 { data: { AccessToken: "string" }, message: "Login success" };
 
-module.exports = async (req, res) => {
-  const userInfo = await user.findOne({
-    where: { email: req.body.email, password: req.body.password },
-  });
-  console.log(userInfo);
-  const refreshToken = "refreshToken";
-  res
-    .status(200)
-    .send({ accessToken: "accessToken", userInfo: userInfo, message: "ok" });
+  const regexForEmail =
+    /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+  const regexForPw = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,24}/;
+  const { email, password } = req.body;
 
-  // const data = await Users.findOne({
-  //   where: {
-  //     email: req.body.email,
-  //   },
-  // }).then(async (data) => {
-  //   if (!data) {
-  //     res.status(404).send({ message: "Invalid user" });
-  //   } else {
-  //     const userInfo = await Users.findOne({
-  //       where: {
-  //         password: req.body.password,
-  //         email: req.body.email,
-  //       },
-  //     })
-  //       .then((userInfo) => {
-  //         if (!userInfo) {
-  //           res.status(401).send({ message: "Invalid password" });
-  //         } else {
-  //           const payload = {
-  //             id: userInfo.id,
-  //             userId: userInfo.userId,
-  //             email: userInfo.email,
-  //             gender: userInfo.gender,
-  //           };
-  //           const accessToken = jwt.sign(payload, process.env.ACCESS_SECRET, {
-  //             expiresIn: "30m",
-  //           });
-  //           const refreshToken = jwt.sign(payload, process.env.REFRESH_SECRET, {
-  //             expiresIn: "14d",
-  //           });
-  //           res.cookie("refreshToken", refreshToken, {
-  //             httpOnly: true,
-  //             sameSite: "None",
-  //           });
-  //           res
-  //             .status(200)
-  //             .set("Access-Control-Expose-Headers", "authorization")
-  //             .set("authorization", `Bearer ${accessToken}`)
-  //             .send({
-  //               data: { accessToken },
-  //               message: "Login success",
-  //             });
-  //         }
-  //       })
-  //       .catch((err) => {
-  //         res.status(500).send(err);
-  //       });
-  //   }
-  // });
+  const isValidEmail = email.match(regexForEmail);
+  const isValidPw = email.match(regexForPw);
+  if (!isValidEmail) res.status(404).send({ message: "Invalid user" });
+  if (!isValidPw) res.status(401).send({ message: "Invalid password" });
+
+  user
+    .findOne({
+      where: { email: email, password: password },
+    })
+    .then((data) => {
+      if (!data) {
+        return res.status(404).send({ message: "Invalid user" });
+      }
+      delete data.dataValues.password;
+      const accessToken = generateAccessToken(data.dataValues);
+      const refreshToken = generateRefreshToken(data.dataValues);
+      sendRefreshToken(res, refreshToken);
+      sendAccessToken(res, accessToken);
+    })
+    .catch((err) => console.log(err));
 };

@@ -2,12 +2,7 @@ import React from "react";
 import "../Styles/Nav.css";
 import { Link } from "react-router-dom";
 
-function NavChange() {
-
-  const handleLogout = () => {
-    
-  }
-
+function NavChange({ handleLogout }) {
   return (
     <div className="nav_container">
       <div className="nav_in">
