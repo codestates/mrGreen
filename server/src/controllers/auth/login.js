@@ -6,7 +6,7 @@ const {
   generateRefreshToken,
   sendRefreshToken,
   sendAccessToken,
-} = require('./tokenFunctions');
+} = require("./tokenFunctions");
 
 module.exports = (req, res) => {
   // 유효성 검사

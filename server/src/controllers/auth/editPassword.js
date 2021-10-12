@@ -1,5 +1,4 @@
-const { Users } = require("../../../models");
-const bcrypt = require("bcryptjs");
+const { user } = require("../../../models");
 
 module.exports = async (req, res) => {
   const accessAuthorization = req.headers.authorization;
