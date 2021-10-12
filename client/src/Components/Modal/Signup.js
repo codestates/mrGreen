@@ -72,14 +72,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
 
     // if (email && password && gender && nickname) {
     axios({
-<<<<<<< HEAD
       method: "POST'",
       // url: `${process.env.REACT_APP_API_URL}/signup`,
       url: "http://localhost:80",
-=======
-      method: "POST",
-      url: `${process.env.REACT_APP_API_URL}/signup`,
->>>>>>> feature
       headers: {
         "Content-Type": "application/json",
         // "Access-Control-Allow-Origin": "*", // 오리진 지정
