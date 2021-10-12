@@ -26,7 +26,7 @@ module.exports = async (req, res) => {
       } else {
         const { id, nickname, email, password, gender } = user;
 
-        let favorite = await favorite.findOne({
+        let favorite = await favorite.findAll({
           where: { userId: user.id },
         });
         delete user.dataValues.password;
