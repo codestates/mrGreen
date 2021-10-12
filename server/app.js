@@ -5,8 +5,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 
-const userRouter = require('./routers/user.js');
-const favoriteRouter = require('./routers/favorite.js');
+const userRouter = require('./src/routers/user');
+const favoriteRouter = require('./src/routers/favorite');
 
 
 app.use(logger('dev'));

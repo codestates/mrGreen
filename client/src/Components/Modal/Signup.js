@@ -72,7 +72,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
 
     // if (email && password && gender && nickname) {
     axios({
-      method: "POST'",
+      method: "POST",
       url: `${process.env.REACT_APP_API_URL}/signup`,
       headers: {
         "Content-Type": "application/json",

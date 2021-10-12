@@ -18,7 +18,7 @@ import PlantInfo from "./Pages/PlantInfo";
 import Search from "./Pages/Search";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);

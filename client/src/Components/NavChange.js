@@ -1,10 +1,22 @@
 import React from "react";
 import "../Styles/Nav.css";
+import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-function NavChange() {
+function NavChange({ setIsLogin }) {
+
+  const history = useHistory();
 
   const handleLogout = () => {
+    axios({
+      method: "POST",
+      url: `${process.env.REACT_APP_API_URL}/logout`    
+    })
+    .then((res) => {
+      history.push("/");
+      setIsLogin(false)
+    })
     
   }
 
@@ -19,9 +31,9 @@ function NavChange() {
           <Link to="/mypage" className="nav_menu_sub">
             Mypage
           </Link>
-          <Link to="/" className="nav_menu_sub" onClick={handleLogout}>
+          <span className="nav_menu_sub" onClick={handleLogout}>
             Logout
-          </Link>
+          </span>
         </div>
       </div>
     </div>
