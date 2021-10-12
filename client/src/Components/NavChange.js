@@ -2,23 +2,8 @@ import React from "react";
 import "../Styles/Nav.css";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-function NavChange({ setIsLogin }) {
-
-  const history = useHistory();
-
-  const handleLogout = () => {
-    axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_API_URL}/logout`    
-    })
-    .then((res) => {
-      history.push("/");
-      setIsLogin(false)
-    })
-    
-  }
+function NavChange({ handleLogout }) {
 
   return (
     <div className="nav_container">

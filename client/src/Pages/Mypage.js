@@ -41,6 +41,10 @@ function Mypage({ setSelectedPlant, setEditPwModal }) {
   //   // setUserInfo(res.value)
   // })
 
+  const handleEditPsWord = () => {
+    setEditPwModal(true)
+  }
+
   return (
     <div className="mypage_Containor">
       <div className="mypage_In">
@@ -56,6 +60,7 @@ function Mypage({ setSelectedPlant, setEditPwModal }) {
               <div className="userpage_Email">
                {userInfo.email}
               </div>
+              {/* {editPwModal ? <EditUserInfo /> : null} */}
               <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>
