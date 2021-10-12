@@ -1,34 +1,55 @@
-const { Users } = require("../../../models");
+const { user } = require("../../../models");
 const jwt = require("jsonwebtoken");
-
-const generateAccessToken = (data) => {
-  return jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: "30m" });
-};
-const generateRefreshToken = (data) => {
-  return jwt.sign(data, process.env.REFRESH_SECRET, { expiresIn: "14d" });
-};
+require("dotenv").config();
 
 module.exports = async (req, res) => {
+  console.log("요청들어옴");
   const { nickname, email, password, gender } = req.body;
 
-  try {
-    const [result, created] = await Users.findOrCreate({
-      where: { nickname, email, password, gender },
-    });
-
-    if (created) {
-      const accessToken = generateAccessToken(result.dataValues);
-      const refreshToken = generateRefreshToken(result.dataValues);
-
-      res.cookie("refreshToken", refreshToken, {
-        httpOnly: true,
-        sameSite: "None",
-      });
-      res.status(201).send({ message: "ok" });
-    } else {
-      res.status(409).send({ message: "already userinfo exists" });
-    }
-  } catch (err) {
-    res.status(500).send(err);
+  //! 정보가 다 들어오지 않는다면
+  if (!nickname || !email || !password || !gender) {
+    res.status(422).send("모든 항목을 입력해주세요");
   }
+
+  //! email이 있는지 찾는다
+  await user.findOne({ where: { email: email } }).then((resp) => {
+    if (resp) {
+      return res.status(404).send("이미 사용중인 이메일입니다");
+    } else {
+      //! 이메일이 같은 것이 없으면 정보 저장
+      user
+        .findOrCreate({
+          where: {
+            email: email,
+            nickname: nickname,
+            password: password,
+            gender: gender,
+          },
+          defaults: "newUser",
+        })
+        .then(([save, created]) => {
+          if (!created) {
+            return res
+              .status(404)
+              .json({ message: "이미 사용중인 이메일입니다" });
+          } else {
+            const refreshToken = jwt.sign(
+              save.dataValues,
+              process.env.REFRESH_SECRET,
+              {
+                expiresIn: "6h",
+              }
+            );
+
+            return res
+              .status(201)
+              .cookie("jwt", refreshToken, { httpOnly: true })
+              .json({ message: "성공적으로 회원가입을 완료하였습니다" });
+          }
+        })
+        .catch((err) => {
+          return res.status(500).send("err");
+        });
+    }
+  });
 };
