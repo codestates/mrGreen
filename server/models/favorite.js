@@ -1,39 +1,24 @@
-"use strict";
-
-// const { DataTypes } = require("sequelize/types");
-// const { sequelize } = require(".");
-
-// module.exports = (sequelize, DataTypes) => {
-//     return sequelize.define('favorite', {
-//         userId: {
-//             type: DataTypes.STRING(40),
-//         },
-//         plantId: {
-//             type: DataTypes.INTEGER,
-//             allowNull: false
-//         }
-//     });
-// }
-
-const { Model } = require("sequelize");
-
+'use strict';
+const {
+  Model
+} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class favorite extends Model {
-    static associate(models) {}
-  }
-  favorite.init(
-    {
-      userId: {
-        type: DataTypes.INTEGER,
-      },
-      plantId: {
-        type: DataTypes.INTEGER,
-      },
-    },
-    {
-      sequelize,
-      modelName: "favorite",
+    /**
+     * Helper method for defining associations.
+     * This method is not a part of Sequelize lifecycle.
+     * The `models/index` file will call this method automatically.
+     */
+    static associate(models) {
+      // define association here
     }
-  );
+  };
+  favorite.init({
+    userId: DataTypes.STRING,
+    plantId: DataTypes.STRING
+  }, {
+    sequelize,
+    modelName: 'favorite',
+  });
   return favorite;
 };

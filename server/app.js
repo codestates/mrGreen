@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST", "OPTIONS"],
     credentials: true,
     preflightContinue: true,
@@ -23,7 +23,7 @@ app.use(
 );
 
 app.use("/plantlist", plantlistRouter);
-// app.use("/user", userRouter);
+app.use("/user", userRouter);
 app.use("/favorite", favoriteRouter);
 
 app.listen(port, () => {

@@ -1,63 +1,61 @@
 const express = require("express");
-const { DataTypes } = require("sequelize/types");
+const { DataTypes } = require("sequelize");
 const Users = require("../../../models");
 const favorite = require("../../../models/favorite");
 
-module.exports = {
-  userInfo: async (req, res) => {
-    const accessAuthorization = req.headers.authorization;
-    const refreshAuthorization = req.cookies.refreshToken;
+module.exports = async (req, res) => {
+  const accessAuthorization = req.headers.authorization;
+  const refreshAuthorization = req.cookies.refreshToken;
 
-    try {
-      if (
-        accessAuthorization === undefined ||
-        refreshAuthorization === "invalidtoken" ||
-        !refreshAuthorization
-      ) {
-        res.status(404).send({
-          message: "Expired token",
-        });
+  try {
+    if (
+      accessAuthorization === undefined ||
+      refreshAuthorization === "invalidtoken" ||
+      !refreshAuthorization
+    ) {
+      res.status(404).send({
+        message: "Expired token",
+      });
+    } else {
+      let user = await Users.findOne({
+        where: { email: req.body.email },
+      });
+
+      if (!user) {
+        res.status(404).send({ message: "Invalid user" });
       } else {
-        let user = await Users.findOne({
-          where: { email: req.body.email },
+        const { id, nickname, email, password, gender } = user;
+
+        let favorite = await favorite.findOne({
+          where: { userId: user.id },
         });
-
-        if (!user) {
-          res.status(404).send({ message: "Invalid user" });
-        } else {
-          const { id, nickname, email, password, gender } = user;
-
-          let favorite = await favorite.findOne({
-            where: { userId: user.id },
-          });
-          delete user.dataValues.password;
-          res.status(200).send({
-            data: {
-              user: {
-                nickname: user.dataValues.nickname,
-                email: user.dataValues.email,
-                gender: user.dataValues.gender,
-              },
-              favorite: {
-                id: favorite.dataValues.id,
-                kor_name: favorite.dataValues.kor_name,
-                eng_name: favorite.dataValues.eng_name,
-                means: favorite.dataValues.means,
-                descrption: favorite.dataValues.descrption,
-                difficulty: favorite.dataValues.difficulty,
-                light: favorite.dataValues.light,
-                water: favorite.dataValues.water,
-                image: favorite.dataValues.image,
-                createdAt: favorite.dataValues.createdtime,
-                updatedAt: favorite.dataValues.updatedAt,
-              },
+        delete user.dataValues.password;
+        res.status(200).send({
+          data: {
+            user: {
+              nickname: user.dataValues.nickname,
+              email: user.dataValues.email,
+              gender: user.dataValues.gender,
             },
-            message: "User data successfully found",
-          });
-        }
+            favorite: {
+              id: favorite.dataValues.id,
+              kor_name: favorite.dataValues.kor_name,
+              eng_name: favorite.dataValues.eng_name,
+              means: favorite.dataValues.means,
+              descrption: favorite.dataValues.descrption,
+              difficulty: favorite.dataValues.difficulty,
+              light: favorite.dataValues.light,
+              water: favorite.dataValues.water,
+              image: favorite.dataValues.image,
+              createdAt: favorite.dataValues.createdtime,
+              updatedAt: favorite.dataValues.updatedAt,
+            },
+          },
+          message: "User data successfully found",
+        });
       }
-    } catch (err) {
-      return res.status(500).send(err);
     }
-  },
+  } catch (err) {
+    return res.status(500).send(err);
+  }
 };

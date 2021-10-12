@@ -89,7 +89,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
       setMsgIdx(0);
       axios
         .post(
-          `${process.env.REACT_APP_API_URL}/login`,
+          `http://localhost:80/user/login`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -100,7 +100,9 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
           //console.log(res)
           if (res.status === 200) {
             //로그인 상태 변경, 쿠키에 있는 엑세스 토큰을 상태로 저장, 로그인 모달 끄고, 메인으로
-            loginHandler(res.headers.cookie.token);
+
+            console.log(res.data);
+            loginHandler(res.data.accessToken);
             setLoginModal(false);
             history.push("/");
           }

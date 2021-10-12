@@ -1,7 +1,7 @@
 const { Users } = require("../../../models");
 const bcrypt = require("bcryptjs");
 
-editPassword: async (req, res) => {
+module.exports = async (req, res) => {
   const accessAuthorization = req.headers.authorization;
   const refreshAuthorization = req.cookies.refreshToken;
 
