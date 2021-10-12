@@ -3,7 +3,7 @@ import { isValidPassword } from "../../Utils/validCheckForLogin";
 import "../../Styles/EditUserInfo.css";
 import axios from "axios";
 
-function EditUserInfo({ setEditPwModal ,editPwModal }) {
+function EditUserInfo({ editPwModal, setEditPwModal}) {
 
   const [dbPassword, setdbPassword] = useState({
     password: "abcde123!"
@@ -12,7 +12,7 @@ function EditUserInfo({ setEditPwModal ,editPwModal }) {
     password: "0"
   });
 
-  const [inputValues, setInputValues] = useState({ oldPw: "", newPw: "", rePw: "" });
+  // const [inputValues, setInputValues] = useState({ oldPw: "", newPw: "", rePw: "" });
   const [checkPsword, setCheckPsword] = useState(false);
 
   const modalEl = useRef();
@@ -33,9 +33,9 @@ function EditUserInfo({ setEditPwModal ,editPwModal }) {
     };
   });
 
-  useEffect(() => {
-    passwordValidation();
-  }, [editUserPsword.password]);
+  // useEffect(() => {
+  //   passwordValidation();
+  // }, [editUserPsword.password]);
 
   // axios({
   //     method: "Patch",
@@ -52,40 +52,40 @@ function EditUserInfo({ setEditPwModal ,editPwModal }) {
   //
   //   })
 
-  const handleOldPsword = (e) => {
-    // todo: 기존의 비밀번호와 같게 입력했는지에 대한 유효성 검사
-    const { value } = e.target;
-    // console.log(value)
-    if(!isValidPassword(value)) { 
-      setCheckPsword(true);
-    } else {
-      setCheckPsword(false);
-    }
-  };
+  // const handleOldPsword = (e) => {
+  //   // todo: 기존의 비밀번호와 같게 입력했는지에 대한 유효성 검사
+  //   const { value } = e.target;
+  //   // console.log(value)
+  //   if(!isValidPassword(value)) { 
+  //     setCheckPsword(true);
+  //   } else {
+  //     setCheckPsword(false);
+  //   }
+  // };
 
-  const handleNewPsword = (e) => {
-    // todo: 
-    const { value } = e.target;
-    console.log(value)
-    if (isValidPassword(value)) {
-      setCheckPsword(false);
-      // setInputValues({ ...inputValues, [type]: value });
-    } else {
-      setCheckPsword(true);
-    }
-  };
+  // const handleNewPsword = (e) => {
+  //   // todo: 
+  //   const { value } = e.target;
+  //   console.log(value)
+  //   if (isValidPassword(value)) {
+  //     setCheckPsword(false);
+  //     // setInputValues({ ...inputValues, [type]: value });
+  //   } else {
+  //     setCheckPsword(true);
+  //   }
+  // };
 
-  const handleRePsword = (e) => {
-    // todo: 변경된 비밀번호 확인 유효성 검사에 따라 메세지 on,off
-    const { value } = e.target;
-    console.log(value)
-    if (isValidPassword(value)) {
-      setCheckPsword(false);
-      // setInputValues({ ...inputValues, [type]: value });
-    } else {
-      setCheckPsword(true);
-    }
-  };
+  // const handleRePsword = (e) => {
+  //   // todo: 변경된 비밀번호 확인 유효성 검사에 따라 메세지 on,off
+  //   const { value } = e.target;
+  //   console.log(value)
+  //   if (isValidPassword(value)) {
+  //     setCheckPsword(false);
+  //     // setInputValues({ ...inputValues, [type]: value });
+  //   } else {
+  //     setCheckPsword(true);
+  //   }
+  // };
 
 
 
@@ -115,7 +115,7 @@ function EditUserInfo({ setEditPwModal ,editPwModal }) {
                 type="password"
                 className="edit_input_prevPw"
                 placeholder="기존 비밀번호"
-                onChange={(e) => handleOldPsword(e)}
+                // onChange={(e) => handleOldPsword(e)}
               ></input>
               {checkPsword ? (
                 <label className="edit_label" for="edit_input_prevPw" id="noMatchPw">
@@ -130,7 +130,7 @@ function EditUserInfo({ setEditPwModal ,editPwModal }) {
                 type="password"
                 className="edit_input_newPw"
                 placeholder="새로운 비밀번호"
-                onChange={(e) => handleNewPsword(e)}
+                // onChange={(e) => handleNewPsword(e)}
               ></input>
               {examineEditpsword.password || examineEditpsword.password === "0" ? (
                 <label for="signup_input_password">&nbsp;</label>
@@ -145,7 +145,7 @@ function EditUserInfo({ setEditPwModal ,editPwModal }) {
                 type="password"
                 className="edit_input_checkNewPw"
                 placeholder="새로운 비밀번호 확인"
-                onChange={(e) => handleRePsword(e)}
+                // onChange={(e) => handleRePsword(e)}
               ></input>
               <label className="edit_label" for="edit_input_checkNewPw" id="noMatchNewPw">
                 새로운 비밀번호와 일치하지 않습니다

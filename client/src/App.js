@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import "./App.css";
 import Loading from "./Components/Loading";
 import EditUserInfo from "./Components/Modal/EditUserInfo";
@@ -18,10 +18,9 @@ import PlantInfo from "./Pages/PlantInfo";
 import Search from "./Pages/Search";
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isLogin, setIsLogin] = useState(true);
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
-  const [logoutModal, setLogoutModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -43,6 +42,7 @@ function App() {
   const [plantList, setPlantList] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
 
   // // app 실행시 전체 식물 조회 _ theme 페이지 별로 서버 요청할건지에 따라서 지워도 됨
   // useEffect(() => {
@@ -62,6 +62,18 @@ function App() {
   //       console.log(err);
   //     });
   // }, []);
+
+  // ---- logout
+
+  const handleLogout = () => {
+    // axios.post(`${process.env.REACT_APP_API_URL}/logout`)
+    axios.post("http://localhost:80/logout")
+    .then((res) => {
+      setUserInfo(null);
+      setIsLogin(false);
+      history.push('/');
+    });
+  };
 
   // ---- login
 
@@ -142,7 +154,9 @@ function App() {
       {scrollPosition > 60 ? <Top /> : null}
       {/* 로그인상태에 따른 Nav, NavChange 변환 */}
       {isLogin ? (
-        <NavChange setIsLogin={setIsLogin} setLogoutModal={setLogoutModal} />
+        <NavChange 
+        setIsLogin={setIsLogin} 
+        handleLogout={handleLogout} />
       ) : (
         <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
       )}
