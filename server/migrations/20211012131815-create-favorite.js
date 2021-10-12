@@ -8,11 +8,8 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      userId: {
-        type: Sequelize.STRING
-      },
-      plantId: {
-        type: Sequelize.STRING
+      favoriteId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,

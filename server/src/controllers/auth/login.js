@@ -4,9 +4,10 @@ const jwt = require("jsonwebtoken");
 // 유효성 검사 추가
 
 module.exports = async (req, res) => {
-  const userInfo = user.findOne({
-    where: { email: req.email, password: req.password },
+  const userInfo = await user.findOne({
+    where: { email: req.body.email, password: req.body.password },
   });
+  console.log(userInfo);
   const refreshToken = "refreshToken";
   res
     .status(200)

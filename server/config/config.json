@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "admin",
-    "password": "mrgreen1234!",
+    "username": "root",
+    "password": "jin21479qw@",
     "database": "mrgreen",
-    "host": "mrgreen-database.cb8bhyzvtv2i.ap-northeast-2.rds.amazonaws.com",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
