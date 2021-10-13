@@ -7,10 +7,7 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
   const modalEl = useRef();
 
   const handleCloseModal = (e) => {
-    if (
-      editPwModal &&
-      (!modalEl.current || !modalEl.current.contains(e.target))
-    ) {
+    if (e.target === modalEl.current) {
       setEditPwModal(false);
       document.body.style.overflow = "unset";
     }
@@ -37,7 +34,10 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
     "기존 비밀번호와 일치하지 않습니다",
   ];
   const [oldPwIdx, setOldPwIdx] = useState(0);
-  const rePwMsg = ["비밀번호는 8글자 이상, 특수 문자를 포함해야 합니다","새로운 비밀번호와 일치하지 않습니다", ]
+  const rePwMsg = [
+    "비밀번호는 8글자 이상, 특수 문자를 포함해야 합니다",
+    "새로운 비밀번호와 일치하지 않습니다",
+  ];
   const [rePwIdx, setRePwIdx] = useState(0);
   const handleInputPw = () => {
     //유효성 검사에 맞는지 확인후(메세지), 인풋밸류 업데이트 + 커서 이동
@@ -50,7 +50,8 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
   };
   const handleEditPwBtn = () => {
     // 모든 인풋값이 올바른 상태인지 체크(메세지),
-    // 맞다면, 서버요청 patch /user/userinfo {prevPW, newPW}
+    // 맞다면, 서버요청 patch /user/userinfo {prevPW, newPW}, 성공하면 메세지, 모달창 끔
+    //
   };
 
   const oldPwEnter = (e) => {};
@@ -59,7 +60,11 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
 
   return (
     <div className="edit">
-      <div className="modal_background"></div>
+      <div
+        className="modal_background"
+        onClick={(e) => handleCloseModal(e)}
+        ref={modalEl}
+      ></div>
       <div className="edit_modal">
         <div className="edit_modal_leftside">
           {/* 비밀번호 변경 타이틀 */}
@@ -129,19 +134,23 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
                 onClick={handleInputRenewPw}
                 onKeyPress={rePwEnter}
               ></input>
-              {lableForRePw ? <label
-                className="edit_label"
-                for="edit_input_checkNewPw"
-                id="noMatchNewPw"
-              >
-                {rePwMsg[rePwIdx]}
-              </label>: <label
-                className="edit_label"
-                for="edit_input_checkNewPw"
-                id="noMatchNewPw"
-              >
-                &nbsp;
-              </label>}
+              {lableForRePw ? (
+                <label
+                  className="edit_label"
+                  for="edit_input_checkNewPw"
+                  id="noMatchNewPw"
+                >
+                  {rePwMsg[rePwIdx]}
+                </label>
+              ) : (
+                <label
+                  className="edit_label"
+                  for="edit_input_checkNewPw"
+                  id="noMatchNewPw"
+                >
+                  &nbsp;
+                </label>
+              )}
             </div>
           </div>
           <button className="btn editPwBtn" onClick={handleEditPwBtn}>

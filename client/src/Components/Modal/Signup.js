@@ -66,7 +66,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     if (!email || !password || !gender || !nickname) {
       setExamineSignup({ ...examineSignup, ["nickname"]: false });
     } else {
-      await axios
+      axios
         .post(
           `${process.env.REACT_APP_API_URL}/user/signup`,
           {

@@ -75,7 +75,7 @@ INSERT INTO favorites (userId, plantId) VALUES (1, 3)
 INSERT INTO favorites (userId, plantId) VALUES (1, 18)
 
 
-INSERT INTO plants (kor_name, eng_name, means, description, difficulty, light, water, image) VALUES
+INSERT INTO plants (kor_name, eng_name, means, description, difficulty, light, water, image, created_at, updated_at) VALUES
 (
   "수채화 고무나무",
   "Tineke rubber tree",
@@ -84,7 +84,8 @@ INSERT INTO plants (kor_name, eng_name, means, description, difficulty, light, w
   "낮음",
   "반양지",
   "주 2회",
-  "065_Tineke rubber tree_0.jpg"
+  "065_Tineke rubber tree_0.jpg",
+  "1970-01-01 00:00:01", "1970-01-01 00:00:01"
 ),
 (
   "티트리",

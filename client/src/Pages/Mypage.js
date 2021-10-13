@@ -3,8 +3,9 @@ import profile from "../Image/Mypage/Mypage_leon.jpg";
 import "../Styles/Mypage.css";
 import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
+import EditUserInfo from '../Components/Modal/EditUserInfo';
 
-function Mypage({ setSelectedPlant, setEditPwModal }) {
+function Mypage({ setSelectedPlant, setEditPwModal, editPwModal }) {
 
   const handleEditPsWord = () => {
     setEditPwModal(true)
@@ -19,9 +20,9 @@ function Mypage({ setSelectedPlant, setEditPwModal }) {
             <div className="userpage_UserInfo">
               <div className="userpage_NickName">Kimcoding</div>
               <div className="userpage_Email">
-                <a href="https://google.com">Kimcoding@gmail.com</a>
+                <div className="userpate_emailContent">Kimcoding@gmail.com</div>
               </div>
-              {/* {editPwModal ? <EditUserInfo /> : null} */}
+              {editPwModal ? <EditUserInfo editPwModal={editPwModal} setEditPwModal={setEditPwModal} /> : null}
               <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>
