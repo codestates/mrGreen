@@ -25,7 +25,5 @@ app.use("/user", userRouter);
 app.use("/favorite", favoriteRouter);
 
 app.listen(port, () => {
-  console.log(`Server listening ${port}`)
-})
-
-
+  console.log(`Server listening ${port}`);
+});

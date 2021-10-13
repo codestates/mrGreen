@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import "../Styles/PlantCard.css";
 
 function PlantCard({ plant, setSelectedPlant }) {
+  const plantInfoHandler = () => {
+    setSelectedPlant(plant);
+    window.scrollTo({ top: 0 });
+  };
   return (
-    <div onClick={() => setSelectedPlant(plant)}>
+    <div onClick={() => plantInfoHandler()}>
       <Link to="/plantInfo" key={plant.id} className="plantCard">
         <img
           src={require(`../Image/PlantList/${plant.image}`).default}

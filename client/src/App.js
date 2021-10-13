@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import "./App.css";
-import { mainplants } from './assets/mainplant';
+import { mainplants } from "./assets/mainplant";
 import Loading from "./Components/Loading";
 import Login from "./Components/Modal/Login";
 import Signup from "./Components/Modal/Signup";
@@ -23,6 +23,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
+  // const [logoutModal, setLogoutModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -60,7 +61,6 @@ function App() {
       })
       .then((res) => {
         if (res.status === 200) {
-          
           // console.log("plnatList from db", res.data)
           const plants = res.data.plantlist;
           setPlantList([...plants]);
@@ -70,7 +70,7 @@ function App() {
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-        setPlantList(mainplants)
+        setPlantList(mainplants);
       });
   }, []);
 
@@ -189,9 +189,7 @@ function App() {
         />
       ) : null}
       {isLogin ? (
-        <NavChange 
-        setIsLogin={setIsLogin} 
-        handleLogout={handleLogout} />
+        <NavChange setIsLogin={setIsLogin} handleLogout={handleLogout} />
       ) : (
         <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
       )}
@@ -201,6 +199,7 @@ function App() {
         </Route>
         <Route exact path="/mypage">
           <Mypage
+            plantList={plantList}
             setSelectedPlant={setSelectedPlant}
             editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}
