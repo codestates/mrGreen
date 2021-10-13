@@ -23,10 +23,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
-<<<<<<< HEAD
-=======
   // const [logoutModal, setLogoutModal] = useState(false);
->>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -175,13 +172,6 @@ function App() {
       {isLoading ? <Loading /> : null}
       {scrollPosition > 60 ? <Top /> : null}
       {/* 로그인상태에 따른 Nav, NavChange 변환 */}
-      {isLogin ? (
-        <NavChange 
-        setIsLogin={setIsLogin} 
-        handleLogout={handleLogout} />
-      ) : (
-        <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
-      )}
       {/* loginModal의 상태에 따른 컴포넌트 실행여부 */}
       {loginModal ? (
         <Login
@@ -199,31 +189,24 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-<<<<<<< HEAD
-      {editPwModal ? <EditUserInfo
-      editPwModal={editPwModal}
-      setEditPwModal={setEditPwModal}  
-      /> : null}
-
-=======
->>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
+      {isLogin ? (
+        <NavChange 
+        setIsLogin={setIsLogin} 
+        handleLogout={handleLogout} />
+      ) : (
+        <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
+      )}
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
-<<<<<<< HEAD
-          <Mypage 
-          setSelectedPlant={setSelectedPlant}
-          setEditPwModal={setEditPwModal}    
-=======
           <Mypage
             setSelectedPlant={setSelectedPlant}
             editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}
             userInfo={userInfo}
             setUserInfo={setUserInfo}
->>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
           />
         </Route>
         <Route exact path="/search">
