@@ -29,12 +29,12 @@ module.exports = (req, res) => {
       if (!data) {
         return res.status(404).send({ message: "Invalid user" });
       } else {
-        console.log("login 파인드원 데이터 밸류", data.dataValues);
+        // console.log("login 파인드원 데이터 밸류", data.dataValues);
         const userPayload = {
           nickname: data.dataValues.nickname,
           email: data.dataValues.email,
         };
-        console.log(userPayload);
+        // console.log(userPayload);
         //console.log("login user payload ", userPayload);
         // delete userPayload.password;
         // console.log("login findOne password delete", userPayload)

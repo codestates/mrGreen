@@ -99,7 +99,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
           if (res.status === 200) {
             //로그인 상태 변경, 쿠키에 있는 엑세스 토큰을 상태로 저장, 로그인 모달 끄고, 메인으로
 
-            console.log(res.data);
+            console.log("로그인 응답 데이터", res.data);
             loginHandler(res.data.accessToken);
             setLoginModal(false);
             history.push("/");
