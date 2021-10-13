@@ -13,6 +13,8 @@ module.exports = {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
     });
+    //Authorization: Bearer
+    //jwt=a;lkdjfalkdsjf
   },
   sendAccessToken: (res, accessToken) => {
     res.json({ data: { acessToken: accessToken }, message: "ok" });

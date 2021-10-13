@@ -32,7 +32,6 @@ module.exports = (req, res) => {
           nickname: data.dataValues.nickname,
           email: data.dataValues.email,
         };
-
         const accessToken = generateAccessToken(userPayload);
         const refreshToken = generateRefreshToken(userPayload);
         sendRefreshToken(res, refreshToken);
