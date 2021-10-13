@@ -5,14 +5,14 @@ import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
 require("dotenv").config();
 
 function Signup({ signupModal, setSignupModal, setLoginModal }) {
-  const [signupValue, setSignupValue] = useState({ 
+  const [signupValue, setSignupValue] = useState({
     email: "",
     nickname: "",
     password: "",
     gender: "",
   });
 
-  const [examineSignup, setExamineSignup] = useState({  
+  const [examineSignup, setExamineSignup] = useState({
     gender: false,
     email: "0",
     password: "0",
@@ -44,9 +44,9 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     };
   });
 
-  const modalEl = useRef(); 
+  const modalEl = useRef();
 
-  const handleCloseModal = (e) => { 
+  const handleCloseModal = (e) => {
     if (
       signupModal &&
       (!modalEl.current || !modalEl.current.contains(e.target))
@@ -56,8 +56,8 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     }
   };
 
-  const handleLoginBtn = () => { 
-    setSignupModal(false); 
+  const handleLoginBtn = () => {
+    setSignupModal(false);
     setLoginModal(true);
   };
 
@@ -80,7 +80,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     } else {
       axios({
         method: "POST'",
-        url: `http://localhost:80/user/signup`,
+        url: "http://localhost:80/user/signup",
         headers: {
           "Content-Type": "application/json",
           // "Access-Control-Allow-Origin": "http://localhost:80", // 오리진 지정
@@ -118,22 +118,33 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     }
   };
 
-    if (
-      signupValue.gender.length > 0 ||
-      signupValue.nickname.length > 0 ||
-      reg_pw3.test(signupValue.password) ||
-      reg_email.test(signupValue.email)
-    ) {
-      console.log("스테이트 true");
-      setExamineSignup({ ...examineSignup, [e.target.name]: true }); 
-    } else if (
-      signupValue.gender.length === 0 ||
-      signupValue.nickname.length === 0 ||
-      reg_pw3.test(signupValue.password) ||
-      reg_email.test(signupValue.email)
-    ) {
-      console.log("스테이트 false");
-      setExamineSignup({ ...examineSignup, [e.target.name]: false });  
+  const emailValidation = () => {
+    if (isValidEmail(signupValue.email)) {
+      setExamineSignup({ ...examineSignup, ["email"]: true });
+    } else {
+      setExamineSignup({ ...examineSignup, ["email"]: false });
+    }
+
+    if (signupValue.email.length === 0) {
+      setExamineSignup({ ...examineSignup, ["email"]: "0" });
+    }
+  };
+
+  const passwordValidation = () => {
+    if (isValidPassword(signupValue.password)) {
+      setExamineSignup({ ...examineSignup, ["password"]: true });
+    } else {
+      setExamineSignup({ ...examineSignup, ["password"]: false });
+    }
+
+    if (signupValue.password.length === 0) {
+      setExamineSignup({ ...examineSignup, ["password"]: "0" });
+    }
+  };
+
+  const genderValidation = () => {
+    if (signupValue.gender.length > 0) {
+      setExamineSignup({ ...examineSignup, ["gender"]: true });
     }
   };
 
@@ -256,5 +267,6 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
       </div>
     </div>
   );
+}
 
 export default Signup;

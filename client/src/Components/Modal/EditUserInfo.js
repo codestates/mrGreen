@@ -4,7 +4,6 @@ import "../../Styles/EditUserInfo.css";
 import axios from "axios";
 
 function EditUserInfo({ setEditPwModal, editPwModal }) {
-  const modalEl = useRef();
 
   // const [inputValues, setInputValues] = useState({ oldPw: "", newPw: "", rePw: "" });
   const [checkPsword, setCheckPsword] = useState(false);

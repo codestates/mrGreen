@@ -67,8 +67,6 @@ function App() {
   // }, []);
 
   // ----- log out
-  const history = useHistory();
-
   const handleLogout = () => {
     // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
     axios

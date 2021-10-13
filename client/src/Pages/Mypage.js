@@ -20,8 +20,6 @@ function Mypage({ setSelectedPlant, setEditPwModal }) {
     document.body.style.overflow = "hidden";
   }
 
-  
-
   /* userinfo 값을 가져오는 코드 */
 
   // axios({
@@ -40,10 +38,6 @@ function Mypage({ setSelectedPlant, setEditPwModal }) {
   //   console.log(res);
   //   // setUserInfo(res.value)
   // })
-
-  const handleEditPsWord = () => {
-    setEditPwModal(true)
-  }
 
   return (
     <div className="mypage_Containor">
