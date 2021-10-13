@@ -1,16 +1,19 @@
-// 비밀번호를 변경하는 컴포넌트 입니다.
-
 import React, { useEffect, useRef, useState } from "react";
+import { isValidPassword } from "../../Utils/validCheckForLogin";
 import "../../Styles/EditUserInfo.css";
+import axios from "axios";
 
 function EditUserInfo({ setEditPwModal, editPwModal }) {
-  const modalEl = useRef();
 
+  // const [inputValues, setInputValues] = useState({ oldPw: "", newPw: "", rePw: "" });
+  const [checkPsword, setCheckPsword] = useState(false);
+
+  const modalEl = useRef();
   const handleCloseModal = (e) => {
     if (e.target === modalEl.current) {
       setEditPwModal(false);
       document.body.style.overflow = "unset";
-    }
+    };
   };
 
   useEffect(() => {

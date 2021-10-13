@@ -23,7 +23,10 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
+<<<<<<< HEAD
+=======
   // const [logoutModal, setLogoutModal] = useState(false);
+>>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -46,6 +49,7 @@ function App() {
   const [plantList, setPlantList] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const history = useHistory();
 
   // console.log(plantList);
 
@@ -75,8 +79,6 @@ function App() {
   }, []);
 
   // ----- log out
-  const history = useHistory();
-
   const handleLogout = () => {
     // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
     axios
@@ -174,7 +176,9 @@ function App() {
       {scrollPosition > 60 ? <Top /> : null}
       {/* 로그인상태에 따른 Nav, NavChange 변환 */}
       {isLogin ? (
-        <NavChange setIsLogin={setIsLogin} handleLogout={handleLogout} />
+        <NavChange 
+        setIsLogin={setIsLogin} 
+        handleLogout={handleLogout} />
       ) : (
         <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
       )}
@@ -195,17 +199,31 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
+<<<<<<< HEAD
+      {editPwModal ? <EditUserInfo
+      editPwModal={editPwModal}
+      setEditPwModal={setEditPwModal}  
+      /> : null}
+
+=======
+>>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
+<<<<<<< HEAD
+          <Mypage 
+          setSelectedPlant={setSelectedPlant}
+          setEditPwModal={setEditPwModal}    
+=======
           <Mypage
             setSelectedPlant={setSelectedPlant}
             editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}
             userInfo={userInfo}
             setUserInfo={setUserInfo}
+>>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
           />
         </Route>
         <Route exact path="/search">
