@@ -48,8 +48,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
-  // console.log(plantList);
-
   // // app 실행시 전체 식물 조회 _ theme 페이지 별로 서버 요청할건지에 따라서 지워도 됨
   useEffect(() => {
     setIsLoading(true);
@@ -63,7 +61,7 @@ function App() {
         if (res.status === 200) {
           // console.log("plnatList from db", res.data)
           const plants = res.data.plantlist;
-          setPlantList([...plants]);
+          setPlantList(plants);
           setIsLoading(false);
         }
       })
@@ -74,11 +72,19 @@ function App() {
       });
   }, []);
 
+  console.log("plantList", plantList);
+
   // ----- log out
   const handleLogout = () => {
     // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
-    axios
-      .post(`${process.env.REACT_APP_API_URL}/user/logout`)
+    axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}/user/logout`,
+      headers: {
+        "Content-Type": "application/json",
+        accessToken: `Bearer ${accessToken}`,
+      },
+    })
       .then((res) => {
         if (res.status === 200) setUserInfo({});
         setIsLogin(false);

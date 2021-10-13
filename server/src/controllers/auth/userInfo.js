@@ -18,12 +18,10 @@ module.exports = async (req, res) => {
   if (!tokenUserInfo) {
     res.status(401).json({ message: "Invalid User" });
   } else {
-    //console.log("tokenUserInfo-----", tokenUserInfo);
     const { email } = tokenUserInfo;
     user
       .findOne({ where: { email: email } })
       .then((userdata) => {
-        //console.log(userdata);
         const { id, nickname, email, gender } = userdata.dataValues;
         favorite
           .findAll({ where: { userId: id }, attributes: ["plantId"] })
@@ -40,7 +38,7 @@ module.exports = async (req, res) => {
                   delete obj.dataValues.updatedAt;
                   return obj.dataValues;
                 });
-                //console.log(favoritePlants);
+
                 const dataForUserInfo = {
                   user: { id, nickname, email, gender },
                   favorite: favoritePlants,
