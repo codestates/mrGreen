@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PlantCard from "../Components/PlantCard";
 import "../Styles/Search.css";
 import "../Styles/PlantCard.css";
-import { searchplants } from "../assets/searchplants";
-import axios from "axios";
 
-function Search({ setSelectedPlant, isLoading, setIsLoading }) {
+function Search({ setSelectedPlant, plantListData }) {
+  console.log(plantListData);
   const [searchValue, setSearchValue] = useState("");
-  const [allPlantList, setAllPlantList] = useState(searchplants);
-  const [searchPlantList, setsearchPlantList] = useState(searchplants);
-  const [morePlantList, setMorePlantList] = useState(searchplants.slice(0, 18));
-
-  //! 서버에서 식물전체리스트 받는 useEffect
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   axios({
-  //     method: "GET'",
-  //     url: `${process.env.REACT_APP_API_URL}/plantlist`,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     withCredentials: true,
-  //   }).then((res) => setAllPlantList(res.data));
-  //   setIsLoading(false);
-  // }, []);
+  const [allPlantList, setAllPlantList] = useState(plantListData);
+  const [searchPlantList, setsearchPlantList] = useState(plantListData);
+  const [morePlantList, setMorePlantList] = useState(allPlantList.slice(0, 18));
 
   //! 버튼 클릭했을 때 필터링 되는 함수
   const searchPlantClick = () => {
@@ -43,9 +28,9 @@ function Search({ setSelectedPlant, isLoading, setIsLoading }) {
   //! 더보기 버튼 눌렀을 때 더 보여주는 함수
   const morePlantlistHandler = () => {
     if (searchPlantList.length > morePlantList.length) {
-      setMorePlantList(searchPlantList.slice(0, morePlantList.length + 18));
+      setMorePlantList(searchPlantList.slice(0, morePlantList.length + 12));
     } else {
-      setMorePlantList(allPlantList.slice(0, morePlantList.length + 18));
+      setMorePlantList(allPlantList.slice(0, morePlantList.length + 12));
     }
   };
 
@@ -65,16 +50,18 @@ function Search({ setSelectedPlant, isLoading, setIsLoading }) {
           </button>
         </div>
 
-        <div className="searchPlant">
-          {morePlantList.map((plant, index) => {
-            return (
-              <PlantCard
-                setSelectedPlant={setSelectedPlant}
-                key={index}
-                plant={plant}
-              />
-            );
-          })}
+        <div className="searchPlant_container">
+          <div className="searchPlant">
+            {morePlantList.map((plant, index) => {
+              return (
+                <PlantCard
+                  setSelectedPlant={setSelectedPlant}
+                  key={index}
+                  plant={plant}
+                />
+              );
+            })}
+          </div>
         </div>
 
         {morePlantList.length === 0 ? (
