@@ -23,10 +23,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
-<<<<<<< HEAD
-=======
   // const [logoutModal, setLogoutModal] = useState(false);
->>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -199,31 +196,17 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-<<<<<<< HEAD
-      {editPwModal ? <EditUserInfo
-      editPwModal={editPwModal}
-      setEditPwModal={setEditPwModal}  
-      /> : null}
-
-=======
->>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
-<<<<<<< HEAD
-          <Mypage 
-          setSelectedPlant={setSelectedPlant}
-          setEditPwModal={setEditPwModal}    
-=======
           <Mypage
             setSelectedPlant={setSelectedPlant}
             editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}
             userInfo={userInfo}
             setUserInfo={setUserInfo}
->>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
           />
         </Route>
         <Route exact path="/search">
