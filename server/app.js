@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-const express = require('express');
-=======
 require("dotenv").config();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const express = require("express");
->>>>>>> 96cdc0e614db0b80d2f05be4f6fe1cf9f4d660dc
 const app = express();
 const port = 80;
 

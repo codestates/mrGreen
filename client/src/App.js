@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import "./App.css";
+import { mainplants } from './assets/mainplant';
 import Loading from "./Components/Loading";
-import EditUserInfo from "./Components/Modal/EditUserInfo";
 import Login from "./Components/Modal/Login";
 import Signup from "./Components/Modal/Signup";
 import Nav from "./Components/Nav";
@@ -23,6 +23,10 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
+<<<<<<< HEAD
+=======
+  // const [logoutModal, setLogoutModal] = useState(false);
+>>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -42,7 +46,7 @@ function App() {
         image: "001_Monstera.jpg",
       }
   );
-  const [plantListData, setPlantListData] = useState([]);
+  const [plantList, setPlantList] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
@@ -60,14 +64,17 @@ function App() {
       })
       .then((res) => {
         if (res.status === 200) {
+          
+          // console.log("plnatList from db", res.data)
           const plants = res.data.plantlist;
-          setPlantListData(plants);
+          setPlantList([...plants]);
           setIsLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setPlantList(mainplants)
       });
   }, []);
 
@@ -192,27 +199,40 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
+<<<<<<< HEAD
       {editPwModal ? <EditUserInfo
       editPwModal={editPwModal}
       setEditPwModal={setEditPwModal}  
       /> : null}
 
+=======
+>>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
         </Route>
         <Route exact path="/mypage">
+<<<<<<< HEAD
           <Mypage 
           setSelectedPlant={setSelectedPlant}
           setEditPwModal={setEditPwModal}    
+=======
+          <Mypage
+            setSelectedPlant={setSelectedPlant}
+            editPwModal={editPwModal}
+            setEditPwModal={setEditPwModal}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
+>>>>>>> fe6d541ce33b4ab98a0840f17a12a2aa164f7dbc
           />
         </Route>
         <Route exact path="/search">
           <Search
-            plantListData={plantListData}
+            plantList={plantList}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             setSelectedPlant={setSelectedPlant}
+            plantList={plantList}
           />
         </Route>
         <Route exact path="/interior">

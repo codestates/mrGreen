@@ -2,22 +2,23 @@ import axios from "axios";
 import { useState } from "react";
 import "../Styles/PlantInfo.css";
 
-function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
+function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
   const [mypageAdd, setMypageAdd] = useState(true);
   const [addPlant, setAddPlant] = useState(false);
   const [deletePlant, setDeletePlant] = useState(false);
   const [afterLogin, setAfterLogin] = useState(false);
-  //! 에러때문에 주석
-  // const numsOfFavorites = userInfo.favorite.map((obj) => obj.id); // [3,9,14,19,50]
+  const userinfoFavorite = userInfo.favorite || [];
+  const numsOfFavorites = userinfoFavorite.map((obj) => obj.id); // [3,9,14,19,50]
   const [toastOn, setToastOn] = useState(false);
   const [toastIdx, setToastIdx] = useState(0);
   const toastMsg = [
     "로그인 후 이용 하실 수 있습니다",
     "식물을 삭제하였습니다",
     "식물을 추가하였습니다",
+    "서버 오류입니다, 다시 시도해주세요",
   ];
   //!원래 되어있는 부분 에러때문에 주석
-  // const isInFavorite = numsOfFavorites.indexOf(plant.id);
+  const isInFavorite = numsOfFavorites.indexOf(plant.id);
   const handleAddFavorite = (e) => {
     // 로그인 상태가 아닐때, 토스트 "로그인 후 이용"
     // 로그인 상태일 때
@@ -30,8 +31,14 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
         setToastOn(false);
       }, 1500);
     } else {
+      if (userInfo.length === 0) {
+        // 로그인은 성공, 유저인포가 없어서 즐겨찾기를 모름
+        // 유저 인포 요청을 다시함
+      }
+      console.log("선택된 식물 아이디", plant.id)
+      // plant.id , 배열상에 있는지 없는지 관련해서 분기
       axios
-        .post(`${process.env.REACT_APP_API_URL}/favorite/plant:${plant.Id}`, {
+        .post(`${process.env.REACT_APP_API_URL}/favorite:${plant.id}`, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         })
@@ -43,7 +50,9 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
             setToastOn(false);
           }, 1500);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -63,9 +72,17 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
           setTimeout(() => {
             setToastOn(false);
           }, 1500);
+        } else {
+          setToastIdx(3);
+          setToastOn(true);
+          setTimeout(() => {
+            setToastOn(false);
+          }, 1500);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   //! 토스트 확인용 함수
@@ -110,9 +127,7 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
         <div className="plant_top_area">
           <div className="plant_title_area">
             <div className="plant_name">{plant.eng_name}</div>
-            {!isLogin ? (
-              //!에러때문에 주석
-              // || isInFavorite === -1
+            {!isLogin || isInFavorite === -1 ? (
               <div onClick={handleAddFavorite} className="add_favorite">
                 <button className="plusBtn">+</button>
                 <div className="plusBtn_desc">추가하기</div>

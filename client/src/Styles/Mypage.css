@@ -44,32 +44,15 @@
 }
 
 .userpage_Email {
-  margin-top: 3px;
-  margin-left: 2px;
-  font-size: var(--font--16--size);
+  margin-top: 8px;
+  font-size: var(--font--14--size);
   color: var(--deepGray--color);
-}
-
-.userpage_Email a {
-  text-decoration: none;
-}
-
-.userpage_Email a:hover {
-  color: var(--deepGray--color);
-}
-
-.userpage_Email a:visited {
-  color: var(--deepGray--color);
-}
-
-.userpage_Email a:active {
-  color: var(--black--color);
 }
 
 .userpage_UserInfo button {
   background-color: white;
   width: 130px;
-  height: 35px;
+  height: 34px;
   border-radius: 100px;
   font-size: var(--font--14--size);
   color: var(--deepGray--color);
@@ -83,6 +66,7 @@
   background-color: transparent;
   border: solid 1px var(--red--color);
   border-width: 2px;
+  cursor: pointer;
 }
 
 .userplant {
@@ -110,6 +94,11 @@
   margin-bottom: 70px;
   grid-template-columns: repeat(6, auto);
   gap: 35px 35px;
+}
+
+.userpage_emailContent {
+  color: #252525;
+  font-size: var(--font--14--size);
 }
 
 @media screen and (max-width: 1430px) {

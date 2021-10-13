@@ -6,6 +6,7 @@ import img2 from "../Image/Theme/Interior/interior_2.jpeg";
 import img3 from "../Image/Theme/Interior/interior_3.jpeg";
 import img4 from "../Image/Theme/Interior/interior_4.jpeg";
 import { mainplants } from "../assets/mainplant";
+import { interiorList } from "../assets/interiorList";
 
 import "../Styles/Interior.css";
 
@@ -129,7 +130,7 @@ function Interior({ setSelectedPlant }) {
           </div>
         </div>
         <div className="main_plants_in scroll">
-          {mainplants.map((plant, idx) => (
+          {interiorList.map((plant, idx) => (
             <PlantCard
               setSelectedPlant={setSelectedPlant}
               plant={plant}
