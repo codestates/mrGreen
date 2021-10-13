@@ -16,7 +16,7 @@
 
 .edit {
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   overflow: hidden;
   position: fixed;
   z-index: 300;
@@ -43,13 +43,15 @@
   transform: scale(0.98);
 }
 
-.modal_background {
-  width: 100vw;
+.edit_background {
+  /* width: 100vw;
+  height: 100vh; */
   background-color: rgba(31, 29, 29, 0.7);
-  content: "";
   top: 0;
   left: 0;
-  position: absolute;
+  right: 0;
+  bottom: 0;
+  position: fixed;
   z-index: 400;
 }
 
@@ -111,6 +113,7 @@
 .edit_input_area label {
   color: var(--red--color);
   font-size: var(--font--10--size);
+  white-space: pre-wrap;
 }
 
 .edit_label {

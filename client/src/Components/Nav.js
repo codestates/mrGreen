@@ -5,11 +5,13 @@ import "../Styles/Nav.css";
 function Nav({ setLoginModal, setSignupModal }) {
   const handleLoginBtn = () => {
     setLoginModal(true);
+    setSignupModal(false);
     document.body.style.overflow = "hidden";
   };
 
   const handleSignupBtn = () => {
     setSignupModal(true);
+    setLoginModal(false);
     document.body.style.overflow = "hidden";
   };
   return (

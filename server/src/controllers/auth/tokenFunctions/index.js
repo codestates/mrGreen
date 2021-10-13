@@ -1,12 +1,12 @@
 require("dotenv").config();
-const { sign, verify } = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 module.exports = {
   generateAccessToken: (data) => {
-    return sign(data, process.env.ACCESS_SECRET, { expiresIn: "15s" });
+    return jwt.sign(data, process.env.ACCESS_SECRET, { expiresIn: "15s" });
   },
   generateRefreshToken: (data) => {
-    return sign(data, process.env.REFRESH_SECRET, { expiresIn: "30d" });
+    return jwt.sign(data, process.env.REFRESH_SECRET, { expiresIn: "30d" });
   },
   sendRefreshToken: (res, refreshToken) => {
     res.cookie("refreshToken", refreshToken, {
@@ -20,17 +20,13 @@ module.exports = {
     res.json({ data: { accessToken, userInfo: data }, message: "ok" });
   },
   isAuthorized: (req) => {
-    const authorization = req.headers["authorization"];
-    if (!authorization) {
+    const cookie = req.headers.cookie;
+    if (!cookie) {
       return null;
     }
-    const token = authorization.split(" ")[1];
-    try {
-      return verify(token, process.env.ACCESS_SECRET);
-    } catch (err) {
-      // return null if invalid token
-      return null;
-    }
+    const token = cookie.split("=")[1]
+    let userInfo = jwt.verify(token, process.env.REFRESH_SECRET);
+    return userInfo;
   },
   checkRefeshToken: (refreshToken) => {
     try {
