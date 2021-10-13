@@ -1,5 +1,3 @@
-
-   
 const { user } = require("../../../models");
 require("dotenv").config();
 // const { sign, verify } = require("jsonwebtoken");
@@ -15,7 +13,7 @@ module.exports = (req, res) => {
   // const regexForEmail =
   //   /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
   // const regexForPw = /(?=.*[a-zA-ZS])(?=.*?[#?!@$%^&*-]).{8,24}/;
-  
+
   // const isValidEmail = email.match(regexForEmail);
   // const isValidPw = email.match(regexForPw);
   // if (!isValidEmail) res.status(404).send({ message: "Invalid user" });
@@ -31,7 +29,7 @@ module.exports = (req, res) => {
       if (!data) {
         return res.status(404).send({ message: "Invalid user" });
       } else {
-        console.log("login 파인드원 데이터 밸류",data.dataValues);
+        console.log("login 파인드원 데이터 밸류", data.dataValues);
         const userPayload = {
           nickname: data.dataValues.nickname,
           email: data.dataValues.email,

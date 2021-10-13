@@ -23,6 +23,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
+  // const [logoutModal, setLogoutModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -198,6 +199,7 @@ function App() {
         </Route>
         <Route exact path="/mypage">
           <Mypage
+            plantList={plantList}
             setSelectedPlant={setSelectedPlant}
             editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}

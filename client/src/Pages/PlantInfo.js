@@ -8,7 +8,8 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
   const [deletePlant, setDeletePlant] = useState(false);
   const [afterLogin, setAfterLogin] = useState(false);
   const userinfoFavorite = userInfo.favorite || [];
-  const numsOfFavorites = userinfoFavorite.map((obj) => obj.id); // [3,9,14,19,50]
+  // const numsOfFavorites = userinfoFavorite.map((obj) => obj.id); // [3,9,14,19,50]
+  const numsOfFavorites = [132, 30, 17, 1]; // [3,9,14,19,50]
   const [toastOn, setToastOn] = useState(false);
   const [toastIdx, setToastIdx] = useState(0);
   const toastMsg = [
@@ -16,10 +17,11 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
     "식물을 삭제하였습니다",
     "식물을 추가하였습니다",
     "서버 오류입니다, 다시 시도해주세요",
+    "이미 추가된 식물입니다",
   ];
   //!원래 되어있는 부분 에러때문에 주석
   const isInFavorite = numsOfFavorites.indexOf(plant.id);
-  const handleAddFavorite = (e) => {
+  const handleAddFavorite = () => {
     // 로그인 상태가 아닐때, 토스트 "로그인 후 이용"
     // 로그인 상태일 때
     // 유저의 즐겨찾기 정보에 해당 플랜트가 없을 때, axios 추가요청 후 성공시 -> 토스트 "추가됨"
@@ -31,24 +33,30 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
         setToastOn(false);
       }, 1500);
     } else {
-      if (userInfo.length === 0) {
-        // 로그인은 성공, 유저인포가 없어서 즐겨찾기를 모름
-        // 유저 인포 요청을 다시함
-      }
-      console.log("선택된 식물 아이디", plant.id)
-      // plant.id , 배열상에 있는지 없는지 관련해서 분기
-      axios
-        .post(`${process.env.REACT_APP_API_URL}/favorite:${plant.id}`, {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
-        })
+      axios({
+        method: "post",
+        url: `${process.env.REACT_APP_API_URL}/favorite/${plant.id}`,
+        // data: { userId: userInfo.id },
+        data: { userId: 13 },
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      })
         .then((res) => {
-          setUserInfo({ ...userInfo, favorite: res.data.favorite });
-          setToastIdx(2);
-          setToastOn(true);
-          setTimeout(() => {
-            setToastOn(false);
-          }, 1500);
+          if (res.status === 200) {
+            console.log(res.data.favoritePlant);
+            setUserInfo({ ...userInfo, favorite: res.data.favoritePlant });
+            setToastIdx(2);
+            setToastOn(true);
+            setTimeout(() => {
+              setToastOn(false);
+            }, 1500);
+          } else {
+            setToastIdx(4);
+            setToastOn(true);
+            setTimeout(() => {
+              setToastOn(false);
+            }, 1500);
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -56,16 +64,21 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
     }
   };
 
-  const handleDelFavorite = (e) => {
+  const handleDelFavorite = () => {
     // axios 삭제 요청 후 성공시 -> 토스트 "삭제되었습니다"
-    axios
-      .delete(`${process.env.REACT_APP_API_URL}/favorite/plant:${plant.Id}`, {
-        headers: { "Content-Type": "application/json" },
-        withCredentials: true,
-      })
+
+    axios({
+      method: "delete",
+      url: `${process.env.REACT_APP_API_URL}/favorite/${plant.id}`,
+      // data: { userId: userInfo.id },
+      data: { userId: 13 },
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    })
       .then((res) => {
         if (res.status === 200) {
-          const favoriteList = res.data.favorite;
+          const favoriteList = res.data.favoritePlant;
+          console.log(favoriteList);
           setUserInfo({ ...userInfo, favorite: favoriteList });
           setToastIdx(1);
           setToastOn(true);
