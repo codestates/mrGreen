@@ -1,6 +1,6 @@
 const { user } = require("../../../models");
 require("dotenv").config();
-const { sign, verify } = require("jsonwebtoken");
+// const { sign, verify } = require("jsonwebtoken");
 const {
   generateAccessToken,
   generateRefreshToken,
@@ -8,7 +8,7 @@ const {
   sendAccessToken,
 } = require("./tokenFunctions");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   // 유효성 검사
   //
   // 401 { "message" : "Invalid password"}

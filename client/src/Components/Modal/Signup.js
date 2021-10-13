@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import "../../Styles/Signup.css";
 import axios from "axios";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
-require("dotenv").config();
 
 function Signup({ signupModal, setSignupModal, setLoginModal }) {
   const [signupValue, setSignupValue] = useState({
@@ -22,7 +21,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
   //! 유효성 검사 useEffect
   useEffect(() => {
     nicknameValidation();
-  }, [signupValue.nickname]);
+  }, [signupValue]);
 
   useEffect(() => {
     emailValidation();
@@ -36,21 +35,12 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     genderValidation();
   }, [signupValue.gender]);
 
-  //! 모달 창 useEffect
-  useEffect(() => {
-    window.addEventListener("click", handleCloseModal);
-    return () => {
-      window.removeEventListener("click", handleCloseModal);
-    };
-  });
-
-  const modalEl = useRef();
+  const modalEl = useRef(null);
 
   const handleCloseModal = (e) => {
-    if (
-      signupModal &&
-      (!modalEl.current || !modalEl.current.contains(e.target))
-    ) {
+    console.log(e.target);
+    if (e.target === modalEl.current) {
+      console.log("들어옴");
       setSignupModal(false);
       document.body.style.overflow = "unset";
     }
@@ -61,10 +51,8 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     setLoginModal(true);
   };
 
-  console.log(examineSignup.nickname);
-
   //! 회원가입 구현
-  const signupHandler = () => {
+  const signupHandler = async () => {
     const { email, password, gender, nickname } = examineSignup;
 
     console.log(email, password, gender, nickname);
@@ -78,27 +66,24 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
     if (!email || !password || !gender || !nickname) {
       setExamineSignup({ ...examineSignup, ["nickname"]: false });
     } else {
-      axios({
-        method: "POST'",
-        url: `http://localhost:80/user/signup`,
-        headers: {
-          "Content-Type": "application/json",
-          // "Access-Control-Allow-Origin": "http://localhost:80", // 오리진 지정
-          // "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS", // 메소드 지정
-          // "Access-Control-Allow-Headers": "Content-Type, Accept", // 헤더지정
-          // "Access-Control-Max-Age": 10, // 얼마나 자주 프리플라이트 리퀘스트를 보낼껀지
-        },
-        withCredentials: true,
-        data: {
-          email: signupValue.email,
-          nickname: signupValue.nickname,
-          password: signupValue.password,
-          gender: signupValue.gender,
-        },
-      })
+      await axios
+        .post(
+          `${process.env.REACT_APP_API_URL}/user/signup`,
+          {
+            email: signupValue.email,
+            nickname: signupValue.nickname,
+            password: signupValue.password,
+            gender: signupValue.gender,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          }
+        )
         .then((res) => {
           if (res.status === 201) {
-            console.log("-----res-----", res);
             setSignupModal(false);
             setLoginModal(true);
             document.body.style.overflow = "hidden";
@@ -157,8 +142,12 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
 
   return (
     <div className="signup">
-      <div className="modal_background">
-        <div className="signup_modal" ref={modalEl}>
+      <div
+        onClick={(e) => handleCloseModal(e)}
+        ref={modalEl}
+        className="modal_background"
+      >
+        <div className="signup_modal">
           <div className="signup_modal_leftside">
             <div className="signup_title">Sign Up</div>
             <div className="signup_mid">
