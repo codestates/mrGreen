@@ -5,7 +5,6 @@ import {
   isSamePassword,
   isValidPassword,
 } from "../../Utils/validCheckForLogin";
-<<<<<<< Updated upstream
 import axios from 'axios';
 
 function EditUserInfo({ setEditPwModal, editPwModal }) {
@@ -14,13 +13,6 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
   const cursorNewPw = useRef(null);
   const cursorRePw = useRef(null);
 
-=======
-
-function EditUserInfo({ setEditPwModal, editPwModal }) {
-  const modalEl = useRef(null);
-  const cursorNewPw = useRef(null);
-  const cursorRePw = useRef(null);
->>>>>>> Stashed changes
   const handleCloseModal = (e) => {
     if (e.target === modalEl.current) {
       setEditPwModal(false);
@@ -87,35 +79,20 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
   };
   const handleInputRenewPw = (e) => {
     // 앞의 비번과 맞는지 확인후(메세지), 인풋밸류 업데이트 + 엔터시 버튼 실행
-<<<<<<< Updated upstream
     // console.log("세번째")
     const { name, value } = e.target;
     if (!isValidPassword(value)) {
       // console.log("유효성")
-=======
-    console.log("세번째");
-    const { name, value } = e.target;
-    if (!isValidPassword(value)) {
-      console.log("유효성");
->>>>>>> Stashed changes
 
       setRePwIdx(0);
       setLabelForRePw(true);
     } else if (!isSamePassword(value, inputValues.newPw)) {
-<<<<<<< Updated upstream
       // console.log("새로운거랑 같냐")
-=======
-      console.log("새로운거랑 같냐");
->>>>>>> Stashed changes
 
       setRePwIdx(1);
       setLabelForRePw(true);
     } else {
-<<<<<<< Updated upstream
       // console.log("다통과 상태저장")
-=======
-      console.log("다통과 상태저장");
->>>>>>> Stashed changes
       setLabelForRePw(false);
       setInputValues({ ...inputValues, [name]: value });
     }
@@ -130,7 +107,6 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
     } else {
       // 맞다면, patch /user/userinfo 비밀번호 요청
       // 응답값에 따라 기존 비밀 번호와 다르다는 응답이면, setOldPwIdx(1), setLabelForOldPw(true)
-<<<<<<< Updated upstream
 
       axios
         .patch(
@@ -156,8 +132,6 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
           }
         })
         .catch((err) => alert("다시한번확인해 주세요", err));
-=======
->>>>>>> Stashed changes
     }
   };
 
