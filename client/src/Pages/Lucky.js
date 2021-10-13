@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import PlantCard from "../Components/PlantCard";
 import { mainplants } from "../assets/mainplant";
 import { desclist } from "../assets/luckyDesclist";
+import {luckList, LuckyList} from '../assets/luckyList'
 
 function Lucky({ setSelectedPlant }) {
   return (
@@ -47,7 +48,7 @@ function Lucky({ setSelectedPlant }) {
         </div>
         <div className="cardList_container scroll">
           <div className="main_plants_in">
-            {mainplants.map((plant, idx) => (
+            {LuckyList.map((plant, idx) => (
               <PlantCard
                 setSelectedPlant={setSelectedPlant}
                 plant={plant}

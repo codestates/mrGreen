@@ -5,6 +5,7 @@ import Footer from "../Components/Footer";
 import "../Styles/Begginer.css";
 import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
+import { begginerList, begginerlist } from "../assets/begginerList";
 
 function Begginer({ setSelectedPlant }) {
   return (
@@ -42,7 +43,7 @@ function Begginer({ setSelectedPlant }) {
             </div>
           </div>
           <div className="main_plants_in scroll">
-            {mainplants.map((plant, idx) => (
+            {begginerList.map((plant, idx) => (
               <PlantCard
                 setSelectedPlant={setSelectedPlant}
                 plant={plant}

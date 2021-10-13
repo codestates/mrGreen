@@ -2,6 +2,9 @@ const { user, plant, favorite } = require("../../models");
 
 module.exports = {
   addFavorite: async (req, res) => {
+    console.log("요청에 파람스 식물아이디", req.params)
+    console.log("요청에 파람스 식물아이디", req.param)
+
     const { userId, title } = req.body;
     const find = await favorite.findAll({
       where: { userId: userId, plantId: plantId },

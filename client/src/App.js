@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import "./App.css";
+import { mainplants } from './assets/mainplant';
 import Loading from "./Components/Loading";
-import EditUserInfo from "./Components/Modal/EditUserInfo";
 import Login from "./Components/Modal/Login";
 import Signup from "./Components/Modal/Signup";
 import Nav from "./Components/Nav";
@@ -23,7 +23,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
-  const [logoutModal, setLogoutModal] = useState(false);
+  // const [logoutModal, setLogoutModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -43,7 +43,7 @@ function App() {
         image: "001_Monstera.jpg",
       }
   );
-  const [plantListData, setPlantListData] = useState([]);
+  const [plantList, setPlantList] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -60,14 +60,17 @@ function App() {
       })
       .then((res) => {
         if (res.status === 200) {
+          
+          // console.log("plnatList from db", res.data)
           const plants = res.data.plantlist;
-          setPlantListData(plants);
+          setPlantList([...plants]);
           setIsLoading(false);
         }
       })
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
+        setPlantList(mainplants)
       });
   }, []);
 
@@ -192,13 +195,6 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-      {editPwModal ? (
-        <EditUserInfo
-          editPwModal={editPwModal}
-          setEditPwModal={setEditPwModal}
-        />
-      ) : null}
-
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
@@ -206,15 +202,19 @@ function App() {
         <Route exact path="/mypage">
           <Mypage
             setSelectedPlant={setSelectedPlant}
+            editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
           />
         </Route>
         <Route exact path="/search">
           <Search
-            plantListData={plantListData}
+            plantList={plantList}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             setSelectedPlant={setSelectedPlant}
+            plantList={plantList}
           />
         </Route>
         <Route exact path="/interior">
