@@ -42,6 +42,12 @@ function Mypage({ setSelectedPlant, setEditPwModal, editPwModal }) {
 
   return (
     <div className="mypage_Containor">
+      {editPwModal ? (
+        <EditUserInfo
+          editPwModal={editPwModal}
+          setEditPwModal={setEditPwModal}
+        />
+      ) : null}
       <div className="mypage_In">
         <div className="mypage">
           <div className="userpage">
@@ -55,7 +61,6 @@ function Mypage({ setSelectedPlant, setEditPwModal, editPwModal }) {
               <div className="userpage_Email">
                {userInfo.email}
               </div>
-              {editPwModal ? <EditUserInfo editPwModal={editPwModal} setEditPwModal={setEditPwModal} /> : null}
               <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>

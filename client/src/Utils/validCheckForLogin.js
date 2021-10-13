@@ -4,9 +4,9 @@ export const isValidPassword = (password) => {
   return password.match(regex);
 };
 // 비번 재확인
-// export function isSamePassword(password, prevPassword) {
-//   return password === prevPassword ? 2 : 1;
-// }
+export function isSamePassword(password, prevPassword) {
+  return password === prevPassword 
+}
 
 export const isValidEmail = (email) => {
   // todo: email 형식에 맞는지 검사

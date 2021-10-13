@@ -70,7 +70,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
     }
   };
   const passwordPressEnter = (e) => {
-    if (e.key === "Enter") {
+    if (msgIdx === 0 && e.key === "Enter") {
       handleLoginBtn();
     }
   };
