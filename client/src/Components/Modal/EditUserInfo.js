@@ -5,11 +5,14 @@ import {
   isSamePassword,
   isValidPassword,
 } from "../../Utils/validCheckForLogin";
+import axios from 'axios';
 
 function EditUserInfo({ setEditPwModal, editPwModal }) {
+
   const modalEl = useRef(null);
   const cursorNewPw = useRef(null);
   const cursorRePw = useRef(null);
+
   const handleCloseModal = (e) => {
     if (e.target === modalEl.current) {
       setEditPwModal(false);
@@ -76,25 +79,25 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
   };
   const handleInputRenewPw = (e) => {
     // 앞의 비번과 맞는지 확인후(메세지), 인풋밸류 업데이트 + 엔터시 버튼 실행
-    console.log("세번째")
+    // console.log("세번째")
     const { name, value } = e.target;
     if (!isValidPassword(value)) {
-      console.log("유효성")
+      // console.log("유효성")
 
       setRePwIdx(0);
       setLabelForRePw(true);
     } else if (!isSamePassword(value, inputValues.newPw)) {
-      console.log("새로운거랑 같냐")
+      // console.log("새로운거랑 같냐")
 
       setRePwIdx(1);
       setLabelForRePw(true);
     } else {
-      console.log("다통과 상태저장")
+      // console.log("다통과 상태저장")
       setLabelForRePw(false);
       setInputValues({ ...inputValues, [name]: value });
     }
   };
-  const handleEditPwBtn = () => {
+  const handleEditPwBtn = (e) => {
     // 모든 인풋값이 올바른 상태인지 체크(메세지),
     // 맞다면, 서버요청 patch /user/userinfo {prevPW, newPW}, 성공하면 메세지, 모달창 끔
     const { prevPw, newPw, rePw } = inputValues;
@@ -104,6 +107,31 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
     } else {
       // 맞다면, patch /user/userinfo 비밀번호 요청
       // 응답값에 따라 기존 비밀 번호와 다르다는 응답이면, setOldPwIdx(1), setLabelForOldPw(true)
+
+      axios
+        .patch(
+          `${process.env.REACT_APP_API_URL}/user/userinfo`,
+          {
+            prevPw: inputValues.prevPw,
+            newPw: inputValues.newPw,
+          },
+          {
+            headers: {
+              // Authorization: ,
+              "Content-Type": "application/json"
+            },
+            withCredentials: true
+          },
+        )
+        .then((res) => {
+          if(res.status === 200){
+          console.log(res.data.message);
+            
+          // setEditPwModal(false);
+          // alert("비밀번호 변경이 완료되었습니다.")
+          }
+        })
+        .catch((err) => alert("다시한번확인해 주세요", err));
     }
   };
 
