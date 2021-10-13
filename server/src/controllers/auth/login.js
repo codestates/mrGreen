@@ -8,7 +8,7 @@ const {
   sendAccessToken,
 } = require("./tokenFunctions");
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
   // 유효성 검사
   //
   // 401 { "message" : "Invalid password"}
@@ -26,7 +26,7 @@ module.exports = (req, res) => {
   if (!isValidEmail) res.status(404).send({ message: "Invalid user" });
   if (!isValidPw) res.status(401).send({ message: "Invalid password" });
 
-  user
+  await user
     .findOne({
       where: { email: email, password: password },
     })

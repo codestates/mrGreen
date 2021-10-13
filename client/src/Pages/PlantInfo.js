@@ -2,18 +2,20 @@ import axios from "axios";
 import { useState } from "react";
 import "../Styles/PlantInfo.css";
 
-function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
+function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
   const [mypageAdd, setMypageAdd] = useState(true);
   const [addPlant, setAddPlant] = useState(false);
   const [deletePlant, setDeletePlant] = useState(false);
   const [afterLogin, setAfterLogin] = useState(false);
-  const numsOfFavorites = userInfo.favorite.map((obj) => obj.id); // [3,9,14,19,50]
+  const userinfoFavorite = userInfo.favorite || [];
+  const numsOfFavorites = userinfoFavorite.map((obj) => obj.id); // [3,9,14,19,50]
   const [toastOn, setToastOn] = useState(false);
   const [toastIdx, setToastIdx] = useState(0);
   const toastMsg = [
     "로그인 후 이용 하실 수 있습니다",
     "식물을 삭제하였습니다",
     "식물을 추가하였습니다",
+    "서버 오류입니다, 다시 시도해주세요",
   ];
   const isInFavorite = numsOfFavorites.indexOf(plant.id);
   const handleAddFavorite = (e) => {
@@ -28,8 +30,9 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
         setToastOn(false);
       }, 1500);
     } else {
+      console.log("선택된 식물 아이디", plant.id)
       axios
-        .post(`${process.env.REACT_APP_API_URL}/favorite/plant:${plant.Id}`, {
+        .post(`${process.env.REACT_APP_API_URL}/favorite:${plant.id}`, {
           headers: { "Content-Type": "application/json" },
           withCredentials: true,
         })
@@ -41,7 +44,9 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
             setToastOn(false);
           }, 1500);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
 
@@ -61,9 +66,17 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
           setTimeout(() => {
             setToastOn(false);
           }, 1500);
+        } else {
+          setToastIdx(3);
+          setToastOn(true);
+          setTimeout(() => {
+            setToastOn(false);
+          }, 1500);
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   //! 토스트 확인용 함수

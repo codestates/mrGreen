@@ -5,11 +5,11 @@ import "../Styles/PlantCard.css";
 import { searchplants } from "../assets/searchplants";
 import axios from "axios";
 
-function Search({ setSelectedPlant, isLoading, setIsLoading }) {
+function Search({ setSelectedPlant, isLoading, setIsLoading, plantList }) {
   const [searchValue, setSearchValue] = useState("");
-  const [allPlantList, setAllPlantList] = useState(searchplants);
-  const [searchPlantList, setsearchPlantList] = useState(searchplants);
-  const [morePlantList, setMorePlantList] = useState(searchplants.slice(0, 18));
+  const [allPlantList, setAllPlantList] = useState(plantList);
+  const [searchPlantList, setsearchPlantList] = useState(plantList);
+  const [morePlantList, setMorePlantList] = useState(plantList.slice(0, 18));
 
   //! 서버에서 식물전체리스트 받는 useEffect
   // useEffect(() => {

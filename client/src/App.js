@@ -23,7 +23,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [loginModal, setLoginModal] = useState(false);
-  const [logoutModal, setLogoutModal] = useState(false);
+  // const [logoutModal, setLogoutModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
   const [accessToken, setAccessToken] = useState("");
@@ -48,23 +48,25 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   // // app 실행시 전체 식물 조회 _ theme 페이지 별로 서버 요청할건지에 따라서 지워도 됨
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://${process.env.REACT_APP_API_URL}/plantlist`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         const plants = res.data;
-  //         setPlantList(plants);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/plantlist`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          // console.log("plnatList from db", res.data)
+          const plants = res.data.plantlist;
+          setPlantList([...plants]);
+          // console.log(plantList)
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   // ----- log out
   const history = useHistory();
@@ -187,13 +189,6 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
-      {editPwModal ? (
-        <EditUserInfo
-          editPwModal={editPwModal}
-          setEditPwModal={setEditPwModal}
-        />
-      ) : null}
-
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
@@ -201,7 +196,10 @@ function App() {
         <Route exact path="/mypage">
           <Mypage
             setSelectedPlant={setSelectedPlant}
+            editPwModal={editPwModal}
             setEditPwModal={setEditPwModal}
+            userInfo={userInfo}
+            setUserInfo={setUserInfo}
           />
         </Route>
         <Route exact path="/search">
@@ -209,6 +207,7 @@ function App() {
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             setSelectedPlant={setSelectedPlant}
+            plantList={plantList}
           />
         </Route>
         <Route exact path="/interior">

@@ -10,10 +10,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
   //----모달 온오프 관련------
 
   const handleCloseModal = (e) => {
-    if (
-      loginModal &&
-      (!modalEl.current || !modalEl.current.contains(e.target))
-    ) {
+    if (e.target === modalEl.current) {
       setLoginModal(false);
       document.body.style.overflow = "unset";
     }
@@ -78,7 +75,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
     }
   };
 
-  const handleLoginBtn = () => {
+  const handleLoginBtn = async () => {
     // todo: 유효성검사 통과한 이메일과 비번이 모두 있을 때, 서버에 로그인 요청
     // 응답 성공 시, 로그인상태 변경, 로그인 모달 끄기, 메인으로 리더렉션 + 액세스 토큰 관리, 리프레시 토큰은?
     // 응답 에러 코드에 따라 - 메세지 띄우기
@@ -87,7 +84,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
       setMsgIdx(2);
     } else {
       setMsgIdx(0);
-      axios
+      await axios
         .post(
           `${process.env.REACT_APP_API_URL}/user/login`,
           { email, password },
@@ -111,6 +108,7 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
             setMsgIdx(3);
           }
           if (res.status === 404) {
+            setMsgIdx(5);
           }
         })
         .catch((err) => {
@@ -122,8 +120,12 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
 
   return (
     <div className="login">
-      <div className="modal_background">
-        <div className="login_modal" ref={modalEl}>
+      <div
+        className="modal_background"
+        onClick={(e) => handleCloseModal(e)}
+        ref={modalEl}
+      >
+        <div className="login_modal">
           <div className="login_modal_leftside">
             <div className="login_title">Log In</div>
             <div className="login_input_area">
