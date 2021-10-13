@@ -31,7 +31,7 @@ module.exports = async (req, res) => {
       where: { email: email, password: password },
     })
     .then((data) => {
-      console.log("login server 컨트롤러", data)
+      //console.log("login server 컨트롤러", data)
       if (!data) {
         return res.status(404).send({ message: "Invalid user" });
       }
