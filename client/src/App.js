@@ -42,29 +42,34 @@ function App() {
         image: "001_Monstera.jpg",
       }
   );
-  const [plantList, setPlantList] = useState([]);
+  const [plantListData, setPlantListData] = useState([]);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const history = useHistory();
 
+  // console.log(plantList);
+
   // // app 실행시 전체 식물 조회 _ theme 페이지 별로 서버 요청할건지에 따라서 지워도 됨
-  // useEffect(() => {
-  //   axios
-  //     .get(`https://${process.env.REACT_APP_API_URL}/plantlist`, {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //     })
-  //     .then((res) => {
-  //       if (res.status === 200) {
-  //         const plants = res.data;
-  //         setPlantList(plants);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/plantlist`, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          const plants = res.data.plantlist;
+          setPlantListData(plants);
+          setIsLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
+  }, []);
 
   // ----- log out
   const handleLogout = () => {
@@ -204,6 +209,7 @@ function App() {
         </Route>
         <Route exact path="/search">
           <Search
+            plantListData={plantListData}
             isLoading={isLoading}
             setIsLoading={setIsLoading}
             setSelectedPlant={setSelectedPlant}

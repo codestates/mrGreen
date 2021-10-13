@@ -7,7 +7,8 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
   const [addPlant, setAddPlant] = useState(false);
   const [deletePlant, setDeletePlant] = useState(false);
   const [afterLogin, setAfterLogin] = useState(false);
-  const numsOfFavorites = userInfo.favorite.map((obj) => obj.id); // [3,9,14,19,50]
+  //! 에러때문에 주석
+  // const numsOfFavorites = userInfo.favorite.map((obj) => obj.id); // [3,9,14,19,50]
   const [toastOn, setToastOn] = useState(false);
   const [toastIdx, setToastIdx] = useState(0);
   const toastMsg = [
@@ -15,7 +16,8 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
     "식물을 삭제하였습니다",
     "식물을 추가하였습니다",
   ];
-  const isInFavorite = numsOfFavorites.indexOf(plant.id);
+  //!원래 되어있는 부분 에러때문에 주석
+  // const isInFavorite = numsOfFavorites.indexOf(plant.id);
   const handleAddFavorite = (e) => {
     // 로그인 상태가 아닐때, 토스트 "로그인 후 이용"
     // 로그인 상태일 때
@@ -108,7 +110,9 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo }) {
         <div className="plant_top_area">
           <div className="plant_title_area">
             <div className="plant_name">{plant.eng_name}</div>
-            {!isLogin || isInFavorite === -1 ? (
+            {!isLogin ? (
+              //!에러때문에 주석
+              // || isInFavorite === -1
               <div onClick={handleAddFavorite} className="add_favorite">
                 <button className="plusBtn">+</button>
                 <div className="plusBtn_desc">추가하기</div>
