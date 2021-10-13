@@ -172,13 +172,6 @@ function App() {
       {isLoading ? <Loading /> : null}
       {scrollPosition > 60 ? <Top /> : null}
       {/* 로그인상태에 따른 Nav, NavChange 변환 */}
-      {isLogin ? (
-        <NavChange 
-        setIsLogin={setIsLogin} 
-        handleLogout={handleLogout} />
-      ) : (
-        <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
-      )}
       {/* loginModal의 상태에 따른 컴포넌트 실행여부 */}
       {loginModal ? (
         <Login
@@ -196,6 +189,13 @@ function App() {
           setLoginModal={setLoginModal}
         />
       ) : null}
+      {isLogin ? (
+        <NavChange 
+        setIsLogin={setIsLogin} 
+        handleLogout={handleLogout} />
+      ) : (
+        <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
+      )}
       <Switch>
         <Route exact path="/">
           <Main setSelectedPlant={setSelectedPlant} />
