@@ -1,10 +1,8 @@
 import React from "react";
 import "../Styles/Nav.css";
-import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 
 function NavChange({ handleLogout }) {
-
   return (
     <div className="nav_container">
       <div className="nav_in">

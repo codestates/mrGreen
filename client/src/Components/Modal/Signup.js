@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useRef, useEffect, useState } from "react";
 import "../../Styles/Signup.css";
 import axios from "axios";

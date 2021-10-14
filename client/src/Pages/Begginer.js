@@ -1,11 +1,10 @@
+/* eslint-disable */
 import React from "react";
-import { Link } from "react-router-dom";
 import Begginer_Crteria from "../Components/Begginer_Crteria";
 import Footer from "../Components/Footer";
 import "../Styles/Begginer.css";
-import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
-import { begginerList, begginerlist } from "../assets/begginerList";
+import { begginerList } from "../assets/begginerList";
 
 function Begginer({ setSelectedPlant }) {
   return (

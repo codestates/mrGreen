@@ -4,7 +4,15 @@ import { useHistory } from "react-router-dom";
 import "../../Styles/Login.css";
 import { isValidEmail, isValidPassword } from "../../Utils/validCheckForLogin";
 
-function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
+function Login({
+  setUserInfo,
+  setAccessToken,
+  accessToken,
+  setLoginModal,
+  setSignupModal,
+  setIsLogin,
+  setFavorite,
+}) {
   const history = useHistory();
   const modalEl = useRef();
   //----모달 온오프 관련------
@@ -75,6 +83,24 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
     }
   };
 
+  const userInfoHandler = async () => {
+    console.log(accessToken);
+    await axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API_URL}/user/userinfo`,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${accessToken}`,
+      },
+      data: { accessToken: accessToken },
+      withCredentials: true,
+    }).then((res) => {
+      console.log("user 정보", res.data);
+      setUserInfo(res.data.userInfo);
+      setFavorite(res.data.favorite);
+    });
+  };
+
   const handleLoginBtn = async () => {
     // todo: 유효성검사 통과한 이메일과 비번이 모두 있을 때, 서버에 로그인 요청
     // 응답 성공 시, 로그인상태 변경, 로그인 모달 끄기, 메인으로 리더렉션 + 액세스 토큰 관리, 리프레시 토큰은?
@@ -87,7 +113,6 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
       await axios
         .post(
           `${process.env.REACT_APP_API_URL}/user/login`,
-          // `http://localhost:80/user/login`,
           { email, password },
           {
             headers: { "Content-Type": "application/json" },
@@ -95,12 +120,12 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
           }
         )
         .then((res) => {
-          //console.log(res)
+          console.log("로그인 요청", res.data);
           if (res.status === 200) {
             //로그인 상태 변경, 쿠키에 있는 엑세스 토큰을 상태로 저장, 로그인 모달 끄고, 메인으로
-
-            console.log("로그인 응답 데이터", res.data);
-            loginHandler(res.data.accessToken);
+            setAccessToken(res.data.accessToken);
+            setIsLogin(true);
+            userInfoHandler();
             setLoginModal(false);
             history.push("/");
             document.body.style.overflow = "unset";
@@ -114,7 +139,6 @@ function Login({ loginModal, setLoginModal, setSignupModal, loginHandler }) {
         })
         .catch((err) => {
           alert(err);
-          //console.log(err);
         });
     }
   };

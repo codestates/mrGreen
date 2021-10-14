@@ -1,7 +1,8 @@
-const { user, plant, favorite } = require("../../models");
+const { plant, favorite } = require("../../models");
 
 module.exports = {
   addFavorite: async (req, res) => {
+    console.log("들어옴");
     await favorite
       .findOrCreate({
         where: {
@@ -11,15 +12,35 @@ module.exports = {
         default: "favoritePlant",
       })
       .then(async ([save, created]) => {
+        console.log(created);
         if (!created) {
           return res.status(202).send({ success: false });
         } else {
-          const findfavoritePlant = await favorite.findAll({
-            where: { userId: req.body.userId },
-            attributes: ["plantId"],
-          });
+          await favorite
+            .findAll({
+              where: { userId: req.body.userId },
+              attributes: ["plantId"],
+            })
+            .then((plants) => {
+              const plantNums = [...plants].map(
+                (obj) => obj.dataValues.plantId
+              );
+              let newPlants = new Set(plantNums);
+              const noDuplePlants = [...newPlants];
 
-          res.status(200).send({ favoritePlant: favoritePlant, success: true });
+              plant
+                .findAll({ where: { id: { [Op.or]: noDuplePlants } } })
+                .then((plants) => {
+                  const favoritePlants = [...plants].map((obj) => {
+                    delete obj.dataValues.createdAt;
+                    delete obj.dataValues.updatedAt;
+                    return obj.dataValues;
+                  });
+                  res
+                    .status(200)
+                    .send({ favoritePlant: favoritePlants, success: true });
+                });
+            });
         }
       })
       .catch((err) => res.send(err));
@@ -30,19 +51,38 @@ module.exports = {
     });
 
     if (findPlant) {
-      favorite
+      await favorite
         .destroy({
           where: { userId: req.body.userId, plantId: req.params.id },
         })
         .then(async (resp) => {
-          const favoritePlant = await favorite.findAll({
-            where: { userId: req.body.userId },
-            attributes: ["plantId"],
-          });
+          await favorite
+            .findAll({
+              where: { userId: req.body.userId },
+              attributes: ["plantId"],
+            })
 
-          return res
-            .status(200)
-            .send({ favoritePlant: favoritePlant, success: true });
+            .then((plants) => {
+              const plantNums = [...plants].map(
+                (obj) => obj.dataValues.plantId
+              );
+              let newPlants = new Set(plantNums);
+              const noDuplePlants = [...newPlants];
+
+              plant
+                .findAll({ where: { id: { [Op.or]: noDuplePlants } } })
+                .then((plants) => {
+                  const favoritePlants = [...plants].map((obj) => {
+                    delete obj.dataValues.createdAt;
+                    delete obj.dataValues.updatedAt;
+                    return obj.dataValues;
+                  });
+                  res
+                    .status(200)
+                    .send({ favoritePlant: favoritePlants, success: true });
+                });
+            })
+            .catch((err) => res.send(err));
         });
     }
   },

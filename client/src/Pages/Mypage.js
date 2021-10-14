@@ -1,4 +1,3 @@
-import React, { useRef, useEffect, useState } from "react";
 import MenProfile from "../Image/Mypage/Mypage_leon.jpg";
 import GirlProfile from "../Image/Mypage/Mypage_matilda.jpg";
 import "../Styles/Mypage.css";
@@ -6,16 +5,13 @@ import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
 import EditUserInfo from "../Components/Modal/EditUserInfo";
 
-function Mypage({ setSelectedPlant, setEditPwModal, editPwModal, userInfo }) {
-  // const [userInfo, setUserInfo] = useState({
-  //   nickname: "Kimcoding",
-  //   email: "kimcoding@gmail.com",
-  //   gender: "male",
-  //   password: "abcde123!",
-  // });
-  // const userinfoFavorite = userInfo.favorite.map((plantId) => plantId.id);
-  // console.log(userinfoFavorite);
-
+function Mypage({
+  favorite,
+  setSelectedPlant,
+  setEditPwModal,
+  editPwModal,
+  userInfo,
+}) {
   const handleEditPsWord = () => {
     setEditPwModal(true);
     document.body.style.overflow = "hidden";
@@ -33,9 +29,9 @@ function Mypage({ setSelectedPlant, setEditPwModal, editPwModal, userInfo }) {
         <div className="mypage">
           <div className="userpage">
             {userInfo.gender === "male" ? (
-              <img className="userpage_Photo" src={MenProfile}></img>
+              <img className="userpage_Photo" src={MenProfile} alt=""></img>
             ) : (
-              <img className="userpage_Photo" src={GirlProfile}></img>
+              <img className="userpage_Photo" src={GirlProfile} alt=""></img>
             )}
             <div className="userpage_UserInfo">
               <div className="userpage_NickName">{userInfo.nickname}</div>
@@ -46,7 +42,7 @@ function Mypage({ setSelectedPlant, setEditPwModal, editPwModal, userInfo }) {
           <div className="userplant">
             <div className="userplant_Title">My Plant</div>
             <div className="userplant_Plant">
-              {mainplants.map((plant, idx) => (
+              {favorite.map((plant, idx) => (
                 <PlantCard
                   setSelectedPlant={setSelectedPlant}
                   plant={plant}
