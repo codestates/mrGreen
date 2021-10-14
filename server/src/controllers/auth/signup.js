@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 module.exports = async (req, res) => {
+  // res.end();
   const { nickname, email, password, gender } = req.body;
 
   //! 정보가 다 들어오지 않는다면
@@ -48,7 +49,10 @@ module.exports = async (req, res) => {
 
             return res
               .status(201)
-              .cookie("jwt", refreshToken, { httpOnly: true })
+              .cookie("jwt", refreshToken, {
+                httpOnly: true,
+                maxAge: 1000 * 60 * 60 * 24 * 14,
+              })
               .json({ message: "성공적으로 회원가입을 완료하였습니다" });
           }
         })

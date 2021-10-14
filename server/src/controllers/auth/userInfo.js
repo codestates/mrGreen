@@ -1,53 +1,47 @@
-const express = require("express");
 const { user, favorite, plant } = require("../../../models");
-const { isAuthorized } = require("./tokenFunctions");
+
 const { Op } = require("sequelize");
+const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
-  // get /user/userinfo
-  // header의 토큰으로 유저를 찾음
-  // 토큰으로 유저가 없다면 401 {    "message": "Unauthorized user"    }
-  // 있다면, 200 data{user:{nickname, email, gender}, favorite:{ all }}
-  // user table의 email이 req.body.user.email 인 userId 찾아서, userinfo도 따로 저장하고,
-  // favorite table의 userId 가 찾은 userId 인 모든 데이터를 db에
+  // console.log("-------header------", req.headers.cookie);
+  // console.log("----split-----", req.headers.cookie.split(" "));
+  // const Token = req.headers.cookie.split(" ")[6];
+  const authorization = req.headers.authorization.split(" ")[1];
+  // console.log("헤더 authorization-------",authorization)
+  // const refreshToken = Token.split("=")[1];
+  // console.log("------refresh------", refreshToken);
 
-  // kimcoding@gmail.com
-  // mrgreen1234!
-
-  const tokenUserInfo = isAuthorized(req);
-  if (!tokenUserInfo) {
+  if (!authorization) {
     res.status(401).json({ message: "Invalid User" });
   } else {
-    //console.log("tokenUserInfo-----", tokenUserInfo);
-    const { email } = tokenUserInfo;
-    user
-      .findOne({ where: { email: email } })
-      .then((userdata) => {
-        //console.log(userdata);
-        const { id, nickname, email, gender } = userdata.dataValues;
-        favorite
-          .findAll({ where: { userId: id }, attributes: ["plantId"] })
-          .then(async (plants) => {
-            const plantNums = [...plants].map((obj) => obj.dataValues.plantId);
-            let newPlants = new Set(plantNums);
-            const noDuplePlants = [...newPlants];
+    const userInfo = jwt.verify(authorization, process.env.ACCESS_SECRET);
 
-            plant
-              .findAll({ where: { id: { [Op.or]: noDuplePlants } } })
-              .then((plants) => {
-                const favoritePlants = [...plants].map((obj) => {
-                  delete obj.dataValues.createdAt;
-                  delete obj.dataValues.updatedAt;
-                  return obj.dataValues;
-                });
-                //console.log(favoritePlants);
-                const dataForUserInfo = {
-                  user: { id, nickname, email, gender },
-                  favorite: favoritePlants,
-                };
-                res.status(200).json(dataForUserInfo);
-              })
-              .catch((err) => console.log(err));
+    const payload = {
+      id: userInfo.id,
+      email: userInfo.email,
+      nickname: userInfo.nickname,
+      gender: userInfo.gender,
+    };
+
+    await favorite
+      .findAll({ where: { userId: userInfo.id }, attributes: ["plantId"] })
+      .then(async (plants) => {
+        const plantNums = [...plants].map((obj) => obj.dataValues.plantId);
+        let newPlants = new Set(plantNums);
+        const noDuplePlants = [...newPlants];
+        await plant
+          .findAll({ where: { id: { [Op.or]: noDuplePlants } } })
+          .then((plants) => {
+            const favoritePlants = [...plants].map((obj) => {
+              delete obj.dataValues.createdAt;
+              delete obj.dataValues.updatedAt;
+              return obj.dataValues;
+            });
+
+            res
+              .status(200)
+              .json({ userInfo: payload, favorite: favoritePlants });
           })
           .catch((err) => console.log(err));
       })

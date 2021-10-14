@@ -1,6 +1,11 @@
-
-
 module.exports = async (req, res) => {
-  // console.log("req cookie", req.cookie);
-  return res.cookie("refrashToken", "").send({ message: "Logout success" });
+  const authorization = req.headers.authorization.split(" ")[1];
+  if (authorization) {
+    return res
+      .status(200)
+      .cookie("refreshToken", "")
+      .send({ message: "Logout success" });
+  } else {
+    return res.status(401).send({ message: "Unauthorized user" });
+  }
 };

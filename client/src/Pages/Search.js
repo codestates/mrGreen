@@ -5,23 +5,9 @@ import "../Styles/PlantCard.css";
 
 function Search({ setSelectedPlant, isLoading, setIsLoading, plantList }) {
   const [searchValue, setSearchValue] = useState("");
-  const [allPlantList, setAllPlantList] = useState(plantList);
+  const [allPlantList] = useState(plantList);
   const [searchPlantList, setsearchPlantList] = useState(plantList);
   const [morePlantList, setMorePlantList] = useState(plantList.slice(0, 18));
-
-  //! 서버에서 식물전체리스트 받는 useEffect
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   axios({
-  //     method: "GET'",
-  //     url: `${process.env.REACT_APP_API_URL}/plantlist`,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     withCredentials: true,
-  //   }).then((res) => setAllPlantList(res.data));
-  //   setIsLoading(false);
-  // }, []);
 
   //! 버튼 클릭했을 때 필터링 되는 함수
   const searchPlantClick = () => {

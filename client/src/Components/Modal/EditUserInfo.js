@@ -5,10 +5,9 @@ import {
   isSamePassword,
   isValidPassword,
 } from "../../Utils/validCheckForLogin";
-import axios from 'axios';
+import axios from "axios";
 
 function EditUserInfo({ setEditPwModal, editPwModal }) {
-
   const modalEl = useRef(null);
   const cursorNewPw = useRef(null);
   const cursorRePw = useRef(null);
@@ -118,17 +117,17 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
           {
             headers: {
               // Authorization: ,
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
-            withCredentials: true
-          },
+            withCredentials: true,
+          }
         )
         .then((res) => {
-          if(res.status === 200){
-            console.log("ADfafsadfasdfasd")
-            
-          // setEditPwModal(false);
-          // alert("비밀번호 변경이 완료되었습니다.")
+          if (res.status === 200) {
+            console.log(res.data.message);
+
+            // setEditPwModal(false);
+            // alert("비밀번호 변경이 완료되었습니다.")
           }
         })
         .catch((err) => alert("다시한번확인해 주세요", err));
