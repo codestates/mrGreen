@@ -92,17 +92,15 @@ function App() {
       });
   }, []);
 
-  console.log("favorite", favorite);
-
   // ----- log out
   const handleLogout = () => {
     // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
     axios({
-      method: "post",
+      method: "get",
       url: `${process.env.REACT_APP_API_URL}/user/logout`,
       headers: {
         "Content-Type": "application/json",
-        accessToken: `Bearer ${accessToken}`,
+        authorization: `Bearer ${accessToken}`,
       },
     })
       .then((res) => {
@@ -116,9 +114,9 @@ function App() {
   };
 
   const addMinusButtonHandler = () => {
-    console.log("들어 옵니다");
+    // console.log("들어 옵니다");
     let plantFilter = favorite.filter((fav) => fav.id === selectedPlant.id);
-    console.log(plantFilter);
+    // console.log(plantFilter);
     if (plantFilter) {
       setIsFavorite(false);
     } else {

@@ -6,14 +6,16 @@ const jwt = require("jsonwebtoken");
 module.exports = async (req, res) => {
   // console.log("-------header------", req.headers.cookie);
   // console.log("----split-----", req.headers.cookie.split(" "));
-  const Token = req.headers.cookie.split(" ")[6];
-  const refreshToken = Token.split("=")[1];
+  // const Token = req.headers.cookie.split(" ")[6];
+  const authorization = req.headers.authorization.split(" ")[1];
+  // console.log("헤더 authorization-------",authorization)
+  // const refreshToken = Token.split("=")[1];
   // console.log("------refresh------", refreshToken);
 
-  if (!refreshToken) {
+  if (!authorization) {
     res.status(401).json({ message: "Invalid User" });
   } else {
-    const userInfo = jwt.verify(refreshToken, process.env.REFRESH_SECRET);
+    const userInfo = jwt.verify(authorization, process.env.ACCESS_SECRET);
 
     const payload = {
       id: userInfo.id,

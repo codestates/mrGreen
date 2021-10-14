@@ -21,7 +21,7 @@ function PlantInfo({
     "이미 추가된 식물입니다",
   ];
 
-  console.log(isFavorite);
+  // console.log(isFavorite);
 
   const handleAddFavorite = () => {
     // 로그인 상태가 아닐때, 토스트 "로그인 후 이용"

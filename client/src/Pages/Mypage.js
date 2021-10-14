@@ -12,6 +12,7 @@ function Mypage({
   editPwModal,
   userInfo,
 }) {
+  const {nickname, email, gender} = userInfo;
   const handleEditPsWord = () => {
     setEditPwModal(true);
     document.body.style.overflow = "hidden";
@@ -34,8 +35,8 @@ function Mypage({
               <img className="userpage_Photo" src={GirlProfile} alt=""></img>
             )}
             <div className="userpage_UserInfo">
-              <div className="userpage_NickName">{userInfo.nickname}</div>
-              <div className="userpage_Email">{userInfo.email}</div>
+              <div className="userpage_NickName">{nickname}</div>
+              <div className="userpage_Email">{email}</div>
               <button onClick={handleEditPsWord}>비밀번호 변경</button>
             </div>
           </div>

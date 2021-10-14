@@ -83,16 +83,15 @@ function Login({
     }
   };
 
-  const userInfoHandler = async () => {
-    console.log(accessToken);
+  const userInfoHandler = async (token) => {
+    // console.log("유저인포 엑세스토큰---",token);
     await axios({
       method: "get",
       url: `${process.env.REACT_APP_API_URL}/user/userinfo`,
       headers: {
         "Content-Type": "application/json",
-        authorization: `Bearer ${accessToken}`,
+        authorization: `Bearer ${token}`,
       },
-      data: { accessToken: accessToken },
       withCredentials: true,
     }).then((res) => {
       console.log("user 정보", res.data);
@@ -120,12 +119,13 @@ function Login({
           }
         )
         .then((res) => {
-          console.log("로그인 요청", res.data);
+          // console.log("로그인 요청", res.data);
           if (res.status === 200) {
             //로그인 상태 변경, 쿠키에 있는 엑세스 토큰을 상태로 저장, 로그인 모달 끄고, 메인으로
-            setAccessToken(res.data.accessToken);
+            console.log("----클라 로그인요청시 바디 엑세스토큰",res.data.data)
+            setAccessToken(res.data.data.accessToken);
             setIsLogin(true);
-            userInfoHandler();
+            userInfoHandler(res.data.data.accessToken);
             setLoginModal(false);
             history.push("/");
             document.body.style.overflow = "unset";
