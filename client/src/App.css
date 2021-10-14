@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+
+:root {
+  --red--color: #840909;
+  --black--color: #090909;
+  --deepGray--color: #b6b6b6;
+  --lightGray--color: #f4f4f4;
+  --white--color: #fbfbfb;
+  --font--40--size: 40px;
+  --font--30--size: 30px;
+  --font--20--size: 20px;
+  --font--16--size: 16px;
+  --font--14--size: 14px;
+  --font--12--size: 12px;
+  --font--10--size: 10px;
+}
+
+* {
+  font-family: "Noto Sans";
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  /* background-color: var(--lightGray--color); */
+}
+
+a {
+  text-decoration: none;
+}
+
+.scroll {
+  transition: transform 1s, opacity 1s;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

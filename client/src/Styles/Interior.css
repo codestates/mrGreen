@@ -1,0 +1,166 @@
+.interior_Containor {
+  background-color: var(--white--color);
+  width: 100%;
+}
+
+.interior_In {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* padding: 50px 200px; */
+}
+
+.interior_Title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 200px;
+}
+
+.interior_MainTitle {
+  display: flex;
+  width: auto;
+  height: 50px;
+  justify-content: center;
+  font-size: var(--font--30--size);
+  color: var(--black--color);
+  border-bottom: 1px solid var(--deepGray--color);
+}
+
+.interior_SubTitle {
+  display: flex;
+  width: auto;
+  justify-content: center;
+  text-align: center;
+  color: var(--deepGray--color);
+}
+
+.interior_Main {
+  display: flex;
+  justify-content: center;
+}
+
+.interior_MainText {
+  font-size: var(--font--14--size);
+  line-height: 20px;
+  margin-top: 80px;
+}
+
+.interior_SubText {
+  margin-top: 60px;
+  font-size: var(--font--14--size);
+  line-height: 20px;
+}
+
+.interior_MainImage {
+  width: 300px;
+  margin-left: 100px;
+}
+
+.intreior_HowTo {
+  margin-top: 300px;
+  text-align: center;
+  font-size: var(--font--30--size);
+  color: var(--black--color);
+}
+
+.interior_Wood {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.interior_WoodImage {
+  width: 400px;
+}
+
+.interior_WoodText {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 80px;
+}
+
+.interior_WoodMainText {
+  text-align: center;
+  font-size: var(--font--30--size);
+}
+
+.interior_WoodSubText {
+  color: var(--black--color);
+  text-align: center;
+  margin-top: 30px;
+  font-size: var(--font--14--size);
+}
+
+.interior_Modern {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.interior_ModernImage {
+  width: 400px;
+}
+
+.interior_ModernText {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 80px;
+}
+
+.interior_ModernMainText {
+  text-align: center;
+  font-size: var(--font--30--size);
+}
+
+.interior_ModernSubText {
+  color: var(--black--color);
+  text-align: center;
+  margin-top: 30px;
+  font-size: var(--font--14--size);
+}
+
+.interior_Plant {
+  background-color: var(--lightGray--color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 260px;
+  padding: 150px 0;
+}
+
+.interior_PlantListTitle {
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.interior_PlantListSubTitle {
+  font-size: var(--font--16--size);
+  color: var(--deepGray--color);
+  margin-bottom: 5px;
+}
+
+.interior_PlantListMainTitle {
+  font-size: var(--font--30--size);
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1250px) {
+  .interior_Containor {
+    min-width: 1250px;
+  }
+}

@@ -1,0 +1,332 @@
+.plant {
+  width: 100%;
+  height: calc(100vh - 60px);
+  background-color: var(--lightGray--color);
+  padding: 0 100px;
+  position: relative;
+}
+
+.plant_area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* toast */
+.toast {
+  width: 340px;
+  height: 60px;
+  line-height: 58px;
+  color: var(--red--color);
+  background-color: var(--lightGray--color);
+  font-size: var(--font--16--size);
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 55px;
+  border: solid 2px var(--red--color);
+  text-align: left;
+  position: fixed;
+  top: 110px;
+  right: -340px;
+  z-index: 100;
+  padding-left: 40px;
+  transition: all 1s;
+}
+
+.toast_change {
+  width: 340px;
+  height: 60px;
+  line-height: 58px;
+  color: var(--red--color);
+  background-color: var(--lightGray--color);
+  font-size: var(--font--16--size);
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-radius: 55px;
+  border: solid 2px var(--red--color);
+  text-align: left;
+  position: fixed;
+  top: 110px;
+  right: -30px;
+  z-index: 100;
+  padding-left: 40px;
+  transition: all 1s;
+}
+
+.plant_top_area {
+  width: 100%;
+  height: 20%;
+  position: absolute;
+  top: 40px;
+}
+
+.plant_title_area {
+  align-items: flex-end;
+  display: flex;
+}
+
+.plant_name {
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  padding: 0 10px;
+}
+
+.add_favorite {
+  display: flex;
+  width: 90px;
+  height: 60px;
+  justify-content: space-around;
+  align-items: center;
+  font-size: var(--font--12--size);
+  font-weight: bold;
+  position: relative;
+  top: 4px;
+  left: 5px;
+}
+
+.add_favorite:hover {
+  cursor: pointer;
+}
+
+.add_favorite:active {
+  transform: scale(0.98);
+}
+
+.add_favorite:hover > .plusBtn {
+  color: var(--red--color);
+  border: solid 2px var(--red--color);
+  cursor: pointer;
+}
+
+.add_favorite:hover > .plusBtn_desc {
+  color: var(--red--color);
+  cursor: pointer;
+}
+
+.plusBtn {
+  width: 22px;
+  height: 22px;
+  color: var(--black--color);
+  border: solid 2px var(--black--color);
+  border-radius: 11px;
+  text-align: center;
+  line-height: 18px;
+}
+
+.plusBtn_desc {
+  letter-spacing: 2px;
+  margin-left: 10px;
+}
+
+/* 플랜트 컨테이너 */
+.plant_bottom_area {
+  width: 100%;
+  height: calc(100vh - 200px);
+  position: absolute;
+  bottom: 0;
+  background-color: var(--white--color);
+}
+
+.plant_container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 8px;
+}
+
+.plant_img_box {
+  width: 35%;
+  height: 100%;
+}
+
+.plant_plantImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.plant_info {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 100px;
+}
+
+.plant_info_names {
+  width: 100%;
+  display: flex;
+  margin-bottom: 50px;
+  font-size: var(--font--30--size);
+  line-height: 30px;
+  letter-spacing: 5px;
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--lightGray--color);
+}
+
+.plant_info_names > .plant_content {
+  font-size: var(--font--14--size);
+  line-height: 42px;
+}
+
+.plant_info_mid {
+  width: 100%;
+  padding: 50px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 5px;
+  letter-spacing: 2px;
+  border: 3px solid var(--lightGray--color);
+  background-color: var(--lightGray--color);
+}
+
+.plant_info_mid_in {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 16px;
+}
+
+.plant_info_mid_in:nth-child(3) {
+  margin: 0;
+}
+
+.plant_category {
+  width: 162px;
+  font-size: var(--font--16--size);
+  font-weight: bold;
+  letter-spacing: 4px;
+}
+
+.plant_content {
+  width: 70%;
+  font-size: var(--font--14--size);
+  color: var(--black--color);
+}
+
+.plant_info_desc {
+  font-size: var(--font--14--size);
+  white-space: pre-wrap;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  line-height: 24px;
+}
+
+@media screen and (max-width: 1250px) {
+  .plant {
+    width: 100%;
+    padding: 0 100px;
+    height: 100%;
+    background-color: var(--lightGray--color);
+  }
+
+  .plant_bottom_area {
+    position: relative;
+    height: 100%;
+    top: 140px;
+    width: 100%;
+    background-color: var(--white--color);
+  }
+
+  .plant_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white--color);
+    padding: 8px;
+  }
+
+  .plant_img_box {
+    width: 100%;
+    height: 100%;
+  }
+
+  .plant_info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 80px 50px;
+  }
+
+  .plant_blank_space {
+    height: 230px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .toast {
+    width: 250px;
+    height: 60px;
+    line-height: 58px;
+    color: var(--red--color);
+    font-size: var(--font--12--size);
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 55px;
+    border: solid 2px var(--red--color);
+    text-align: left;
+    position: fixed;
+    top: 110px;
+    right: -340px;
+    z-index: 100;
+    padding-left: 40px;
+    transition: all 1s;
+    background-color: var(--lightGray--color);
+  }
+
+  .toast_change {
+    width: 250px;
+    height: 60px;
+    line-height: 58px;
+    color: var(--red--color);
+    font-size: var(--font--12--size);
+    font-weight: bold;
+    letter-spacing: 2px;
+    border-radius: 55px;
+    border: solid 2px var(--red--color);
+    text-align: left;
+    position: fixed;
+    top: 110px;
+    right: -30px;
+    z-index: 100;
+    padding-left: 40px;
+    transition: all 1s;
+    background-color: var(--lightGray--color);
+  }
+
+  .plant_top_area {
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    top: 60px;
+  }
+
+  .plant_name {
+    font-size: var(--font--40--size);
+  }
+
+  .add_favorite {
+    display: flex;
+    width: 90px;
+    height: 60px;
+    justify-content: space-around;
+    align-items: center;
+    font-size: var(--font--12--size);
+    font-weight: bold;
+    position: relative;
+    top: 10px;
+    left: 5px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .plant {
+    min-width: 840px;
+  }
+}

@@ -1,0 +1,254 @@
+@import url("https://fonts.googleapis.com/css2?family=Rokkitt&family=Secular+One&display=swap");
+
+.begginer_container {
+  width: 100%;
+}
+
+.beggier_in {
+  width: 100%;
+}
+
+.begginer_main_img {
+  width: 100%;
+  background-image: url(../Image/Theme/Begginer/Begginer_mainImg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgba(255, 255, 255, 0.194);
+  font-weight: bold;
+  padding: 100px 0;
+}
+
+.begginer_main_img > div:nth-child(1) {
+  font-size: 100px;
+  margin-left: 130px;
+}
+
+.begginer_main_img > div:nth-child(2) {
+  font-size: 80px;
+  margin-left: 450px;
+}
+
+.begginer_main_img > div:nth-child(3) {
+  font-size: 70px;
+  margin-left: 95px;
+  margin-top: 20px;
+}
+
+.begginer_main_img > div:nth-child(4) {
+  font-size: 90px;
+  margin-left: 800px;
+  margin-top: 30px;
+}
+
+.begginer_main_text {
+  width: 100%;
+  background-color: var(--lightGray--color);
+  padding: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.begginer_main_text_bold {
+  display: flex;
+  font-size: var(--font--30--size);
+  font-weight: bold;
+  margin-bottom: 30px;
+  letter-spacing: 2px;
+}
+
+.begginer_comma:nth-child(1) {
+  margin-right: 10px;
+}
+
+.begginer_comma:nth-child(3) {
+  margin-left: 10px;
+}
+
+.begginer_main_text_regular {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
+}
+
+.begginer_main_text_regular > div:nth-child(1) {
+  margin-bottom: 3px;
+}
+
+/*! Begginer_Crteia */
+.begginer_Criteria {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white--color);
+}
+
+.begginer_Criteria > img {
+  margin-top: 60px;
+  height: 750px;
+  object-fit: contain;
+  object-position: 0 0;
+}
+
+.begginer_Criteria_explain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.begginer_Criteria_explain_title {
+  font-size: var(--font--30--size);
+  font-weight: bold;
+  margin-bottom: 100px;
+  letter-spacing: 1px;
+}
+
+.begginer_Criteria_explain_text {
+  display: flex;
+  width: 900px;
+  justify-content: space-between;
+}
+
+.begginer_Criteria_explain_text_in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.begginer_Criteria_explain_text_in > img {
+  width: 60px;
+  margin-bottom: 30px;
+}
+
+.begginer_Criteria_explain_box {
+  width: 220px;
+  height: 45px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--lightGray--color);
+}
+
+.begginer_Criteria_explain_box_in_text {
+  text-align: center;
+  margin-top: 20px;
+  line-height: 25px;
+}
+
+/*! 반응형 */
+@media screen and (max-width: 1600px) {
+  .begginer_main_img {
+    background-image: url(../Image/Theme/Begginer/Begginer_mainImg_1400.jpg);
+    padding: 80px 0;
+  }
+
+  .begginer_main_img > div:nth-child(1) {
+    font-size: 80px;
+    margin-left: 130px;
+  }
+
+  .begginer_main_img > div:nth-child(2) {
+    font-size: 60px;
+    margin-left: 450px;
+  }
+
+  .begginer_main_img > div:nth-child(3) {
+    font-size: 50px;
+    margin-left: 95px;
+    margin-top: 20px;
+  }
+
+  .begginer_main_img > div:nth-child(4) {
+    font-size: 70px;
+    margin-left: 600px;
+    margin-top: 20px;
+  }
+
+  .begginer_main_text {
+    padding: 80px;
+  }
+
+  /*! begginer_Criteria */
+  .begginer_Criteria > img {
+    height: 600px;
+  }
+
+  .begginer_Criteria_explain_text {
+    width: 750px;
+  }
+
+  .begginer_Criteria_explain_text_in > img {
+    width: 50px;
+    margin-bottom: 30px;
+  }
+
+  .begginer_Criteria_explain_box {
+    width: 180px;
+    height: 45px;
+  }
+
+  .begginer_Criteria_explain_box_in_text {
+    font-size: var(--font--14--size);
+    margin-top: 20px;
+    line-height: 25px;
+  }
+}
+
+.begginer_plants {
+  width: 100%;
+  background-color: var(--lightGray--color);
+  padding: 140px 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 1230px) {
+  /*! begginer_Criteria */
+  .begginer_Criteria > img {
+    margin-top: 60px;
+    height: 450px;
+    object-fit: contain;
+    object-position: 0 0;
+  }
+
+  .begginer_Criteria_explain_title {
+    font-size: var(--font--30--size);
+    margin-bottom: 80px;
+  }
+
+  .begginer_Criteria_explain_text {
+    width: 650px;
+  }
+
+  .begginer_Criteria_explain_text_in > img {
+    width: 50px;
+    margin-bottom: 30px;
+  }
+
+  .begginer_Criteria_explain_box {
+    width: 150px;
+    height: 35px;
+    font-size: var(--font--14--size);
+  }
+
+  .begginer_Criteria_explain_box_in_text {
+    font-size: var(--font--14--size);
+    margin-top: 20px;
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .begginer_container {
+    min-width: 1050px;
+  }
+}
