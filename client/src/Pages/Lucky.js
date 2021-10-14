@@ -2,9 +2,8 @@ import React from "react";
 import "../Styles/Lucky.css";
 import Footer from "../Components/Footer";
 import PlantCard from "../Components/PlantCard";
-import { mainplants } from "../assets/mainplant";
 import { desclist } from "../assets/luckyDesclist";
-import {luckList, LuckyList} from '../assets/luckyList'
+import { LuckyList } from "../assets/luckyList";
 
 function Lucky({ setSelectedPlant }) {
   return (

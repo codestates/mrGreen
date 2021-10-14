@@ -9,12 +9,10 @@ module.exports = {
     return jwt.sign(data, process.env.REFRESH_SECRET, { expiresIn: "30d" });
   },
   sendRefreshToken: (res, refreshToken) => {
-    res.set({ Authorization: `Bearer ${refreshToken}` });
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
+      maxAge: 1000 * 60 * 60 * 24 * 14,
     });
-    //Authorization: Bearer
-    //jwt=a;lkdjfalkdsjf
   },
   sendAccessToken: (res, accessToken) => {
     res.json({ data: { acessToken: accessToken }, message: "ok" });

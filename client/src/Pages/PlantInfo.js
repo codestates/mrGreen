@@ -1,15 +1,16 @@
+/* eslint-disable */
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Styles/PlantInfo.css";
 
-function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
-  const [mypageAdd, setMypageAdd] = useState(true);
-  const [addPlant, setAddPlant] = useState(false);
-  const [deletePlant, setDeletePlant] = useState(false);
-  const [afterLogin, setAfterLogin] = useState(false);
-  const userinfoFavorite = userInfo.favorite || [];
-  // const numsOfFavorites = userinfoFavorite.map((obj) => obj.id); // [3,9,14,19,50]
-  const numsOfFavorites = [132, 30, 17, 1]; // [3,9,14,19,50]
+function PlantInfo({
+  isLogin,
+  plant,
+  setFavorite,
+  userInfo,
+  favorite,
+  isFavorite,
+}) {
   const [toastOn, setToastOn] = useState(false);
   const [toastIdx, setToastIdx] = useState(0);
   const toastMsg = [
@@ -19,13 +20,15 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
     "서버 오류입니다, 다시 시도해주세요",
     "이미 추가된 식물입니다",
   ];
-  //!원래 되어있는 부분 에러때문에 주석
-  const isInFavorite = numsOfFavorites.indexOf(plant.id);
+
+  console.log(isFavorite);
+
   const handleAddFavorite = () => {
     // 로그인 상태가 아닐때, 토스트 "로그인 후 이용"
     // 로그인 상태일 때
     // 유저의 즐겨찾기 정보에 해당 플랜트가 없을 때, axios 추가요청 후 성공시 -> 토스트 "추가됨"
     // 유저의 즐겨찾기 정보에 해당 플랜트가 있을 때, 토스트 "이미 추가한 식물"
+    console.log(isLogin);
     if (!isLogin) {
       setToastIdx(0);
       setToastOn(true);
@@ -36,15 +39,14 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
       axios({
         method: "post",
         url: `${process.env.REACT_APP_API_URL}/favorite/${plant.id}`,
-        // data: { userId: userInfo.id },
-        data: { userId: 13 },
+        data: { userId: userInfo.id },
         headers: { "Content-Type": "application/json" },
         withCredentials: true,
       })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data.favoritePlant);
-            setUserInfo({ ...userInfo, favorite: res.data.favoritePlant });
+            console.log(res.data);
+            setFavorite(res.data.favoritePlant);
             setToastIdx(2);
             setToastOn(true);
             setTimeout(() => {
@@ -70,8 +72,7 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
     axios({
       method: "delete",
       url: `${process.env.REACT_APP_API_URL}/favorite/${plant.id}`,
-      // data: { userId: userInfo.id },
-      data: { userId: 13 },
+      data: { userId: userInfo.id },
       headers: { "Content-Type": "application/json" },
       withCredentials: true,
     })
@@ -79,7 +80,7 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
         if (res.status === 200) {
           const favoriteList = res.data.favoritePlant;
           console.log(favoriteList);
-          setUserInfo({ ...userInfo, favorite: favoriteList });
+          setFavorite(res.data.favorite);
           setToastIdx(1);
           setToastOn(true);
           setTimeout(() => {
@@ -98,49 +99,17 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
       });
   };
 
-  //! 토스트 확인용 함수
-  const addMypagePlant = () => {
-    if (!isLogin) {
-      setAfterLogin(true);
-      setTimeout(() => {
-        setAfterLogin(false);
-      }, 1500);
-    } else {
-      setAddPlant(true);
-      setMypageAdd(false);
-      setTimeout(() => {
-        setAddPlant(false);
-      }, 1500);
-    }
-  };
-
-  const deleteMypagePlant = () => {
-    setDeletePlant(true);
-    setMypageAdd(true);
-    setTimeout(() => {
-      setDeletePlant(false);
-    }, 1500);
-  };
-
   return (
     <div className="plant">
       <div className="plant_area">
         <div className={toastOn ? "toast_change" : "toast"}>
           {toastMsg[toastIdx]}
         </div>
-        {/* <div className={deletePlant ? "toast_change" : "toast"}>
-          식물을 삭제하였습니다
-        </div>
-        <div className={afterLogin ? "toast_change" : "toast"}>
-          로그인 후 이용가능 합니다
-        </div>
-        <div className={addPlant ? "toast_change" : "toast"}>
-          식물을 추가하였습니다
-        </div> */}
+
         <div className="plant_top_area">
           <div className="plant_title_area">
             <div className="plant_name">{plant.eng_name}</div>
-            {!isLogin || isInFavorite === -1 ? (
+            {!isLogin || isFavorite ? (
               <div onClick={handleAddFavorite} className="add_favorite">
                 <button className="plusBtn">+</button>
                 <div className="plusBtn_desc">추가하기</div>
@@ -153,6 +122,7 @@ function PlantInfo({ isLogin, plant, userInfo, setUserInfo, plantList }) {
             )}
           </div>
         </div>
+
         <div className="plant_bottom_area">
           <div className="plant_container">
             <div className="plant_img_box">

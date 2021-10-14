@@ -9,8 +9,5 @@ module.exports = {
     } else {
       res.status(200).send({ plantlist: plantlist, message: "ok" });
     }
-    // if (req) {
-    //   res.status(200).send({ message: "ok" });
-    // }
   },
 };

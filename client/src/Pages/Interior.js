@@ -1,18 +1,14 @@
-import React, { useState } from "react";
 import Footer from "../Components/Footer";
 import PlantCard from "../Components/PlantCard";
 import img1 from "../Image/Theme/Interior/interior_1.jpeg";
 import img2 from "../Image/Theme/Interior/interior_2.jpeg";
 import img3 from "../Image/Theme/Interior/interior_3.jpeg";
 import img4 from "../Image/Theme/Interior/interior_4.jpeg";
-import { mainplants } from "../assets/mainplant";
 import { interiorList } from "../assets/interiorList";
 
 import "../Styles/Interior.css";
 
 function Interior({ setSelectedPlant }) {
-  const [interiorPlant, setInteriorPlant] = useState([]);
-
   return (
     <div className="interior_Containor">
       <div className="interior_In">

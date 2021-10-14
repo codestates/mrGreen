@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import "../../Styles/SiteInfo.css";
 import Slider from "react-slick";

@@ -32,7 +32,7 @@
 .userpage_Photo {
   width: 150px;
   border-radius: 100%;
-  margin-left: 150px;
+  margin-left: 80px;
 }
 
 .userpage_UserInfo {
@@ -40,7 +40,7 @@
 }
 
 .userpage_NickName {
-  font-size: var(--font--30--size);
+  font-size: 25px;
 }
 
 .userpage_Email {
@@ -57,7 +57,7 @@
   font-size: var(--font--14--size);
   color: var(--deepGray--color);
   border: solid 1px var(--deepGray--color);
-  margin-top: 20px;
+  margin-top: 25px;
   border-width: 2px;
 }
 
@@ -79,16 +79,17 @@
 .userplant_Title {
   display: flex;
   width: 100%;
-  height: 50px;
+  height: 40px;
   text-align: left;
-  font-size: var(--font--30--size);
+  font-size: 25px;
+  font-weight: bold;
   border-bottom: 1px solid #090909;
   margin-top: 10px;
 }
 
 .userplant_Plant {
   display: grid;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 30px;
   margin-left: 0px;
   margin-bottom: 70px;
