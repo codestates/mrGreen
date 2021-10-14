@@ -125,7 +125,7 @@ function EditUserInfo({ setEditPwModal, editPwModal }) {
         )
         .then((res) => {
           if(res.status === 200){
-          console.log(res.data.message);
+            console.log("ADfafsadfasdfasd")
             
           // setEditPwModal(false);
           // alert("비밀번호 변경이 완료되었습니다.")
