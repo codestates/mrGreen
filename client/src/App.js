@@ -1,4 +1,3 @@
-import { faGlassMartiniAlt } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
@@ -19,7 +18,6 @@ import PlantInfo from "./Pages/PlantInfo";
 import Search from "./Pages/Search";
 
 function App() {
-  const history = useHistory();
   const [isLogin, setIsLogin] = useState(
     () => JSON.parse(window.sessionStorage.getItem("mr.green_isLogin")) || false
   );
@@ -93,25 +91,25 @@ function App() {
   }, []);
 
   // ----- log out
-  const handleLogout = () => {
-    // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
-    axios({
-      method: "get",
-      url: `${process.env.REACT_APP_API_URL}/user/logout`,
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${accessToken}`,
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) setUserInfo({});
-        setIsLogin(false);
-        window.sessionStorage.clear();
-        history.push("/");
-        document.body.style.overflow = "unset";
-      })
-      .catch((err) => console.log(err));
-  };
+  // const handleLogout = () => {
+  //   // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
+  //   axios({
+  //     method: "get",
+  //     url: `${process.env.REACT_APP_API_URL}/user/logout`,
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       authorization: `Bearer ${accessToken}`,
+  //     },
+  //   })
+  //     .then((res) => {
+  //       if (res.status === 200) setUserInfo({});
+  //       setIsLogin(false);
+  //       window.sessionStorage.clear();
+  //       // history.push("/");
+  //       document.body.style.overflow = "unset";
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   const addMinusButtonHandler = () => {
     // console.log("들어 옵니다");
@@ -196,7 +194,12 @@ function App() {
         />
       ) : null}
       {isLogin ? (
-        <NavChange setIsLogin={setIsLogin} handleLogout={handleLogout} />
+        <NavChange
+          setIsLogin={setIsLogin}
+          accessToken={accessToken}
+          setIsLogin={setIsLogin}
+          setUserInfo={setUserInfo}
+        />
       ) : (
         <Nav setLoginModal={setLoginModal} setSignupModal={setSignupModal} />
       )}
