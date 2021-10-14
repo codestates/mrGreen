@@ -1,6 +1,7 @@
+/* eslint-disable */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import { mainplants } from "./assets/mainplant";
 import Loading from "./Components/Loading";
@@ -128,10 +129,6 @@ function App() {
     window.localStorage.setItem("mr.geen_plant", JSON.stringify(plant));
     addMinusButtonHandler();
   }, [selectedPlant]);
-
-  // useEffect(() => {
-  //   window.localStorage.setItem("mr.geen_favorite", JSON.stringify(favorite));
-  // }, [favorite]);
 
   useEffect(() => {
     window.sessionStorage.setItem("mr.green_isLogin", JSON.stringify(isLogin));
