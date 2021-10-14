@@ -36,8 +36,8 @@
 | Name          | Position  | Github                                                  |
 | ------------- | --------- | ------------------------------------------------------- |
 | 신승민 (팀장) | Front-end | [shinseungmin-kor](https://github.com/shinseungmin-kor) |
-| 김설아        | Front-end | [seola25](https://github.com/seola25)                   |
+| 김설아        | Full-stack | [seola25](https://github.com/seola25)                   |
 | 김수영        | Back-end  | [kimdlzp](https://github.com/kimdlzp)                   |
-| 진수연        | Front-end | [Jin-suyeon](https://github.com/Jin-suyeon)             |
+| 진수연        | Full-stack | [Jin-suyeon](https://github.com/Jin-suyeon)             |
 
 ### Have a Nice Day!!
