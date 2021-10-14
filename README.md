@@ -5,7 +5,7 @@
 언제나 화분을 곁에 두던 레옹처럼, mr.Green은 여러분의 곁에 특별한 반려식물이 함께 하도록 도와드리겠습니다<pr>
  <br/>
 
-![메인_반응형](https://user-images.githubusercontent.com/81850352/137285785-c6a4889d-6bf8-435c-855e-41492e28ebd6.gif)
+![메인](https://user-images.githubusercontent.com/81850352/137285221-34463aa3-de1e-413b-b4bc-daba7dae6ec9.gif)
 
 ## 🌐 Homepage
 
