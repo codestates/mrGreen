@@ -24,6 +24,20 @@ CREATE TABLE `plant` (
   `updated_at` TIMESTAMP
 );
 
+CREATE TABLE `plants` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `kor_name` VARCHAR(255) not NULL,
+  `eng_name` VARCHAR(255),
+  `means` VARCHAR(255),
+  `description` VARCHAR(255),
+  `difficulty` VARCHAR(255),
+  `light` VARCHAR(255),
+  `water` VARCHAR(255),
+  `image` VARCHAR(255),
+  `created_at` TIMESTAMP,
+  `updated_at` TIMESTAMP
+);
+
 CREATE TABLE `favorite` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `userId` INTEGER  not NULL,

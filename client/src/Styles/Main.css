@@ -1,6 +1,6 @@
 .main_plants {
   width: 100%;
-  background-color: var(--lightGray--color);
+  /* background-color: var(--lightGray--color); */
   padding: 140px 150px;
   display: flex;
   flex-direction: column;

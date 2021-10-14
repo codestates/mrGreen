@@ -7,9 +7,7 @@ module.exports = {
         nickname: "kimcoding",
         email: "kimcoding@gmail.com",
         password: "mrgreen1234!",
-        gender: "male",
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        gender: "male"
       },
     ]);
   },
