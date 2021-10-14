@@ -9,7 +9,7 @@
 
 ## 🌐 Homepage
 
-[mr.Green](http://mrgreen-s3.s3-website.ap-northeast-2.amazonaws.com/)
+[mr.Green](http://mrgreen--client--deploy.s3-website.ap-northeast-2.amazonaws.com/)
 
 ## 💡 Feature
 
