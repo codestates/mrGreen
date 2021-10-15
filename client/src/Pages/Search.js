@@ -3,7 +3,7 @@ import PlantCard from "../Components/PlantCard";
 import "../Styles/Search.css";
 import "../Styles/PlantCard.css";
 
-function Search({ setSelectedPlant, isLoading, setIsLoading, plantList }) {
+function Search({ setSelectedPlant, plantList }) {
   const [searchValue, setSearchValue] = useState("");
   const [allPlantList] = useState(plantList);
   const [searchPlantList, setsearchPlantList] = useState(plantList);

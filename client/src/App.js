@@ -24,23 +24,7 @@ function App() {
   );
   const [userInfo, setUserInfo] = useState({});
   const [favorite, setFavorite] = useState([]);
-  // const [favorite, setFavorite] = useState(
-  //   () =>
-  //     JSON.parse(window.localStorage.getItem("mr.geen_favorite")) || [
-  //       {
-  //         id: 1,
-  //         kor_name: "몬스테라",
-  //         eng_name: "Monstera",
-  //         means: "웅장한 계획",
-  //         description:
-  //           "식물이 크기 때문에 큰 화분에 심어야 하며, 받침대를 세워 고정시켜야 합니다. 그리고 반그늘을 좋아하므로 실내에 두는 것이 좋습니다.",
-  //         difficulty: "낮음",
-  //         light: "반음지",
-  //         water: "겉흙이 마르면 물을 듬뿍 주면 됩니다",
-  //         image: "001_Monstera.jpg",
-  //       },
-  //     ]
-  // );
+
   const [loginModal, setLoginModal] = useState(false);
   const [signupModal, setSignupModal] = useState(false);
   const [editPwModal, setEditPwModal] = useState(false);
@@ -61,10 +45,10 @@ function App() {
         image: "001_Monstera.jpg",
       }
   );
-  const [plantList, setPlantList] = useState([]);
+  const [plantList, setPlantList] = useState(mainplants);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(true);
 
   // // app 실행시 전체 식물 조회 _ theme 페이지 별로 서버 요청할건지에 따라서 지워도 됨
   useEffect(() => {
@@ -91,32 +75,9 @@ function App() {
       });
   }, []);
 
-  // ----- log out
-  // const handleLogout = () => {
-  //   // axios.post("http://ec2-3-38-93-205.ap-northeast-2.compute.amazonaws.com/logout")
-  //   axios({
-  //     method: "get",
-  //     url: `${process.env.REACT_APP_API_URL}/user/logout`,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       authorization: `Bearer ${accessToken}`,
-  //     },
-  //   })
-  //     .then((res) => {
-  //       if (res.status === 200) setUserInfo({});
-  //       setIsLogin(false);
-  //       window.sessionStorage.clear();
-  //       // history.push("/");
-  //       document.body.style.overflow = "unset";
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
   const addMinusButtonHandler = () => {
-    // console.log("들어 옵니다");
     let plantFilter = favorite.filter((fav) => fav.id === selectedPlant.id);
-    // console.log(plantFilter);
-    if (plantFilter) {
+    if (plantFilter.length !== 0) {
       setIsFavorite(false);
     } else {
       setIsFavorite(true);
@@ -235,12 +196,11 @@ function App() {
         </Route>
         <Route exact path="/plantInfo">
           <PlantInfo
+            accessToken={accessToken}
+            setIsFavorite={setIsFavorite}
             isFavorite={isFavorite}
-            favorite={favorite}
             userInfo={userInfo}
             setFavorite={setFavorite}
-            isLoading={isLoading}
-            setIsLoading={setIsLoading}
             isLogin={isLogin}
             plant={selectedPlant}
             accessToken={accessToken}

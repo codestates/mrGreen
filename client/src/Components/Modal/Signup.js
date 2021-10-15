@@ -91,7 +91,7 @@ function Signup({ signupModal, setSignupModal, setLoginModal }) {
             alert("회원가입 완료");
           }
         })
-        .catch((err) => alert(err));
+        .catch((err) => alert("이미 사용중인 이메일입니다"));
     }
   };
 
