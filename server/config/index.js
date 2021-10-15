@@ -26,4 +26,8 @@ module.exports = {
     port: process.env.DATABASE_PORT,
     dialect: "mysql",
   },
+<<<<<<< HEAD
 };
+=======
+};
+>>>>>>> 9ccac0110f06062da2b1960f9fbb34593baf1c22

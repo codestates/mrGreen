@@ -1,5 +1,5 @@
 
-INSERT INTO plants (kor_name, eng_name, means, description, difficulty, light, water, image) VALUES 
+INSERT INTO plant (kor_name, eng_name, means, description, difficulty, light, water, image) VALUES 
 ("몬스테라", "Monstera",	"웅장한 계획",	"식물이 크기 때문에 큰 화분에 심어야 하며, 받침대를 세워 고정시켜야 합니다. 그리고 반그늘을 좋아하므로 실내에 두는 것이 좋습니다.",	"낮음",	"반음지",	"겉흙이 마르면 물을 듬뿍 주면 됩니다",	"001_Monstera.jpg"),
 ("블루스타 고사리",	"Blue Star Fern",	"달성",	"큰 나무 그늘 아래에서 다른 나무에 붙어 자라거나 바위 틈새에서 자라기 때문에 많은 빛을 필요로 하지 않습니다. 다만 빛을 보지 못한 만큼 촉촉하고 습한 환경을 좋아합니다.", "중간", "음지",	"겉흙이 마르면 물을 듬뿍 주면 됩니다",	"002_Blue Star Fern.jpg"),
 ("칼라디움",	"Caladium",	"기쁨",	"기온이 20℃ 이하에서는 아름다운 잎이 되지 않으며 40-90cm 높이로 자라고 잎은 대개 15-45cm 길이로 넓은 편이다",	"높음",	"반양지",	"겉흙이 마르면 물을 듬뿍 주면 됩니다",	"003_Caladium.jpg"),
@@ -66,16 +66,16 @@ INSERT INTO plants (kor_name, eng_name, means, description, difficulty, light, w
 ("긴잎 아카시아",	"Sydney Golden Wattle",	"우정",	"은백색의 긴 잎과 봄에 피는 복슬복슬한 노란색 꽃이 매력적인 친구랍니다. 생장 속도가 빠른 편이며, 7~8미터 까지도 자란답니다",	"중간",	"양지",	"주 1~2회",	"064_Sydney Golden Wattle0.jpg");
 
 
-INSERT INTO themes (plantId, interior, begginer, lucky) VALUES (1, true, true, false),(5, true, false, false), (6, false, true, false), (7, false, true, false), (12, false, true, false), (14, false, true, false), (17, false, true, false), (20, false, false, true), (30, true, false, false), (36, false, false, true), (46, true, false, false), (67, true, false, false), (71, false, false, true), (72, true, false, false), (79, false, false, true), (127, true, false, false), (129, false, false, true);
+INSERT INTO theme (plantId, interior, begginer, lucky) VALUES (1, true, true, false),(5, true, false, false), (6, false, true, false), (7, false, true, false), (12, false, true, false), (14, false, true, false), (17, false, true, false), (20, false, false, true), (30, true, false, false), (36, false, false, true), (46, true, false, false), (67, true, false, false), (71, false, false, true), (72, true, false, false), (79, false, false, true), (127, true, false, false), (129, false, false, true);
 
-INSERT INTO users (nickname, email, password, gender) VALUES ("김코딩", "kimcoding@gmail.com", "12345678Q!", "male")
+INSERT INTO user (nickname, email, password, gender) VALUES ("김코딩", "kimcoding@gmail.com", "12345678Q!", "male");
 
-INSERT INTO favorites (userId, plantId) VALUES (1, 1)
-INSERT INTO favorites (userId, plantId) VALUES (1, 3)
-INSERT INTO favorites (userId, plantId) VALUES (1, 18)
+INSERT INTO favorite (userId, plantId) VALUES (1, 1);
+INSERT INTO favorite (userId, plantId) VALUES (1, 3);
+INSERT INTO favorite (userId, plantId) VALUES (1, 18);
 
 
-INSERT INTO plants (kor_name, eng_name, means, description, difficulty, light, water, image, created_at, updated_at) VALUES
+INSERT INTO plant (kor_name, eng_name, means, description, difficulty, light, water, image, created_at, updated_at) VALUES
 (
   "수채화 고무나무",
   "Tineke rubber tree",
