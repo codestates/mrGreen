@@ -1,6 +1,6 @@
 /* eslint-disable */
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../Styles/PlantInfo.css";
 
 function PlantInfo({
@@ -8,8 +8,9 @@ function PlantInfo({
   plant,
   setFavorite,
   userInfo,
-  favorite,
   isFavorite,
+  setIsFavorite,
+  accessToken,
 }) {
   const [toastOn, setToastOn] = useState(false);
   const [toastIdx, setToastIdx] = useState(0);
@@ -21,14 +22,28 @@ function PlantInfo({
     "이미 추가된 식물입니다",
   ];
 
-  // console.log(isFavorite);
+  const getFavorite = () => {
+    axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API_URL}/favorite`,
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${accessToken}`,
+      },
+      withCredentials: true,
+    }).then((res) => {
+      if (res.status === 200) {
+        setFavorite(res.data.favorite);
+      }
+    });
+  };
 
   const handleAddFavorite = () => {
+    setIsFavorite(false);
     // 로그인 상태가 아닐때, 토스트 "로그인 후 이용"
     // 로그인 상태일 때
     // 유저의 즐겨찾기 정보에 해당 플랜트가 없을 때, axios 추가요청 후 성공시 -> 토스트 "추가됨"
     // 유저의 즐겨찾기 정보에 해당 플랜트가 있을 때, 토스트 "이미 추가한 식물"
-    console.log(isLogin);
     if (!isLogin) {
       setToastIdx(0);
       setToastOn(true);
@@ -45,8 +60,7 @@ function PlantInfo({
       })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res.data);
-            setFavorite(res.data.favoritePlant);
+            getFavorite();
             setToastIdx(2);
             setToastOn(true);
             setTimeout(() => {
@@ -68,6 +82,7 @@ function PlantInfo({
 
   const handleDelFavorite = () => {
     // axios 삭제 요청 후 성공시 -> 토스트 "삭제되었습니다"
+    setIsFavorite(true);
 
     axios({
       method: "delete",
@@ -78,9 +93,7 @@ function PlantInfo({
     })
       .then((res) => {
         if (res.status === 200) {
-          const favoriteList = res.data.favoritePlant;
-          console.log(favoriteList);
-          setFavorite(res.data.favorite);
+          getFavorite();
           setToastIdx(1);
           setToastOn(true);
           setTimeout(() => {

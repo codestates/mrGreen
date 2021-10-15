@@ -1,7 +1,6 @@
 import MenProfile from "../Image/Mypage/Mypage_leon.jpg";
 import GirlProfile from "../Image/Mypage/Mypage_matilda.jpg";
 import "../Styles/Mypage.css";
-import { mainplants } from "../assets/mainplant";
 import PlantCard from "../Components/PlantCard";
 import EditUserInfo from "../Components/Modal/EditUserInfo";
 
@@ -12,7 +11,7 @@ function Mypage({
   editPwModal,
   userInfo,
 }) {
-  const {nickname, email, gender} = userInfo;
+  const { nickname, email } = userInfo;
   const handleEditPsWord = () => {
     setEditPwModal(true);
     document.body.style.overflow = "hidden";

@@ -84,7 +84,6 @@ function Login({
   };
 
   const userInfoHandler = async (token) => {
-    // console.log("유저인포 엑세스토큰---",token);
     await axios({
       method: "get",
       url: `${process.env.REACT_APP_API_URL}/user/userinfo`,
@@ -94,7 +93,6 @@ function Login({
       },
       withCredentials: true,
     }).then((res) => {
-      console.log("user 정보", res.data);
       setUserInfo(res.data.userInfo);
       setFavorite(res.data.favorite);
     });
@@ -119,10 +117,8 @@ function Login({
           }
         )
         .then((res) => {
-          // console.log("로그인 요청", res.data);
           if (res.status === 200) {
             //로그인 상태 변경, 쿠키에 있는 엑세스 토큰을 상태로 저장, 로그인 모달 끄고, 메인으로
-            console.log("----클라 로그인요청시 바디 엑세스토큰",res.data.data)
             setAccessToken(res.data.data.accessToken);
             setIsLogin(true);
             userInfoHandler(res.data.data.accessToken);
@@ -138,7 +134,7 @@ function Login({
           }
         })
         .catch((err) => {
-          alert(err);
+          alert("이메일과 비밀번호를 다시 확인해주세요");
         });
     }
   };
